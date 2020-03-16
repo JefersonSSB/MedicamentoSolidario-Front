@@ -31,6 +31,7 @@ import { UsuarioListComponent } from './usuario/usuario-list/usuario-list.compon
 import {MatTableModule} from '@angular/material/table';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { UsuarioInsertComponent } from './usuario/usuario-insert/usuario-insert.component';
 
 
 
@@ -41,7 +42,8 @@ import { HomeComponent } from './home/home.component';
     HeaderBarComponent,
     UsuarioListComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    UsuarioInsertComponent
   ],
   imports: [
     BrowserModule,

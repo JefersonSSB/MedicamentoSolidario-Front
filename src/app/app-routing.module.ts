@@ -1,4 +1,4 @@
-import { CadastroComponent } from './cadastro/cadastro.component';
+import { UsuarioInsertComponent } from './usuario/usuario-list/usuario-insert.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsuarioListComponent } from './usuario/usuario-list/usuario-list.component';
@@ -8,8 +8,8 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'cadastro', component: CadastroComponent },
-  { path: 'UsuarioList', component: UsuarioListComponent },
+  { path: 'usuarioCadastro', component: UsuarioInsertComponent },
+  { path: 'usuarioLista', component: UsuarioListComponent },
   { path: 'login', component: LoginComponent },
 
 ];
