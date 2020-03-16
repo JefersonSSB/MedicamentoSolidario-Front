@@ -5,21 +5,22 @@
 
   <mat-card-content class="cartoesCorpo">
 
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
 
       <div class="card">
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Nome</mat-label>
-          <input [(ngModel)]="nome" name="nome" matInput required>
+          <input matInput formGroupName="nome" required>
         </mat-form-field>
 
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Sexo</mat-label>
-          <mat-select matNativeControl required [formControl]="selectFormControl">
+          <mat-select matNativeControl formGroupName="sexo" required>
             <mat-option value="option">Masculino</mat-option>
             <mat-option value="option">Feminino</mat-option>
           </mat-select>
-          <mat-error *ngIf="selectFormControl.hasError('required')">
+          <mat-error *ngIf="formGroup.hasError('required')">
             O campos e Obrigatorio !
           </mat-error>
 
@@ -31,18 +32,18 @@
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Tipo de Usuario</mat-label>
           <!--  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-select required [(value)]="tipoUsuario">
+          <mat-select formGroupName="role" required>
             <mat-option value="option1">Usuario Padrão</mat-option>
             <mat-option value="option2">Voluntario</mat-option>
           </mat-select>
-          <mat-error *ngIf="selectFormControl.hasError('required')">
+          <mat-error *ngIf="formGroup.hasError('required')">
             O campos e Obrigatorio !
           </mat-error>
         </mat-form-field>
 
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Telefone</mat-label>
-          <input [(ngModel)]="telefone" name="telefone" matInput>
+          <input matInput formGroupName="telefone" required>
         </mat-form-field>
 
 
@@ -53,12 +54,12 @@
 
         <mat-form-field class="margin" appearance="outline">
           <mat-label>CPF</mat-label>
-          <input [(ngModel)]="cpf" name="telefone" matInput required>
+          <input matInput formGroupName="cpf" required>
         </mat-form-field>
 
         <mat-form-field class="margin" i18n appearance="outline">
           <mat-label>Date de Nascimento</mat-label>
-          <input i18n matInput [(ngModel)]="nascimento" name="nascimento" [matDatepicker]="picker">
+          <input i18n matInput formGroupName="nascimento" [matDatepicker]="picker" required>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -66,25 +67,25 @@
       <div class="card">
         <mat-form-field class="margin" appearance="outline">
           <mat-label>E-mail</mat-label>
-          <input [formControl]="emailFormControl" name="email" matInput required>
-          <mat-error *ngIf="emailFormControl.hasError('email')">
+          <input formGroupName="email" matInput required>
+          <mat-error *ngIf="formGroup.hasError('email')">
             E-mail Invalido !
           </mat-error>
         </mat-form-field>
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Confirmar E-mail</mat-label>
-          <input (value)="confirmaEmail" matInput required>
+          <input formGroupName="email" matInput required>
         </mat-form-field>
 
       </div>
       <div class="card">
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Senha</mat-label>
-          <input [(ngModel)]="senha" name="senha" type="password" matInput>
+          <input formGroupName="senha" name="senha" type="password" matInput>
         </mat-form-field>
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Confirma Senha</mat-label>
-          <input (value)="senha" type="password" matInput>
+          <input formGroupName="senha" type="password" matInput>
         </mat-form-field>
 
       </div>
@@ -98,6 +99,9 @@
         <button type="submit" mat-raised-button color="primary">Cadastrar</button>
         <button (click)="backClicked()" mat-raised-button class="botaoCancelar">Cancelar</button>
       </div>
+
+
+
     </form>
 
   </mat-card-content>
