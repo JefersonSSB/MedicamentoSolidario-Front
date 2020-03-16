@@ -1,42 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import {Location} from '@angular/common';
-import {FormControl, Validators, FormGroup} from '@angular/forms';
+import {FormGroup, FormBuilder} from '@angular/forms';
+import { UsuarioService } from '../usuario.service'
 
 
 @Component({
   selector: 'app-usuario-insert',
   templateUrl: './usuario-insert.component.html',
-  styleUrls: ['./usuario-insert.component.css']
+  styleUrls: ['./usuario-insert.component.css'],
 })
 export class UsuarioInsertComponent implements OnInit {
 
   public formGroup: FormGroup;
 
-  constructor
-    ( private _location: Location) {
-    }
+
+  constructor (
+    private formBuilder: FormBuilder,
+    private usuarioService: UsuarioService
+  ) {
+
+    this.formGroup = this.formBuilder.group({
+      nome: this.formBuilder.control(''),
+      cpf: this.formBuilder.control(''),
+      role: this.formBuilder.control(''),
+      sexo: this.formBuilder.control(''),
+      telefone: this.formBuilder.control(''),
+      dataNascimento: this.formBuilder.control(''),
+      senha: this.formBuilder.control(''),
+      email: this.formBuilder.control('')
+    });
+
+  }
 
   titulo = 'Cadastro de Usuários';
 
   ngOnInit() {
 
-    this.formGroup = new FormGroup({
-      nome: new FormControl('',Validators.required),
-      cpf: new FormControl(''),
-      role: new FormControl(''),
-      sexo: new FormControl(''),
-      telefone: new FormControl(''),
-      nascimento: new FormControl(''),
-      senha: new FormControl(''),
-      email: new FormControl('',[Validators.required,
-        Validators.email,]),
-    });
-
-
-  }
-
-  backClicked() {
-    this._location.back();
   }
 
   onSubmit() {
@@ -45,8 +43,9 @@ export class UsuarioInsertComponent implements OnInit {
      // this.cadastroServico.cadatrarUsuario(this.usuario).subscribe();
       //alert(this.novoUsuario.nome);
 
-      console.log(this.formGroup.controls);
-    //}
+      console.log(JSON.stringify(this.formGroup.value));
 
- }
+      this.usuarioService.saveUsuario(this.formGroup.value).subscribe(data => {console.log(data); });
 }
+}
+

@@ -11,14 +11,14 @@
       <div class="card">
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Nome</mat-label>
-          <input matInput formGroupName="nome" required>
+          <input matInput formControlName="nome" type="text">
         </mat-form-field>
 
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Sexo</mat-label>
-          <mat-select matNativeControl formGroupName="sexo" required>
-            <mat-option value="option">Masculino</mat-option>
-            <mat-option value="option">Feminino</mat-option>
+          <mat-select matNativeControl formControlName="sexo" >
+            <mat-option value="Masculino">Masculino</mat-option>
+            <mat-option value="Feminino">Feminino</mat-option>
           </mat-select>
           <mat-error *ngIf="formGroup.hasError('required')">
             O campos e Obrigatorio !
@@ -32,9 +32,9 @@
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Tipo de Usuario</mat-label>
           <!--  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-          <mat-select formGroupName="role" required>
-            <mat-option value="option1">Usuario Padrão</mat-option>
-            <mat-option value="option2">Voluntario</mat-option>
+          <mat-select formControlName="role" >
+            <mat-option value="USER">Usuario Padrão</mat-option>
+            <mat-option value="INTERMEDIADOR">Voluntario</mat-option>
           </mat-select>
           <mat-error *ngIf="formGroup.hasError('required')">
             O campos e Obrigatorio !
@@ -43,7 +43,7 @@
 
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Telefone</mat-label>
-          <input matInput formGroupName="telefone" required>
+          <input matInput formControlName="telefone" >
         </mat-form-field>
 
 
@@ -54,38 +54,44 @@
 
         <mat-form-field class="margin" appearance="outline">
           <mat-label>CPF</mat-label>
-          <input matInput formGroupName="cpf" required>
+          <input matInput formControlName="cpf" >
         </mat-form-field>
 
-        <mat-form-field class="margin" i18n appearance="outline">
+
+
+        <mat-form-field class="margin" appearance="outline">
           <mat-label>Date de Nascimento</mat-label>
-          <input i18n matInput formGroupName="nascimento" [matDatepicker]="picker" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <input matInput formControlName="dataNascimento"  type="date">
+
         </mat-form-field>
+
+
+
+
+
       </div>
       <div class="card">
         <mat-form-field class="margin" appearance="outline">
           <mat-label>E-mail</mat-label>
-          <input formGroupName="email" matInput required>
+          <input formControlName="email" matInput >
           <mat-error *ngIf="formGroup.hasError('email')">
             E-mail Invalido !
           </mat-error>
         </mat-form-field>
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Confirmar E-mail</mat-label>
-          <input formGroupName="email" matInput required>
+          <input  matInput >
         </mat-form-field>
 
       </div>
       <div class="card">
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Senha</mat-label>
-          <input formGroupName="senha" name="senha" type="password" matInput>
+          <input formControlName="senha" name="senha" type="password" matInput>
         </mat-form-field>
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Confirma Senha</mat-label>
-          <input formGroupName="senha" type="password" matInput>
+          <input  type="password" matInput>
         </mat-form-field>
 
       </div>
@@ -97,7 +103,7 @@
         <br>
 
         <button type="submit" mat-raised-button color="primary">Cadastrar</button>
-        <button (click)="backClicked()" mat-raised-button class="botaoCancelar">Cancelar</button>
+
       </div>
 
 

@@ -2,40 +2,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Usuario } from '../models/usuario'
+import { Login } from '../models/login'
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class LoginService {
 
-  url = 'https://medicamento-back.herokuapp.com//api/usuario';
+
+  url = 'https://medicamento-back.herokuapp.com//oauth/token';
 
   constructor(private httpClient: HttpClient) { }
 
-  // Headers
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({'Content-Type': 'form-data',
+    'Authorization':'Basic YWRtaW46YWRtaW4='})
   }
 
-  getUsuario(): Observable<Usuario[]> {
-    return this.httpClient.get<Usuario[]>(this.url)
-      .pipe(
+  login(login: Login): Observable<Login> {
 
-        catchError(this.handleError))
-  }
-
-
-  saveUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.httpClient.post<Usuario>(this.url, JSON.stringify(usuario),this.httpOptions)
+    return this.httpClient.post<Login>(this.url,login)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
-
-
-
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
@@ -48,6 +39,5 @@ export class UsuarioService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-  };
 
-}
+}}
