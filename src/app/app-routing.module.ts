@@ -1,4 +1,4 @@
-import { UsuarioInsertComponent } from './usuario/usuario-list/usuario-insert.component';
+import { UsuarioInsertComponent } from './usuario/usuario-insert/usuario-insert.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsuarioListComponent } from './usuario/usuario-list/usuario-list.component';
