@@ -10,7 +10,7 @@ import { Login } from '../models/login'
 export class LoginService {
 
 
-  url = 'https://medicamento-back.herokuapp.com//oauth/token';
+  url = 'https://medicamento-back.herokuapp.com/oauth/token';
 
   constructor(private httpClient: HttpClient) { }
 
