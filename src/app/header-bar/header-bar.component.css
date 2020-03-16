@@ -1,0 +1,13 @@
+.imageLogo{
+  width: 150px;
+  box-shadow:2px 2px 3px black;
+  border-radius: 14px;
+}
+.headerToolBar{
+
+  background-color:#007fff;
+}
+
+.imageLogo:focus {
+  outline: none;
+}
