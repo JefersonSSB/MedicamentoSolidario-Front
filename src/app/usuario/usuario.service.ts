@@ -9,7 +9,7 @@ import { Usuario } from '../models/usuario'
 })
 export class UsuarioService {
 
-  url = 'https://medicamento-back.herokuapp.com//api/usuario';
+  url = 'https://medicamento-back.herokuapp.com/api/usuario';
 
   constructor(private httpClient: HttpClient) { }
 
