@@ -12,7 +12,6 @@ export class UsuarioInsertComponent implements OnInit {
 
   public formGroup: FormGroup;
 
-
   constructor (
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService

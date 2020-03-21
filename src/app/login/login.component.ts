@@ -13,8 +13,6 @@ export class LoginComponent  {
 
   constructor (private loginService: LoginService){}
 
-
-
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
@@ -23,10 +21,7 @@ export class LoginComponent  {
 
   submit() {
 
-
-
     this.loginService.login(this.form.value).subscribe(data => {console.log(data); });
-
 
     if (this.form.valid) {
       console.log(this.form.value);

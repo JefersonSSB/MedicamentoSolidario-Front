@@ -10,9 +10,7 @@ import { Usuario } from '../models/usuario'
 export class UsuarioService {
 
   url = 'https://medicamento-back.herokuapp.com/api/usuario';
-
   constructor(private httpClient: HttpClient) { }
-
   // Headers
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,10 +19,8 @@ export class UsuarioService {
   getUsuario(): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(this.url)
       .pipe(
-
         catchError(this.handleError))
   }
-
 
   saveUsuario(usuario: Usuario): Observable<Usuario> {
     return this.httpClient.post<Usuario>(this.url, JSON.stringify(usuario),this.httpOptions)
@@ -33,9 +29,6 @@ export class UsuarioService {
         catchError(this.handleError)
       )
   }
-
-
-
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
