@@ -38,10 +38,6 @@ export class UsuarioInsertComponent implements OnInit {
 
   onSubmit() {
 
-    //if (confirm('Deseja cadastrer este novo usuario')) {
-     // this.cadastroServico.cadatrarUsuario(this.usuario).subscribe();
-      //alert(this.novoUsuario.nome);
-
       console.log(JSON.stringify(this.formGroup.value));
 
       this.usuarioService.saveUsuario(this.formGroup.value).subscribe(data => {console.log(data); });

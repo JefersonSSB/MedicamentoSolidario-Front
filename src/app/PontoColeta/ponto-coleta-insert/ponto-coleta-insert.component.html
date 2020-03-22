@@ -1,0 +1,27 @@
+<mat-card class="cadastro">
+  <mat-card-header>
+    <mat-card-title></mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="cartoesCorpo">
+
+    <form [formGroup]="formulario" >
+      <div class="card"><mat-form-field appearance="outline">
+        <mat-label>Nome Fantasia</mat-label>
+        <input matInput formControlName="nomeFantasia">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Cidade</mat-label>
+        <input matInput formControlName="cidade">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </div>
+    <app-form-debug [form]="formulario"></app-form-debug>
+    </form>
+
+  </mat-card-content>

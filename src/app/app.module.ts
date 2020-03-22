@@ -1,7 +1,7 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +28,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UsuarioInsertComponent } from './usuario/usuario-insert/usuario-insert.component';
 import { CommonModule } from '@angular/common';
+import { PontoColetaInsertComponent } from './PontoColeta/ponto-coleta-insert/ponto-coleta-insert.component';
+import { FormDebugComponent } from './form-debug/form-debug.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { CommonModule } from '@angular/common';
     UsuarioListComponent,
     LoginComponent,
     HomeComponent,
-    UsuarioInsertComponent
+    UsuarioInsertComponent,
+    PontoColetaInsertComponent,
+    FormDebugComponent
   ],
   imports: [
     CommonModule,
