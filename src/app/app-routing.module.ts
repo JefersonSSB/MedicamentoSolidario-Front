@@ -1,3 +1,4 @@
+import { PontoColetaListComponent } from './PontoColeta/ponto-coleta-list/ponto-coleta-list/ponto-coleta-list.component';
 import { PontoColetaInsertComponent } from './PontoColeta/ponto-coleta-insert/ponto-coleta-insert.component';
 import { UsuarioInsertComponent } from './usuario/usuario-insert/usuario-insert.component';
 import { NgModule, Component } from '@angular/core';
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'usuarioCadastro', component: UsuarioInsertComponent },
   { path: 'usuarioLista', component: UsuarioListComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'pontoColetaCadastro', component: PontoColetaInsertComponent}
+  { path: 'pontoColetaCadastro', component: PontoColetaInsertComponent},
+  { path: 'pontoColetaList' , component: PontoColetaListComponent}
 
 ];
 

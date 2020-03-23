@@ -30,6 +30,11 @@ import { UsuarioInsertComponent } from './usuario/usuario-insert/usuario-insert.
 import { CommonModule } from '@angular/common';
 import { PontoColetaInsertComponent } from './PontoColeta/ponto-coleta-insert/ponto-coleta-insert.component';
 import { FormDebugComponent } from './form-debug/form-debug.component';
+import { PontoColetaListComponent } from './PontoColeta/ponto-coleta-list/ponto-coleta-list/ponto-coleta-list.component';
+import { MatPaginatorModule}  from '@angular/material/paginator';
+import { NgxMaskModule, IConfig  } from 'ngx-mask';
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
   declarations: [
@@ -40,7 +45,8 @@ import { FormDebugComponent } from './form-debug/form-debug.component';
     HomeComponent,
     UsuarioInsertComponent,
     PontoColetaInsertComponent,
-    FormDebugComponent
+    FormDebugComponent,
+    PontoColetaListComponent
   ],
   imports: [
     CommonModule,
@@ -61,8 +67,9 @@ import { FormDebugComponent } from './form-debug/form-debug.component';
     MatTableModule,
     MatIconModule,
     MatGridListModule,
-
-    BrowserAnimationsModule
+    MatPaginatorModule,
+    BrowserAnimationsModule,
+    NgxMaskModule.forRoot(options)
   ],
   providers: [
     MatDatepickerModule,

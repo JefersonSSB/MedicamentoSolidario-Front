@@ -14,8 +14,17 @@ export class PontoColetaInsertComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
+      atividadePrincipal:[null,Validators.required],
+      bairro:[null,Validators.required],
+      cep:[null,Validators.required],
       nomeFantasia: [null, Validators.required],
-      cidade: [null, [Validators.required, Validators.email]]
+      cidade: [null, [Validators.required, Validators.email]],
+      cnpj: [null, Validators.required],
+      complemento: [null],
+      estado:[null, Validators.required],
+      nome:[null, Validators.required],
+      numero:[null],
+      rua:[null]
     });
   }
   onSubmit(){

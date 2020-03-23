@@ -3,7 +3,6 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Usuario } from '../../models/usuario'
 import { UsuarioService } from '../usuario.service'
 
-
 @Component({
   selector: 'app-usuario-list',
   templateUrl: './usuario-list.component.html',
@@ -13,19 +12,15 @@ import { UsuarioService } from '../usuario.service'
 export class UsuarioListComponent implements OnInit {
 
   usuarios: Usuario[];
+  displayedColumns: string[] = ['id','nome','cpf','email','telefone','nascimento','sexo','role'];
 
+  dataSource = new MatTableDataSource(this.usuarios);
 
   constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit() {
     this.getUsuario();
   }
-
-
-  displayedColumns: string[] = ['id','nome','cpf','email','telefone','nascimento','sexo','role'];
-
-dataSource = new MatTableDataSource(this.usuarios);
-
   getUsuario() {
     this.usuarioService.getUsuario().subscribe((usuarios: Usuario[]) => {
       this.usuarios = usuarios;
@@ -33,11 +28,8 @@ dataSource = new MatTableDataSource(this.usuarios);
 
     });
   }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-
 }
