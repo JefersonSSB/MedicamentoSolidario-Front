@@ -31,7 +31,6 @@ import { CommonModule } from '@angular/common';
 import { PontoColetaInsertComponent } from './PontoColeta/ponto-coleta-insert/ponto-coleta-insert.component';
 import { FormDebugComponent } from './form-debug/form-debug.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

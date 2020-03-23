@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-ponto-coleta-insert',
@@ -14,9 +14,14 @@ export class PontoColetaInsertComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
-      nomeFantasia: [null],
-      cidade: [null]
+      nomeFantasia: [null, Validators.required],
+      cidade: [null, [Validators.required, Validators.email]]
     });
   }
-
+  onSubmit(){
+    console.log(this.formulario.value)
+  }
+  resetar(){
+    this.formulario.reset();
+  }
 }

@@ -5,8 +5,9 @@
 
   <mat-card-content class="cartoesCorpo">
 
-    <form [formGroup]="formulario" >
-      <div class="card"><mat-form-field appearance="outline">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div class="card" >
+        <mat-form-field appearance="outline">
         <mat-label>Nome Fantasia</mat-label>
         <input matInput formControlName="nomeFantasia">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
@@ -20,6 +21,13 @@
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         <mat-hint>Hint</mat-hint>
       </mat-form-field>
+    </div>
+    <div class="card">
+      Ja Possui Cadastro? <a href="">Clique para fazer login</a>
+      <br>
+      <br>
+      <button type="submit" mat-raised-button color="primary">Cadastrar</button>
+      <button mat-raised-button color="warn" (click)="resetar()">Cancelar</button>
     </div>
     <app-form-debug [form]="formulario"></app-form-debug>
     </form>
