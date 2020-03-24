@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuarioService } from '../usuario.service'
-
 
 @Component({
   selector: 'app-usuario-insert',
@@ -15,32 +14,26 @@ export class UsuarioInsertComponent implements OnInit {
   constructor (
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService
-  ) {
-
-    this.formGroup = this.formBuilder.group({
-      nome: this.formBuilder.control(''),
-      cpf: this.formBuilder.control(''),
-      role: this.formBuilder.control(''),
-      sexo: this.formBuilder.control(''),
-      telefone: this.formBuilder.control(''),
-      dataNascimento: this.formBuilder.control(''),
-      senha: this.formBuilder.control(''),
-      email: this.formBuilder.control('')
-    });
-
-  }
+  ) {}
 
   titulo = 'Cadastro de Usuários';
 
   ngOnInit() {
-
+    this.formGroup = this.formBuilder.group({
+      nome:[null,Validators.required],
+      cpf: [null,Validators.required],
+      role: [null,Validators.required],
+      sexo: [null],
+      telefone: [null],
+      dataNascimento: [null],
+      senha: [null,Validators.required],
+      email: [null,Validators.email]
+    });
   }
 
   onSubmit() {
-
       console.log(JSON.stringify(this.formGroup.value));
-
-      this.usuarioService.saveUsuario(this.formGroup.value).subscribe(data => {console.log(data); });
+      this.usuarioService.save(this.formGroup.value).subscribe(data => {console.log(data); });
 }
 }
 

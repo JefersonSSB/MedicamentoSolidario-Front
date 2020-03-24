@@ -1,97 +1,85 @@
 <mat-card class="cadastro">
   <mat-card-header>
-    <mat-card-title></mat-card-title>
+    <mat-card-title>{{titulo}}</mat-card-title>
   </mat-card-header>
 
   <mat-card-content class="cartoesCorpo">
 
     <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
       <div class="card" >
-        <mat-form-field appearance="outline">
+        <mat-form-field class="margin" appearance="outline">
         <mat-label>Nome Fantasia</mat-label>
-        <input matInput formControlName="nomeFantasia">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
+        <input matInput formControlName="nome">
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field appearance="outline">
+    <div class="card">
+      <mat-form-field class="margin" appearance="outline">
         <mat-label>Atividade Principal</mat-label>
         <input matInput formControlName="atividadePrincipal">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field appearance="outline">
+    <div class="card">
+      <mat-form-field class="margin" appearance="outline">
         <mat-label>CNPJ</mat-label>
         <input matInput formControlName="cnpj">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="outline">
+      <mat-form-field class="margin" appearance="outline">
         <mat-label>CEP</mat-label>
         <input matInput formControlName="cep">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="outline">
+      <mat-form-field class="margin" appearance="outline">
         <mat-label>Estado</mat-label>
         <input matInput formControlName="estado">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
       </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="outline">
+
+      <mat-form-field class="margin" appearance="outline">
         <mat-label>Cidade</mat-label>
         <input matInput formControlName="cidade">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="outline">
+      <mat-form-field class="margin" appearance="outline">
         <mat-label>Bairro</mat-label>
         <input matInput formControlName="bairro">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="outline">
+      <mat-form-field class="margin" appearance="outline">
         <mat-label>Rua</mat-label>
         <input matInput formControlName="rua">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
       </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="outline">
+
+      <mat-form-field class="margin" appearance="outline">
         <mat-label>Numero</mat-label>
         <input matInput formControlName="numero">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="outline">
+      <mat-form-field class="margin" appearance="outline">
         <mat-label>Complemento</mat-label>
         <input matInput formControlName="complemento">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
       </mat-form-field>
     </div>
     <div class="card">
       Ja Possui Cadastro? <a href="">Clique para fazer login</a>
       <br>
       <br>
-      <button type="submit" mat-raised-button color="primary">Cadastrar</button>
-      <button mat-raised-button color="warn" (click)="resetar()">Cancelar</button>
+      <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Cadastrar</button>
+      <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
     </div>
     <app-form-debug [form]="formulario"></app-form-debug>
     </form>

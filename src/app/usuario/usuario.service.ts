@@ -1,33 +1,20 @@
+import { CrudService } from './../Shared/crud-service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 import { Usuario } from '../models/usuario'
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class UsuarioService extends CrudService<Usuario> {
 
-  url = 'https://medicamento-back.herokuapp.com/api/usuario';
-  constructor(private httpClient: HttpClient) { }
+  constructor(protected http: HttpClient) {
+    super(http,'https://medicamento-back.herokuapp.com/api/usuario');
+   }
   // Headers
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  }
-
-  getUsuario(): Observable<Usuario[]> {
-    return this.httpClient.get<Usuario[]>(this.url)
-      .pipe(
-        catchError(this.handleError))
-  }
-
-  saveUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.httpClient.post<Usuario>(this.url, JSON.stringify(usuario),this.httpOptions)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
   }
 
   handleError(error: HttpErrorResponse) {

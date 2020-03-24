@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { Usuario } from '../../models/usuario'
 import { UsuarioService } from '../usuario.service'
+import {MatPaginator} from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-usuario-list',
@@ -15,18 +17,19 @@ export class UsuarioListComponent implements OnInit {
   displayedColumns: string[] = ['id','nome','cpf','email','telefone','nascimento','sexo','role'];
 
   dataSource = new MatTableDataSource(this.usuarios);
-
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit() {
-    this.getUsuario();
+    this.list();
+    this.dataSource.paginator = this.paginator;
   }
-  getUsuario() {
-    this.usuarioService.getUsuario().subscribe((usuarios: Usuario[]) => {
-      this.usuarios = usuarios;
-    this.dataSource.data = usuarios;
-
+  list() {
+    this.usuarioService.list().subscribe(dados => {
+      this.usuarios = dados;
+      this.dataSource.data = this.usuarios;
     });
+
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
