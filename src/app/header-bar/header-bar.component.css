@@ -2,6 +2,7 @@
   width: 150px;
   box-shadow: 2px 2px 3px black;
   border-radius: 14px;
+  margin: 10px;
 }
 
 .imageLogo:focus {
@@ -17,4 +18,14 @@
 
 .example-spacer {
   flex: 1 1 auto;
+}
+
+.headMenuSide {
+  background-color: #007fff;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidenav-container {
+  background-color: #e9e9e9;
 }
