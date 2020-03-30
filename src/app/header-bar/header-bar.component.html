@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container" [hasBackdrop]="false">
   <mat-toolbar class="expanded-toolbar">
     <mat-toolbar-row>
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+      <button *ngIf="!auth() " type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <img class="imageLogo" src="assets/images/logo.png" routerLink="/">

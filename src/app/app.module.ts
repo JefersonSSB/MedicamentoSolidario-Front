@@ -34,6 +34,7 @@ import { FormDebugComponent } from './form-debug/form-debug.component';
 import { PontoColetaListComponent } from './PontoColeta/ponto-coleta-list/ponto-coleta-list/ponto-coleta-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { FooterComponent } from './footer/footer.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -47,7 +48,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     UsuarioInsertComponent,
     PontoColetaInsertComponent,
     FormDebugComponent,
-    PontoColetaListComponent
+    PontoColetaListComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
