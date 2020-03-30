@@ -1,6 +1,5 @@
 import { FormGroup, FormControl } from '@angular/forms';
 import { Input, Component, Output, EventEmitter } from '@angular/core';
-import { LoginService } from './login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -13,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
 
-  constructor(private loginService: LoginService, private _snackBar: MatSnackBar, public router: Router) { }
+  constructor(private _snackBar: MatSnackBar, public router: Router) { }
 
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -48,9 +47,6 @@ export class LoginComponent {
   }
 
   submit() {
-
-    this.loginService.login(this.form.value).subscribe(data => { console.log(data); });
-
     if (this.form.valid) {
       console.log(this.form.value);
       this.submitEM.emit(this.form.value);
