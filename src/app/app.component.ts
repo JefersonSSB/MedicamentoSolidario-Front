@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app-pids';
+  title = 'MedicamentoSolidario-Front';
   titulo = 'Tela Inicial';
 }

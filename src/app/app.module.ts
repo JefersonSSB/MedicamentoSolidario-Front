@@ -5,7 +5,8 @@ import { NgModule, Component } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
@@ -13,7 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -33,6 +34,7 @@ import { FormDebugComponent } from './form-debug/form-debug.component';
 import { PontoColetaListComponent } from './PontoColeta/ponto-coleta-list/ponto-coleta-list/ponto-coleta-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { FooterComponent } from './footer/footer.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -46,7 +48,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     UsuarioInsertComponent,
     PontoColetaInsertComponent,
     FormDebugComponent,
-    PontoColetaListComponent
+    PontoColetaListComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -57,6 +60,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatRadioModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSidenavModule,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -70,6 +74,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatPaginatorModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
+    MatListModule,
+    MatExpansionModule,
+
 
     NgxMaskModule.forRoot(options)
   ],
