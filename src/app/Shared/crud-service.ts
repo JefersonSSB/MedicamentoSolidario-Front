@@ -20,7 +20,7 @@ export class CrudService<T extends Generico> {
     return this.http.post(this.API_URL, record).pipe(take(1));
   }
   private update(record: T){
-    return this.http.put(`${this.API_URL}/${record.id}`, record).pipe(take(1));
+    return this.http.put(this.API_URL, record).pipe(take(1));
   }
   save(record: T){
     if(record.id){

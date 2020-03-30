@@ -1,3 +1,5 @@
+import { UsuarioResolverGuard } from './guards/usuario-resolver.guard';
+import { Usuario } from './models/usuario';
 import { PontoColetaListComponent } from './PontoColeta/ponto-coleta-list/ponto-coleta-list/ponto-coleta-list.component';
 import { PontoColetaInsertComponent } from './PontoColeta/ponto-coleta-insert/ponto-coleta-insert.component';
 import { UsuarioInsertComponent } from './usuario/usuario-insert/usuario-insert.component';
@@ -10,7 +12,10 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'usuarioCadastro', component: UsuarioInsertComponent },
+  { path: 'usuarioCadastro', component: UsuarioInsertComponent,
+    resolve:{ usuario: UsuarioResolverGuard} },
+  { path: 'usuarioEditar/:id', component:UsuarioInsertComponent,
+    resolve:{ usuario: UsuarioResolverGuard}},
   { path: 'usuarioLista', component: UsuarioListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'pontoColetaCadastro', component: PontoColetaInsertComponent},

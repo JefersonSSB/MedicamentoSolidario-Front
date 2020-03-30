@@ -3,6 +3,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Usuario } from '../../models/usuario'
 import { UsuarioService } from '../usuario.service'
 import {MatPaginator} from '@angular/material/paginator';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -14,11 +15,13 @@ import {MatPaginator} from '@angular/material/paginator';
 export class UsuarioListComponent implements OnInit {
 
   usuarios: Usuario[];
-  displayedColumns: string[] = ['id','nome','cpf','email','telefone','nascimento','sexo','role'];
+  displayedColumns: string[] = ['id','nome','cpf','email','telefone','nascimento','sexo','role','Opcoes'];
 
   dataSource = new MatTableDataSource(this.usuarios);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService,
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.list();
@@ -34,5 +37,13 @@ export class UsuarioListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  onEdit(id){
+    this.router.navigate(['usuarioEditar', id]);
+    //abrirpop-up mostrando cadastro completo passivel de editar
+
+  }
+  excluir(){
+    //abrirpop-up mostrando cadastro completo com botao de excluir
   }
 }
