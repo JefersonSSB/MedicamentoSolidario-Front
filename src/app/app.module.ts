@@ -10,7 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,7 +23,7 @@ import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { UsuarioListComponent } from './usuario/usuario-list/usuario-list.component';
+import { UsuarioListComponent, PopUpDeleteComponent } from './usuario/usuario-list/usuario-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -35,6 +35,8 @@ import { PontoColetaListComponent } from './PontoColeta/ponto-coleta-list/ponto-
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { FooterComponent } from './footer/footer.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -49,8 +51,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     PontoColetaInsertComponent,
     FormDebugComponent,
     PontoColetaListComponent,
-    FooterComponent
+    FooterComponent,
+    PopUpDeleteComponent
   ],
+  //entryComponents: [DialogOverviewExample, DialogOverviewExampleDialog],
   imports: [
     CommonModule,
     BrowserModule,
@@ -76,13 +80,13 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatSnackBarModule,
     MatListModule,
     MatExpansionModule,
-
-
+    MatDialogModule,
     NgxMaskModule.forRoot(options)
   ],
   providers: [
     MatDatepickerModule,
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
 
   ],
   bootstrap: [AppComponent]
