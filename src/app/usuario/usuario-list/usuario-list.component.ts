@@ -1,15 +1,11 @@
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { Component, OnInit, ViewChild, Inject } from "@angular/core";
+import { PopUpDeleteComponent } from "./../../Shared/pop-up-delete/pop-up-delete.component";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { Usuario } from "../../models/usuario";
 import { UsuarioService } from "../usuario.service";
 import { MatPaginator } from "@angular/material/paginator";
 import { Router, ActivatedRoute } from "@angular/router";
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA
-} from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-usuario-list",
@@ -69,41 +65,6 @@ export class UsuarioListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed");
       console.log(result);
-    });
-  }
-}
-// componente da pop-up
-@Component({
-  selector: "app-pop-up-delete",
-  templateUrl: "pop-up-delete.html"
-})
-export class PopUpDeleteComponent {
-  constructor(
-    public dialogRef: MatDialogRef<PopUpDeleteComponent>,
-    @Inject(MAT_DIALOG_DATA) public usuario: Usuario,
-    private _snackBar: MatSnackBar,
-    private usuarioService: UsuarioService
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-  ok() {
-    console.log(this.usuario.id);
-    this.usuarioService.remove(this.usuario.id).subscribe(
-      success => {
-        console.log("deletado com sucesso!"), this.openSnackBar();
-      },
-      error => console.error(error),
-      () => console.log("request delete completo")
-    );
-    this.dialogRef.close();
-  }
-  openSnackBar() {
-    const message = "Deletado com sucesso";
-    const action = "delete";
-    this._snackBar.open(message, action, {
-      duration: 4100
     });
   }
 }

@@ -1,45 +1,51 @@
-import { PontoColetaService } from './../ponto-coleta.service';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { error } from '@angular/compiler/src/util';
+import { PontoColetaService } from "./../ponto-coleta.service";
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-ponto-coleta-insert',
-  templateUrl: './ponto-coleta-insert.component.html',
-  styleUrls: ['./ponto-coleta-insert.component.css']
+  selector: "app-ponto-coleta-insert",
+  templateUrl: "./ponto-coleta-insert.component.html",
+  styleUrls: ["./ponto-coleta-insert.component.css"]
 })
 export class PontoColetaInsertComponent implements OnInit {
   formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private servicePonto: PontoColetaService) { }
-  titulo= 'Cadastro Ponto Coleta'
+  constructor(
+    private formBuilder: FormBuilder,
+    private servicePonto: PontoColetaService,
+    private route: ActivatedRoute
+  ) {}
+  titulo = "Cadastro Ponto Coleta";
 
   ngOnInit(): void {
+    const pontoColeta = this.route.snapshot.data["pontoColeta"];
+
     this.formulario = this.formBuilder.group({
-      atividadePrincipal:[null,Validators.required],
-      bairro:[null,Validators.required],
-      cep:[null,Validators.required],
-      cidade: [null, [Validators.required]],
-      cnpj: [null, Validators.required],
-      complemento: [null],
-      estado:[null, Validators.required],
-      nome:[null, Validators.required],
-      numero:[null],
-      rua:[null]
+      atividadePrincipal: [pontoColeta.atividadePrincipal, Validators.required],
+      bairro: [pontoColeta.bairro, Validators.required],
+      cep: [pontoColeta.cep, Validators.required],
+      cidade: [pontoColeta.cidade, [Validators.required]],
+      cnpj: [pontoColeta.cnpj, Validators.required],
+      complemento: [pontoColeta.complemento],
+      estado: [pontoColeta.estado, Validators.required],
+      nome: [pontoColeta.nome, Validators.required],
+      numero: [pontoColeta.numero],
+      rua: [pontoColeta.rua]
     });
   }
-  onSubmit(){
-    if(this.formulario.valid){
-      console.log('submit');
-    this.servicePonto.save(this.formulario.value).subscribe(
-      success => console.log('salvo com sucesso!'),
-      error => console.error(error),
-      () => console.log('request completo')
-    );
-    console.log(this.formulario.value);
+  onSubmit() {
+    if (this.formulario.valid) {
+      console.log("submit");
+      this.servicePonto.save(this.formulario.value).subscribe(
+        success => console.log("salvo com sucesso!"),
+        error => console.error(error),
+        () => console.log("request completo")
+      );
+      console.log(this.formulario.value);
     }
   }
-  onCancel(){
+  onCancel() {
     this.formulario.reset();
   }
 }

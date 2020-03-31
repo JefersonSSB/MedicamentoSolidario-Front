@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UsuarioService } from '../usuario.service';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { UsuarioService } from "../usuario.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-usuario-insert',
-  templateUrl: './usuario-insert.component.html',
-  styleUrls: ['./usuario-insert.component.css']
+  selector: "app-usuario-insert",
+  templateUrl: "./usuario-insert.component.html",
+  styleUrls: ["./usuario-insert.component.css"]
 })
 export class UsuarioInsertComponent implements OnInit {
   public formGroup: FormGroup;
@@ -17,14 +17,14 @@ export class UsuarioInsertComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  titulo = 'Formulario de Usuários';
+  titulo = "Formulario de Usuários";
 
   ngOnInit() {
-    const usuario = this.route.snapshot.data['usuario'];
+    const usuario = this.route.snapshot.data["usuario"];
 
     this.formGroup = this.formBuilder.group({
-      id:[usuario.id],
-      nome: [usuario.id, Validators.required],
+      id: [usuario.id],
+      nome: [usuario.nome, Validators.required],
       cpf: [usuario.cpf, Validators.required],
       role: [usuario.role, Validators.required],
       sexo: [usuario.sexo],
@@ -38,11 +38,12 @@ export class UsuarioInsertComponent implements OnInit {
   onSubmit() {
     if (this.formGroup.valid) {
       console.log(JSON.stringify(this.formGroup.value));
-        this.usuarioService.save(this.formGroup.value).subscribe(
-          success => console.log('salvo com sucesso!'),
-          error => console.error(error),
-          () => console.log('request completo')
-        );      console.log(this.formGroup.value);
+      this.usuarioService.save(this.formGroup.value).subscribe(
+        success => console.log("salvo com sucesso!"),
+        error => console.error(error),
+        () => console.log("request completo")
+      );
+      console.log(this.formGroup.value);
     }
   }
 }

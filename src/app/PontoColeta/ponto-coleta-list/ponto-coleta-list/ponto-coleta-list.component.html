@@ -1,34 +1,67 @@
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+<mat-card class="cadastro">
+  <mat-card-header>
+    <mat-card-title>Teste</mat-card-title>
+  </mat-card-header>
 
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
+  <mat-card-content class="cartoesCorpo">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef>Nome</th>
+          <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+        <ng-container matColumnDef="cidade">
+          <th mat-header-cell *matHeaderCellDef>Cidade</th>
+          <td mat-cell *matCellDef="let element">{{ element.cidade }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
+        <ng-container matColumnDef="bairro">
+          <th mat-header-cell *matHeaderCellDef>Bairro</th>
+          <td mat-cell *matCellDef="let element">{{ element.bairro }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
+        <ng-container matColumnDef="cep">
+          <th mat-header-cell *matHeaderCellDef>CEP</th>
+          <td mat-cell *matCellDef="let element">{{ element.cep }}</td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+        <ng-container matColumnDef="opcoes">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Opções</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="onEdit(element.id)"
+            >
+              Alterar
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="openDialog(element.id)"
+            >
+              Excluir
+            </button>
+          </td>
+        </ng-container>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-</div>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
 
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
 
-<!-- Copyright 2019 Google LLC. All Rights Reserved.
+    <!-- Copyright 2019 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
     can be found in the LICENSE file at http://angular.io/license -->
+  </mat-card-content></mat-card
+>
