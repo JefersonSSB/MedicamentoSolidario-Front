@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderBarComponent implements OnInit {
 
   isAuthenticated: boolean;
+  usuario = "admin";
 
   public isAuth(bol: boolean): void {
 
@@ -26,17 +27,22 @@ export class HeaderBarComponent implements OnInit {
 
   }
   ngOnInit() {
+
     localStorage.setItem("isAuth", "false");
+
   }
 
   public auth(): boolean {
+
     return localStorage.getItem('isAuth') === "false";
+
   };
 
 
   logout() {
 
     this.ngOnInit();
+
 
   }
 

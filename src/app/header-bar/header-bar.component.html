@@ -16,14 +16,23 @@
         <button mat-menu-item routerLink="pontoColetaList">Lista</button>
       </mat-menu>
       <span class="example-spacer"></span>
-      <button mat-button routerLink="/login" *ngIf="auth()">
-        <mat-icon>power_settings_new</mat-icon>
+      <button class="login" mat-button routerLink="/login" *ngIf="auth()">
         Login
       </button>
-      <button mat-button routerLink="/" *ngIf="!auth()" (click)="logout()">
-        <mat-icon>exit_to_app</mat-icon>
-        Logout
+      <div *ngIf="auth()">/&nbsp;&nbsp;</div>
+      <button class="login" mat-button routerLink="/usuarioCadastro" *ngIf="auth()">
+        Cadastrar
       </button>
+      <button mat-button mat-button [matMenuTriggerFor]="sair" *ngIf="!auth()">
+        <mat-icon>account_circle</mat-icon>
+        {{usuario}}
+      </button>
+      <mat-menu #sair="matMenu" yPosition="below">
+
+        <button mat-menu-item (click)="logout()" routerLink="/">
+          <mat-icon>exit_to_app</mat-icon>Logout
+        </button>
+      </mat-menu>
 
 
     </mat-toolbar-row>

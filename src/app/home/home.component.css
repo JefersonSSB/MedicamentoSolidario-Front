@@ -14,3 +14,11 @@
   width: 100%;
   height: auto;
 }
+.corpo {
+  text-align: justify;
+}
+.titulo {
+  font-size: 50px;
+  text-align: center;
+  color: darkblue;
+}
