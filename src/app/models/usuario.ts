@@ -8,4 +8,5 @@ export interface Usuario {
      sexo: string;
      senha: string;
      role: string;
+     token?: string;
 }
