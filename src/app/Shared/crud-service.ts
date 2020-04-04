@@ -26,8 +26,4 @@ export class CrudService<T extends Generico> {
   remove(id) {
     return this.http.delete(`${this.API_URL}/${id}`).pipe(take(1));
   }
-
-  login(record: T) {
-    return this.http.post("http://localhost:8080/login", record).pipe(take(1));
-  }
 }
