@@ -46,4 +46,11 @@ export class UsuarioInsertComponent implements OnInit {
       console.log(this.formGroup.value);
     }
   }
+  login() {
+    this.usuarioService.login(this.formGroup.value).subscribe(
+      success => console.log("LOGADO"),
+      error => console.error(error),
+      () => console.log("request completo")
+    );
+  }
 }

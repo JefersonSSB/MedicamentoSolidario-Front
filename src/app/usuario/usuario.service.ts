@@ -13,7 +13,7 @@ import { Usuario } from "../models/usuario";
 })
 export class UsuarioService extends CrudService<Usuario> {
   constructor(protected http: HttpClient) {
-    super(http, "https://medicamento-back.herokuapp.com/api/usuario");
+    super(http, "http://localhost:8080/api/usuario");
   }
   // Headers
   httpOptions = {
