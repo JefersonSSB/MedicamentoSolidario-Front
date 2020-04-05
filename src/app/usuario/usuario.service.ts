@@ -3,13 +3,13 @@ import { Injectable } from "@angular/core";
 import {
   HttpClient,
   HttpErrorResponse,
-  HttpHeaders
+  HttpHeaders,
 } from "@angular/common/http";
 import { throwError } from "rxjs";
 import { Usuario } from "../models/usuario";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class UsuarioService extends CrudService<Usuario> {
   constructor(protected http: HttpClient) {
@@ -17,7 +17,7 @@ export class UsuarioService extends CrudService<Usuario> {
   }
   // Headers
   httpOptions = {
-    headers: new HttpHeaders({ "Content-Type": "application/json" })
+    headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
 
   handleError(error: HttpErrorResponse) {

@@ -1,51 +1,52 @@
-import { FormGroup, FormControl } from '@angular/forms';
-import { Input, Component, Output, EventEmitter } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
-
+import { LoginService } from "./login.service";
+import { FormGroup, FormControl } from "@angular/forms";
+import { Input, Component, Output, EventEmitter } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
+import { AuthService } from "../auth/auth.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
-
-
   constructor(
     private _snackBar: MatSnackBar,
     public router: Router,
-    private authService:  AuthService
-    )
-    {
+    private authService: AuthService,
+    private service: LoginService
+  ) {
     if (this.authService.currentUserValue) {
-        this.router.navigate(['/']);
+      this.router.navigate(["/"]);
     }
   }
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-    grant_type: new FormControl('password')
+    cpf: new FormControl(""),
+    senha: new FormControl(""),
+    //grant_type: new FormControl("password"),
   });
 
-
-  login() {
-    this.authService.login(this.form.get('username').value ,this.form.get('password').value).subscribe( result => {
-      localStorage.setItem("isAuth", "true");
-      //localStorage.setItem
-      this.openSnackBar('Logado com Sucesso !', 'X')
-      this.router.navigate(['/']);
-    },error => {
-      this.openSnackBar(error.message, error.status)
-    }
-    );
-  }
+  // login() {
+  //   this.authService
+  //     .login(this.form.get("username").value, this.form.get("password").value)
+  //     .subscribe(
+  //       result => {
+  //         localStorage.setItem("isAuth", "true");
+  //         //localStorage.setItem
+  //         this.openSnackBar("Logado com Sucesso !", "X");
+  //         this.router.navigate(["/"]);
+  //       },
+  //       error => {
+  //         this.openSnackBar(error.message, error.status);
+  //       }
+  //     );
+  // }
 
   public auth(): boolean {
-    return localStorage.getItem('isAuth') === "false";
-  };
+    return localStorage.getItem("isAuth") === "false";
+  }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -59,11 +60,15 @@ export class LoginComponent {
       this.submitEM.emit(this.form.value);
     }
   }
-  ngOnInit(){
-
-  }
+  ngOnInit() {}
   @Input() error: string | null;
 
   @Output() submitEM = new EventEmitter();
-
+  login() {
+    this.service.login(this.form.value).subscribe(
+      (success) => console.log("LOGADO"),
+      (error) => console.error(error),
+      () => console.log("request completo")
+    );
+  }
 }
