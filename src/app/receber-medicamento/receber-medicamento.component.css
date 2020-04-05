@@ -1,0 +1,12 @@
+.cadastro {
+  width: 70%;
+  margin: 0;
+  margin: auto;
+  margin-top: 30px;
+  box-shadow: 2px 2px 5px 5px gray;
+  background-color: rgb(250, 250, 250);
+}
+
+.cartoesCorpo {
+  margin: 10px;
+}

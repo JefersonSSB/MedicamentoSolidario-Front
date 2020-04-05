@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup">
+
+  <mat-form-field class="margin" appearance="outline">
+    <mat-label>Nome</mat-label>
+    <input matInput formControlName="name" [(ngModel)]="data.name" type="text" required>
+  </mat-form-field>
+
+  <mat-form-field class="margin" appearance="outline">
+    <mat-label>Age</mat-label>
+    <input matInput formControlName="age" [(ngModel)]="data.age" type="number" required>
+  </mat-form-field>
+
+  <mat-form-field class="margin" appearance="outline">
+    <mat-label>Adress</mat-label>
+    <input matInput formControlName="address" [(ngModel)]="data.address" type="text" required>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  </div>
+
+</form>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { UsuarioService } from "../usuario.service";
 import { ActivatedRoute } from "@angular/router";
 
@@ -15,7 +15,7 @@ export class UsuarioInsertComponent implements OnInit {
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   titulo = "Formulario de Usuários";
 
