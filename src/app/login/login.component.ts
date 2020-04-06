@@ -11,11 +11,15 @@ import { AuthService } from "../auth/auth.service";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
+
+  loading: boolean = false;
+
   constructor(
     private _snackBar: MatSnackBar,
     public router: Router,
     private authService: AuthService,
     private service: LoginService
+
   ) {
     if (this.authService.currentUserValue) {
       this.router.navigate(["/"]);
@@ -48,6 +52,7 @@ export class LoginComponent {
     return localStorage.getItem("isAuth") === "false";
   }
 
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
@@ -65,6 +70,7 @@ export class LoginComponent {
 
   @Output() submitEM = new EventEmitter();
   login() {
+    this.loading = true;
     this.service.login(this.form.value).subscribe(
       result => {
         localStorage.setItem("isAuth", "true");
@@ -74,13 +80,20 @@ export class LoginComponent {
       (error) => {
         if (error.status == '401') {
           this.openSnackBar('Login ou Senha Incorretos', "X")
+          this.loading = false;
         }
         else {
           this.openSnackBar('Problema Desconhecido', "X")
           console.log(error.error.error);
+          this.loading = false;
         }
       },
-      () => console.log("request completo")
+      () => {
+        console.log("request completo")
+        this.loading = false;
+      }
+
     );
+
   }
 }
