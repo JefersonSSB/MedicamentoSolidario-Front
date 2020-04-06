@@ -60,14 +60,26 @@ export class LoginComponent {
       this.submitEM.emit(this.form.value);
     }
   }
-  ngOnInit() {}
+  ngOnInit() { }
   @Input() error: string | null;
 
   @Output() submitEM = new EventEmitter();
   login() {
     this.service.login(this.form.value).subscribe(
-      (success) => console.log("LOGADO"),
-      (error) => console.error(error),
+      result => {
+        localStorage.setItem("isAuth", "true");
+        this.openSnackBar("Logado com Sucesso !", "X");
+        this.router.navigate(["/"]);
+      },
+      (error) => {
+        if (error.status == '401') {
+          this.openSnackBar('Login ou Senha Incorretos', "X")
+        }
+        else {
+          this.openSnackBar('Problema Desconhecido', "X")
+          console.log(error.error.error);
+        }
+      },
       () => console.log("request completo")
     );
   }
