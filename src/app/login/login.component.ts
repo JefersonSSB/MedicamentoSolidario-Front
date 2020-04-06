@@ -76,6 +76,7 @@ export class LoginComponent {
         localStorage.setItem("isAuth", "true");
         this.openSnackBar("Logado com Sucesso !", "X");
         this.router.navigate(["/"]);
+        this.loading = false;
       },
       (error) => {
         if (error.status == '401') {
