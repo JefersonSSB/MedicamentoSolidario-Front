@@ -26,3 +26,8 @@ mat-card-content {
   display: flex;
   justify-content: center;
 }
+.spinner {
+  position: fixed;
+  z-index: 99;
+  margin: auto;
+}

@@ -41,7 +41,7 @@ import { NgxMaskModule, IConfig } from "ngx-mask";
 import { FooterComponent } from "./footer/footer.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReceberMedicamentoComponent, FormMedicamentoComponent } from './receber-medicamento/receber-medicamento.component';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -89,6 +89,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatListModule,
     MatExpansionModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     NgxMaskModule.forRoot(options)
   ],
   providers: [
