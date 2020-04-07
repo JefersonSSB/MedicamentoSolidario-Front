@@ -9,6 +9,7 @@ import { UsuarioListComponent } from "./usuario/usuario-list/usuario-list.compon
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 import { ReceberMedicamentoComponent } from './receber-medicamento/receber-medicamento.component';
+import { ListMedicamentosComponent } from './list-medicamentos/list-medicamentos.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -35,7 +36,8 @@ const routes: Routes = [
     resolve: { pontoColeta: PontoResolverGuard }
   },
   { path: "pontoColetaList", component: PontoColetaListComponent },
-  { path: "receberMedicamento", component: ReceberMedicamentoComponent }
+  { path: "receberMedicamento", component: ReceberMedicamentoComponent },
+  { path: 'list-medicamentos', component: ListMedicamentosComponent },
 ];
 
 @NgModule({
