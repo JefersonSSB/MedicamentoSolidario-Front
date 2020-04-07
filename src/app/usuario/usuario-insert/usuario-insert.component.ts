@@ -39,9 +39,9 @@ export class UsuarioInsertComponent implements OnInit {
     if (this.formGroup.valid) {
       console.log(JSON.stringify(this.formGroup.value));
       this.usuarioService.save(this.formGroup.value).subscribe(
-        success => console.log("salvo com sucesso!"),
+        success => console.log('salvo com sucesso!'),
         error => console.error(error),
-        () => console.log("request completo")
+        () => console.log('request completo')
       );
       console.log(this.formGroup.value);
     }

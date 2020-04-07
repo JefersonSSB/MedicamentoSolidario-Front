@@ -12,7 +12,8 @@ import { AuthService } from '../auth/auth.service';
 })
 export class LoginComponent {
 
-
+  cpf:string;
+  password:string;
   constructor(
     private _snackBar: MatSnackBar,
     public router: Router,
@@ -32,9 +33,11 @@ export class LoginComponent {
 
 
   login() {
-    this.authService.login(this.form.get('username').value ,this.form.get('password').value).subscribe( result => {
-      localStorage.setItem("isAuth", "true");
-      //localStorage.setItem
+    this.cpf = this.form.get('username').value;
+    this.password =  this.form.get('password').value;
+    this.authService.login(this.cpf ,this.password).subscribe( result => {
+      localStorage.setItem('isAuth', 'true');
+      // localStorage.setItem
       this.openSnackBar('Logado com Sucesso !', 'X')
       this.router.navigate(['/']);
     },error => {

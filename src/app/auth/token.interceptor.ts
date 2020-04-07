@@ -6,12 +6,13 @@ import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
+    // tslint:disable-next-line:no-shadowed-variable
     constructor(private AuthService: AuthService) { }
 
+    currentUser = this.AuthService.currentUserValue;
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with jwt token if available
-        let currentUser = this.AuthService.currentUserValue;
-        if (currentUser && currentUser.token) {
+        if (this.currentUser && this.currentUser.token) {
             request = request.clone({
                 setHeaders: {
                     Authorization: `Bearer ${currentUser.token}`
