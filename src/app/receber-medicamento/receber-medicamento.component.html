@@ -1,0 +1,32 @@
+<mat-card class="cadastro">
+  <mat-card-header>
+    <mat-card-title>Receber Doação</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="cartoesCorpo">
+
+    <form [formGroup]="myForm" (submit)="save()">
+      <div formArrayName="medicamento"
+        *ngFor="let medicamento of myForm.get('medicamento')['controls']; let i = index;">
+        <div [formGroupName]="i">
+          <input formControlName="name" placeholder="Name..." type="text" disabled>
+          <input formControlName="age" placeholder="Age..." type="number" disabled>
+          <input formControlName="address" placeholder="Address..." type="text" disabled>
+
+          <button (click)="remove(i)" type="button">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">delete_forever</mat-icon>
+          </button>
+
+          <button (click)="openDialog(i,'update')" type="button">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">create</mat-icon>
+          </button>
+        </div>
+      </div>
+      <button (click)="add()" type="button">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+      </button>
+
+      <app-form-debug [form]="myForm"></app-form-debug>
+    </form>
+  </mat-card-content>
+</mat-card>

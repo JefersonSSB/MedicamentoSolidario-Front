@@ -53,18 +53,26 @@ export class UsuarioListComponent implements OnInit {
     this.router.navigate(["usuarioEditar", id]);
   }
   excluir(id) {
-    this.openDialog(id);
+    this.usuarioService.remove(id).subscribe(
+      success => {
+        console.log("deletado com sucesso!");
+      },
+      error => console.error(error),
+      () => console.log("request delete completo")
+    );
   }
 
-  openDialog(idd) {
+  openDialog(id) {
     const dialogRef = this.dialog.open(PopUpDeleteComponent, {
-      width: "350px",
-      data: { id: idd }
+      width: "350px"
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed");
       console.log(result);
+      if (result === 1) {
+        this.excluir(id);
+      }
     });
   }
 }

@@ -40,6 +40,8 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { NgxMaskModule, IConfig } from "ngx-mask";
 import { FooterComponent } from "./footer/footer.component";
 import { MatDialogModule } from "@angular/material/dialog";
+import { ReceberMedicamentoComponent, FormMedicamentoComponent } from './receber-medicamento/receber-medicamento.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -55,7 +57,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     FormDebugComponent,
     PontoColetaListComponent,
     FooterComponent,
-    PopUpDeleteComponent
+    PopUpDeleteComponent,
+    ReceberMedicamentoComponent,
+    FormMedicamentoComponent
+
   ],
   //entryComponents: [DialogOverviewExample, DialogOverviewExampleDialog],
   imports: [
@@ -84,6 +89,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatListModule,
     MatExpansionModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     NgxMaskModule.forRoot(options)
   ],
   providers: [
@@ -96,4 +102,4 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

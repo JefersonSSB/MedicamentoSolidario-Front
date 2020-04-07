@@ -8,6 +8,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { UsuarioListComponent } from "./usuario/usuario-list/usuario-list.component";
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
+import { ReceberMedicamentoComponent } from './receber-medicamento/receber-medicamento.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
     component: PontoColetaInsertComponent,
     resolve: { pontoColeta: PontoResolverGuard }
   },
-  { path: "pontoColetaList", component: PontoColetaListComponent }
+  { path: "pontoColetaList", component: PontoColetaListComponent },
+  { path: "receberMedicamento", component: ReceberMedicamentoComponent }
 ];
 
 @NgModule({
@@ -41,4 +43,4 @@ const routes: Routes = [
 
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
