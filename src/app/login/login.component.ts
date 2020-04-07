@@ -79,7 +79,7 @@ export class LoginComponent {
         this.loading = false;
       },
       (error) => {
-        if (error.status == '401') {
+        if (error.status == 401) {
           this.openSnackBar('Login ou Senha Incorretos', "X")
           this.loading = false;
         }
