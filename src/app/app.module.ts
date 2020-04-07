@@ -42,6 +42,8 @@ import { FooterComponent } from "./footer/footer.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReceberMedicamentoComponent, FormMedicamentoComponent } from './receber-medicamento/receber-medicamento.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ListMedicamentosComponent } from './list-medicamentos/list-medicamentos.component';
+import { SolicitarMedicamentosComponent } from './solicitar-medicamentos/solicitar-medicamentos.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -59,7 +61,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     FooterComponent,
     PopUpDeleteComponent,
     ReceberMedicamentoComponent,
-    FormMedicamentoComponent
+    FormMedicamentoComponent,
+    ListMedicamentosComponent,
+    SolicitarMedicamentosComponent
 
   ],
   //entryComponents: [DialogOverviewExample, DialogOverviewExampleDialog],

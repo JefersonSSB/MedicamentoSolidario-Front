@@ -16,7 +16,7 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    private apiUrl = "https://medicamento-back.herokuapp.com";
+    private apiUrl = 'https://medicamento-back.herokuapp.com';
     private currentUserSubject: BehaviorSubject<Usuario>;
     public currentUser: Observable<Usuario>;
     constructor(private http: HttpClient) {
