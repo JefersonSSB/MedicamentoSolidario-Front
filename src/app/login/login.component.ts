@@ -11,8 +11,13 @@ import { AuthService } from "../auth/auth.service";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
+  @Input() error: string | null;
 
-  loading: boolean = false;
+  @Output() submitEM = new EventEmitter();
+
+  cpf: string;
+  password: string;
+  loading = false;
 
   constructor(
     private _snackBar: MatSnackBar,
@@ -22,34 +27,19 @@ export class LoginComponent {
 
   ) {
     if (this.authService.currentUserValue) {
-      this.router.navigate(["/"]);
+      this.router.navigate(['/']);
     }
   }
 
   form: FormGroup = new FormGroup({
-    cpf: new FormControl(""),
-    senha: new FormControl(""),
+    cpf: new FormControl(''),
+    senha: new FormControl(''),
     //grant_type: new FormControl("password"),
   });
 
-  // login() {
-  //   this.authService
-  //     .login(this.form.get("username").value, this.form.get("password").value)
-  //     .subscribe(
-  //       result => {
-  //         localStorage.setItem("isAuth", "true");
-  //         //localStorage.setItem
-  //         this.openSnackBar("Logado com Sucesso !", "X");
-  //         this.router.navigate(["/"]);
-  //       },
-  //       error => {
-  //         this.openSnackBar(error.message, error.status);
-  //       }
-  //     );
-  // }
+  auth() {
+    return localStorage.getItem('isAuth') === 'false';
 
-  public auth(): boolean {
-    return localStorage.getItem("isAuth") === "false";
   }
 
 
@@ -65,32 +55,33 @@ export class LoginComponent {
       this.submitEM.emit(this.form.value);
     }
   }
-  ngOnInit() { }
-  @Input() error: string | null;
 
-  @Output() submitEM = new EventEmitter();
+  // ngOnInit() { }
+
   login() {
     this.loading = true;
     this.service.login(this.form.value).subscribe(
       result => {
-        localStorage.setItem("isAuth", "true");
-        this.openSnackBar("Logado com Sucesso !", "X");
-        this.router.navigate(["/"]);
+        localStorage.setItem('isAuth', 'true');
+        this.openSnackBar('Logado com Sucesso !', 'X');
+        this.router.navigate(['/']);
         this.loading = false;
       },
       (error) => {
-        if (error.status == 401) {
+
+        if (error.status === 401) {
           this.openSnackBar('Login ou Senha Incorretos', "X")
+
           this.loading = false;
         }
         else {
-          this.openSnackBar('Problema Desconhecido', "X")
+          this.openSnackBar('Problema Desconhecido', 'X')
           console.log(error.error.error);
           this.loading = false;
         }
       },
       () => {
-        console.log("request completo")
+        console.log('request completo')
         this.loading = false;
       }
 
