@@ -1,3 +1,6 @@
+import { MedicamentoListComponent } from "./Medicamento/medicamento-list/medicamento-list.component";
+import { MedicamentoResolverGuard } from "./guards/medicamento-resolver.guard";
+import { MedicamentoFormComponent } from "./Medicamento/medicamento-form/medicamento-form.component";
 import { PontoResolverGuard } from "./guards/ponto-resolver.guard";
 import { UsuarioResolverGuard } from "./guards/usuario-resolver.guard";
 import { PontoColetaListComponent } from "./PontoColeta/ponto-coleta-list/ponto-coleta-list/ponto-coleta-list.component";
@@ -8,8 +11,8 @@ import { Routes, RouterModule } from "@angular/router";
 import { UsuarioListComponent } from "./usuario/usuario-list/usuario-list.component";
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
-import { ReceberMedicamentoComponent } from './receber-medicamento/receber-medicamento.component';
-import { ListMedicamentosComponent } from './list-medicamentos/list-medicamentos.component';
+import { ReceberMedicamentoComponent } from "./receber-medicamento/receber-medicamento.component";
+import { ListMedicamentosComponent } from "./list-medicamentos/list-medicamentos.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -17,32 +20,43 @@ const routes: Routes = [
   {
     path: "usuarioCadastro",
     component: UsuarioInsertComponent,
-    resolve: { usuario: UsuarioResolverGuard }
+    resolve: { usuario: UsuarioResolverGuard },
   },
   {
     path: "usuarioEditar/:id",
     component: UsuarioInsertComponent,
-    resolve: { usuario: UsuarioResolverGuard }
+    resolve: { usuario: UsuarioResolverGuard },
   },
   { path: "usuarioLista", component: UsuarioListComponent },
   {
     path: "pontoColetaCadastro",
     component: PontoColetaInsertComponent,
-    resolve: { pontoColeta: PontoResolverGuard }
+    resolve: { pontoColeta: PontoResolverGuard },
   },
   {
     path: "pontoColetaEditar/:id",
     component: PontoColetaInsertComponent,
-    resolve: { pontoColeta: PontoResolverGuard }
+    resolve: { pontoColeta: PontoResolverGuard },
   },
   { path: "pontoColetaList", component: PontoColetaListComponent },
+  {
+    path: "medicamentoInserir",
+    component: MedicamentoFormComponent,
+    resolve: { medicamento: MedicamentoResolverGuard },
+  },
+  {
+    path: "medicamentoEditar/:id",
+    component: MedicamentoFormComponent,
+    resolve: { medicamento: MedicamentoResolverGuard },
+  },
+  { path: "medicamentoLista", component: MedicamentoListComponent },
   { path: "receberMedicamento", component: ReceberMedicamentoComponent },
-  { path: 'list-medicamentos', component: ListMedicamentosComponent },
+  { path: "list-medicamentos", component: ListMedicamentosComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
 
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

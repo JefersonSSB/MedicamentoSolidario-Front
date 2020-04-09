@@ -1,51 +1,68 @@
 <mat-sidenav-container class="sidenav-container" [hasBackdrop]="false">
   <mat-toolbar class="expanded-toolbar">
     <mat-toolbar-row>
-      <button *ngIf="!auth() " type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+      <button
+        *ngIf="!auth()"
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <img class="imageLogo" src="assets/images/logo.png" routerLink="/">
-      <button mat-button routerLink="list-medicamentos">Solicitar Medicamentos </button>
+      <img class="imageLogo" src="assets/images/logo.png" routerLink="/" />
+      <button mat-button routerLink="list-medicamentos">
+        Solicitar Medicamentos
+      </button>
       <button mat-button [matMenuTriggerFor]="user">Usuario</button>
       <mat-menu #user="matMenu" yPosition="below">
         <button mat-menu-item routerLink="usuarioCadastro">Cadastro</button>
         <button mat-menu-item routerLink="usuarioLista">Lista</button>
       </mat-menu>
-      <button mat-button [matMenuTriggerFor]="pontoColeta">Ponto de Coleta</button>
+      <button mat-button [matMenuTriggerFor]="pontoColeta">
+        Ponto de Coleta
+      </button>
       <mat-menu #pontoColeta="matMenu" yPosition="below">
         <button mat-menu-item routerLink="pontoColetaCadastro">Cadastro</button>
         <button mat-menu-item routerLink="pontoColetaList">Lista</button>
       </mat-menu>
-      <button mat-button routerLink="receberMedicamento">Receber Medicamento</button>
+      <button mat-button [matMenuTriggerFor]="medicamento">Medicamento</button>
+      <mat-menu #medicamento="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="medicamentoInserir">Inserir</button>
+        <button mat-menu-item routerLink="medicamentoLista">Lista</button>
+      </mat-menu>
+      <button mat-button routerLink="receberMedicamento">
+        Receber Medicamento
+      </button>
 
       <span class="example-spacer"></span>
       <button class="login" mat-button routerLink="/login" *ngIf="auth()">
         Login
       </button>
       <div *ngIf="auth()">/&nbsp;&nbsp;</div>
-      <button class="login" mat-button routerLink="/usuarioCadastro" *ngIf="auth()">
+      <button
+        class="login"
+        mat-button
+        routerLink="/usuarioCadastro"
+        *ngIf="auth()"
+      >
         Cadastrar
       </button>
       <button mat-button mat-button [matMenuTriggerFor]="sair" *ngIf="!auth()">
         <mat-icon>account_circle</mat-icon>
-        {{usuario}}
+        {{ usuario }}
       </button>
       <mat-menu #sair="matMenu" yPosition="below">
-
         <button mat-menu-item (click)="logout()" routerLink="/">
           <mat-icon>exit_to_app</mat-icon>Logout
         </button>
       </mat-menu>
-
-
     </mat-toolbar-row>
-
   </mat-toolbar>
 
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true" mode="side">
-    <mat-toolbar class='headMenuSide'>Menu</mat-toolbar>
+    <mat-toolbar class="headMenuSide">Menu</mat-toolbar>
     <mat-nav-list>
-
       <mat-expansion-panel style="box-shadow: none;">
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -55,7 +72,17 @@
 
         <button mat-menu-item routerLink="usuarioCadastro">Cadastro</button>
         <button mat-menu-item routerLink="usuarioLista">Lista</button>
+      </mat-expansion-panel>
 
+      <mat-expansion-panel style="box-shadow: none;">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Medicamentos
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <button mat-menu-item routerLink="medicamentoInserir">Inserir</button>
+        <button mat-menu-item routerLink="medicamentoLista">Lista</button>
       </mat-expansion-panel>
 
       <mat-expansion-panel style="box-shadow: none;">
@@ -67,10 +94,7 @@
 
         <button mat-menu-item routerLink="pontoColetaCadastro">Cadastro</button>
         <button mat-menu-item routerLink="pontoColetaList">Lista</button>
-
       </mat-expansion-panel>
-
-
     </mat-nav-list>
   </mat-sidenav>
   <router-outlet></router-outlet>

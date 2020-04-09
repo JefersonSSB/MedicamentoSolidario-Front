@@ -1,6 +1,5 @@
 export class Medicamento {
   dataValidade: string;
-  dataVencimentoLocalDate: string;
   id: number;
   idDoacaoIn: number;
   idDoacaoOut: number;
@@ -10,4 +9,5 @@ export class Medicamento {
   tarja: string;
   tipoArmazenamento: string;
   tipoReceita: string;
+  data: string;
 }

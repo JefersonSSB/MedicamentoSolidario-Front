@@ -1,25 +1,25 @@
-import { PopUpDeleteComponent } from "./../../../Shared/pop-up-delete/pop-up-delete.component";
+import { PopUpDeleteComponent } from "./../../Shared/pop-up-delete/pop-up-delete.component";
+import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { PontoColeta } from "./../../../models/pontoColeta";
-import { PontoColetaService } from "./../../ponto-coleta.service";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { MedicamentoService } from "./../medicamento.service";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
-import { MatDialog } from "@angular/material/dialog";
+import { Medicamento } from "./../../models/medicamento";
+import { Component, OnInit, ViewChild } from "@angular/core";
 
 @Component({
-  selector: "app-ponto-coleta-list",
-  templateUrl: "./ponto-coleta-list.component.html",
-  styleUrls: ["./ponto-coleta-list.component.css"],
+  selector: "app-medicamento-list",
+  templateUrl: "./medicamento-list.component.html",
+  styleUrls: ["./medicamento-list.component.css"],
 })
-export class PontoColetaListComponent implements OnInit {
-  pontos: PontoColeta[];
-  displayedColumns: string[] = ["nome", "cidade", "bairro", "cep", "opcoes"];
-  dataSource = new MatTableDataSource(this.pontos);
-
+export class MedicamentoListComponent implements OnInit {
+  displayedColumns = ["Nome Medicamento", "Ações"];
+  medicamentos: Medicamento[];
+  dataSource = new MatTableDataSource(this.medicamentos);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
   constructor(
-    private service: PontoColetaService,
+    private service: MedicamentoService,
     private router: Router,
     public dialog: MatDialog
   ) {}
@@ -30,8 +30,8 @@ export class PontoColetaListComponent implements OnInit {
   }
   list() {
     this.service.list().subscribe((dados) => {
-      this.pontos = dados;
-      this.dataSource.data = this.pontos;
+      this.medicamentos = dados;
+      this.dataSource.data = this.medicamentos;
     });
   }
   applyFilter(event: Event) {
@@ -39,7 +39,7 @@ export class PontoColetaListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   onEdit(id) {
-    this.router.navigate(["pontoColetaEditar", id]);
+    this.router.navigate(["medicamentoEditar", id]);
   }
   excluir(id) {
     this.service.remove(id).subscribe(

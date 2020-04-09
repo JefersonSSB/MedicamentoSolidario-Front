@@ -1,0 +1,69 @@
+<mat-card class="cadastro">
+  <mat-card-header>
+    <mat-card-title>{{ titulo }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="cartoesCorpo">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div class="card">
+        <mat-form-field class="margin" appearance="outline">
+          <mat-label>Data Validade</mat-label>
+          <input matInput formControlName="dataValidade" />
+        </mat-form-field>
+      </div>
+      <div class="card">
+        <mat-form-field class="margin" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="card">
+        <mat-form-field class="margin" appearance="outline">
+          <mat-label>Principio</mat-label>
+          <input matInput formControlName="principio" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="margin" appearance="outline">
+          <mat-label>Quantidade</mat-label>
+          <input matInput formControlName="quantidade" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="margin" appearance="outline">
+          <mat-label>Tarja</mat-label>
+          <input matInput formControlName="tarja" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="margin" appearance="outline">
+          <mat-label>Tipo Armazenamento</mat-label>
+          <input matInput formControlName="tipoArmazenamento" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="margin" appearance="outline">
+          <mat-label>TipoReceita</mat-label>
+          <input matInput formControlName="tipoReceita" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="card">
+        Ja Possui Cadastro? <a href="">Clique para fazer login</a>
+        <br />
+        <br />
+        <button type="submit" mat-raised-button color="primary">
+          Cadastrar
+        </button>
+        <button mat-raised-button color="warn" (click)="onCancel()">
+          Cancelar
+        </button>
+      </div>
+      <app-form-debug [form]="formulario"></app-form-debug>
+    </form>
+  </mat-card-content>
+</mat-card>

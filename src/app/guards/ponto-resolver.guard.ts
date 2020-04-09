@@ -3,13 +3,13 @@ import { Injectable } from "@angular/core";
 import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Resolve
+  Resolve,
 } from "@angular/router";
 import { Observable, of } from "rxjs";
 import { PontoColeta } from "../models/pontoColeta";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class PontoResolverGuard implements Resolve<PontoColeta> {
   constructor(private service: PontoColetaService) {}
@@ -33,7 +33,7 @@ export class PontoResolverGuard implements Resolve<PontoColeta> {
       estado: null,
       nome: null,
       numero: null,
-      rua: null
+      rua: null,
     });
   }
 }

@@ -6,7 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-ponto-coleta-insert",
   templateUrl: "./ponto-coleta-insert.component.html",
-  styleUrls: ["./ponto-coleta-insert.component.css"]
+  styleUrls: ["./ponto-coleta-insert.component.css"],
 })
 export class PontoColetaInsertComponent implements OnInit {
   formulario: FormGroup;
@@ -22,6 +22,7 @@ export class PontoColetaInsertComponent implements OnInit {
     const pontoColeta = this.route.snapshot.data["pontoColeta"];
 
     this.formulario = this.formBuilder.group({
+      id: [pontoColeta.id],
       atividadePrincipal: [pontoColeta.atividadePrincipal, Validators.required],
       bairro: [pontoColeta.bairro, Validators.required],
       cep: [pontoColeta.cep, Validators.required],
@@ -31,15 +32,15 @@ export class PontoColetaInsertComponent implements OnInit {
       estado: [pontoColeta.estado, Validators.required],
       nome: [pontoColeta.nome, Validators.required],
       numero: [pontoColeta.numero],
-      rua: [pontoColeta.rua]
+      rua: [pontoColeta.rua],
     });
   }
   onSubmit() {
     if (this.formulario.valid) {
       console.log("submit");
       this.servicePonto.save(this.formulario.value).subscribe(
-        success => console.log("salvo com sucesso!"),
-        error => console.error(error),
+        (success) => console.log("salvo com sucesso!"),
+        (error) => console.error(error),
         () => console.log("request completo")
       );
       console.log(this.formulario.value);
