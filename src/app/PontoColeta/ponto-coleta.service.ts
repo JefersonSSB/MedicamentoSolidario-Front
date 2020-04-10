@@ -8,6 +8,6 @@ import { PontoColeta } from "../models/pontoColeta";
 })
 export class PontoColetaService extends CrudService<PontoColeta> {
   constructor(protected http: HttpClient) {
-    super(http, "https://medicamento-back.herokuapp.com/pontoColeta");
+    super(http, "https://medicamento-back.herokuapp.com/api/pontoColeta");
   }
 }
