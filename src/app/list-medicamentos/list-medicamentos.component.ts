@@ -10,9 +10,10 @@ import { SolicitarMedicamentosComponent } from '../solicitar-medicamentos/solici
   styleUrls: ['./list-medicamentos.component.css']
 })
 export class ListMedicamentosComponent implements OnInit {
-  medicamentos = [{nome:'buscopan', quantidade:0},{nome:'rivotril', quantidade:0}];
-  displayedColumns = ['Nome Medicamento','Ações'];
+  medicamentos = [{nome:'buscopan', quantidade:0, qtdPedido: 0,},{nome:'rivotril', quantidade:0}];
+  displayedColumns = ['Nome Medicamento','Quantidade','Ações'];
   totalMedicamentos:number;
+
   constructor(
     private listMedicamentosService: ListMedicamentoService,
     private dialog: MatDialog
@@ -20,9 +21,8 @@ export class ListMedicamentosComponent implements OnInit {
 
   total(){
     this.totalMedicamentos = 0;
-    this.medicamentos.forEach( medicamento =>{
-      console.log(medicamento)
-      this.totalMedicamentos += medicamento.quantidade
+    this.medicamentos.forEach( medicamento => {
+      this.totalMedicamentos += medicamento.qtdPedido
     }
     );
   }
@@ -38,25 +38,40 @@ export class ListMedicamentosComponent implements OnInit {
   solicitarMedicamentos(){
     this.openDialog();
   }
+
+  controller(element:Medicamento, action:string){
+    switch(action)
+    {
+      case '+':
+        element.quantidade--;
+        element.qtdPedido++;
+        break;
+      case '-':
+        element.quantidade++;
+        element.qtdPedido--;
+        break
+    }
+    this.total();
+  }
   openDialog(): void {
     const dialogRef = this.dialog.open(SolicitarMedicamentosComponent, {
       width: '400px',
-      data: {name: "this.name", animal: "this.animal"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       console.log(result);
     });
   }
 
   getMedicamentos(){
-    this.listMedicamentosService.getMedicamentos().subscribe( medicamentos =>
-      // this.medicamentos = medicamentos,
+    this.listMedicamentosService.getMedicamentos().subscribe( medicamentos =>{
+      this.medicamentos = medicamentos;
+    },
       err => console.log(err),
-      ()=>console.log(this.medicamentos)
-    )
+      () => console.log('Finish promisse')
+    );
   }
+
   ngOnInit(): void {
     this.getMedicamentos();
     this.total();

@@ -10,4 +10,5 @@ export class Medicamento {
   tipoArmazenamento: string;
   tipoReceita: string;
   data: string;
+  qtdPedido = 0;
 }

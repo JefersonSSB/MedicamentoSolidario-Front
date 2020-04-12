@@ -32,6 +32,7 @@ export class MedicamentoResolverGuard implements Resolve<Medicamento> {
       tipoArmazenamento: null,
       tipoReceita: null,
       data: null,
+      qtdPedido: null,
     });
   }
 }
