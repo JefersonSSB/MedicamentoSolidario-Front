@@ -1,15 +1,15 @@
-import { MedicamentoService } from "./../Medicamento/medicamento.service";
-import { Injectable } from "@angular/core";
+import { MedicamentoService } from './../Medicamento/medicamento.service';
+import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   Resolve,
-} from "@angular/router";
-import { Observable, of } from "rxjs";
-import { Medicamento } from "../models/medicamento";
+} from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { Medicamento } from '../models/medicamento';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class MedicamentoResolverGuard implements Resolve<Medicamento> {
   constructor(private service: MedicamentoService) {}

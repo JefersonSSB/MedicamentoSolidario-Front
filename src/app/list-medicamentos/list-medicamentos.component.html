@@ -1,4 +1,13 @@
 <mat-card>
+  <mat-form-field>
+    <mat-label>Selecionos Pontos de Coleta</mat-label>
+    <mat-select  multiple>
+      <mat-option *ngFor="let pontoDeColeta of pontosDeColeta" >{{pontoDeColeta.nome}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+
+<mat-card>
   <table mat-table [dataSource]="medicamentos" class="mat-elevation-z8">
     <ng-container matColumnDef="Nome Medicamento">
       <th mat-header-cell *matHeaderCellDef> Nome do Medicamento </th>
