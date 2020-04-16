@@ -1,12 +1,20 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ActivatedRoute } from "@angular/router";
+import { ReceberMedicamentoService } from "./receber-medicamento.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
 
 
 export interface DialogData {
-  address: string;
-  age: number;
-  name: string;
+  dataValidade: string;
+  nome: string;
+  principio: string;
+  quantidade: number;
+  tarja: string;
+  tipoArmazenamento: string;
+  tipoReceita: string;
 }
 
 
@@ -18,47 +26,74 @@ export interface DialogData {
 
 
 
+
 export class ReceberMedicamentoComponent implements OnInit {
 
   public myForm: FormGroup;
   public lastForm: FormGroup;
-  public medicamento: FormArray;
+  public medicamentos: FormArray;
 
-  constructor(private formBuilder: FormBuilder, public dialog: MatDialog) { }
+
+
+  constructor(private formBuilder: FormBuilder,
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
+    private receberMedicamentoService: ReceberMedicamentoService,
+    private _snackBar: MatSnackBar,
+    public router: Router
+  ) { }
 
 
 
   ngOnInit(): void {
+
+    const medicamento = this.route.snapshot.data["medicamento"];
+    const Doacao = this.route.snapshot.data["Doacao"];
+
     this.myForm = this.formBuilder.group({
-      medicamento: this.formBuilder.array([this.model()]),
+      idDoador: [1, Validators.required],
+      idPonto: [1, Validators.required],
+      idVoluntario: [1, Validators.required],
+      obs: ['Inserido', Validators.required],
+
+
+      medicamentos: this.formBuilder.array([this.model()]),
     });
     this.remove(0);
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
   model(): FormGroup {
     return this.formBuilder.group({
-      name: ['', Validators.required],
-      age: ['', Validators.required],
-      address: ['', Validators.required],
+      nome: ['', Validators.required],
+      dataValidade: ['', Validators.required],
+      principio: ['', Validators.required],
+      quantidade: ['', Validators.required],
+      tarja: ['', Validators.required],
+      tipoArmazenamento: ['', Validators.required],
+      tipoReceita: ['', Validators.required]
     })
   }
 
-  public save(): void {
-    console.log(this.myForm.getRawValue())
-  }
+
 
   public add(): void {
-    this.medicamento = this.myForm.get('medicamento') as FormArray
-    this.medicamento.push(this.model())
-    this.openDialog(this.medicamento.length - 1, 'add');
+    this.medicamentos = this.myForm.get('medicamentos') as FormArray
+    this.medicamentos.push(this.model())
+    this.openDialog(this.medicamentos.length - 1, 'add');
   }
   public remove(index: number): void {
-    this.medicamento = this.myForm.get('medicamento') as FormArray
-    this.medicamento.removeAt(index)
+    this.medicamentos = this.myForm.get('medicamentos') as FormArray
+    this.medicamentos.removeAt(index)
   }
 
   openDialog(index: number, entrada: string): void {
-    const mode = Object.assign((<FormArray>this.myForm.get('medicamento')).at(index).value);
+    const mode = Object.assign((<FormArray>this.myForm.get('medicamentos')).at(index).value);
     console.log(mode);
 
     const dialogRef = this.dialog.open(FormMedicamentoComponent, {
@@ -75,7 +110,7 @@ export class ReceberMedicamentoComponent implements OnInit {
           this.remove(index);
         }
         else {
-          (<FormArray>this.myForm.get('medicamento')).at(index).patchValue(result);
+          (<FormArray>this.myForm.get('medicamentos')).at(index).patchValue(result);
         }
       }
       catch (e) {
@@ -86,7 +121,25 @@ export class ReceberMedicamentoComponent implements OnInit {
     })
 
   }
+  onSubmit() {
+    this.medicamentos = this.myForm.get('medicamentos') as FormArray;
+    console.log(this.medicamentos.length);
+    if (this.myForm.valid && this.medicamentos.length > 0) {
+      console.log(JSON.stringify(this.myForm.value));
+      this.receberMedicamentoService.save(this.myForm.value).subscribe(
+        success => {
+          this.openSnackBar('Salvo com sucesso', 'X'),
+            this.router.navigate(['/']);
+        },
+        error => this.openSnackBar('Erro Desconhecido', 'X'),
+        () => console.log('request completo')
+      );
+    } else {
 
+      this.openSnackBar('Form Invalido', 'X')
+
+    }
+  }
 
 
 
@@ -107,16 +160,20 @@ export class FormMedicamentoComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<FormMedicamentoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private formBuilder: FormBuilder, ) { }
+    private formBuilder: FormBuilder, private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
+    const medicamento = this.route.snapshot.data["medicamento"];
 
     this.formGroup = this.formBuilder.group({
-
-      name: ['', Validators.required],
-      age: ['', Validators.required],
-      address: ['', Validators.required],
+      nome: ['', Validators.required],
+      dataValidade: ['', Validators.required],
+      principio: ['', Validators.required],
+      quantidade: ['', Validators.required],
+      tarja: ['', Validators.required],
+      tipoArmazenamento: ['', Validators.required],
+      tipoReceita: ['', Validators.required]
     })
   }
 

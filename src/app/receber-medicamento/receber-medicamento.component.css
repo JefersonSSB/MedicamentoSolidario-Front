@@ -10,3 +10,35 @@
 .cartoesCorpo {
   margin: 10px;
 }
+.cadastro button {
+  background-color: blue;
+  margin: 5px;
+}
+.formCorpo {
+  margin: auto;
+  margin-bottom: 5px;
+  box-shadow: 2px 2px 5px 5px gray;
+  background-color: rgb(250, 250, 250);
+  border-radius: 5px;
+  height: 50px;
+  display: inline-block;
+  width: 100%;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.spacer {
+  float: right;
+}
+.spacer2 {
+  float: left;
+  padding: 15px;
+}
+.corpoSolicitante {
+  margin: auto;
+  margin-bottom: 5px;
+  box-shadow: 2px 2px 5px 5px gray;
+  background-color: rgb(250, 250, 250);
+  border-radius: 5px;
+  padding: 15px;
+}

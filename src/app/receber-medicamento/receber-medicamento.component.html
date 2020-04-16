@@ -4,26 +4,39 @@
   </mat-card-header>
 
   <mat-card-content class="cartoesCorpo">
+    <mat-card-content class="corpoSolicitante">
+      Solicitante: Ze das Couve
+      <br />
+      Volutario: Zezim das Doeaçoes
+      <br />
+      Ponto de Coleta: UEG
+    </mat-card-content>
 
-    <form [formGroup]="myForm" (submit)="save()">
-      <div formArrayName="medicamento"
-        *ngFor="let medicamento of myForm.get('medicamento')['controls']; let i = index;">
+    <form [formGroup]="myForm" (submit)="onSubmit()">
+      <div formArrayName="medicamentos"
+        *ngFor="let medicamentos of myForm.get('medicamentos')['controls']; let i = index;">
         <div [formGroupName]="i">
-          <input formControlName="name" placeholder="Name..." type="text" disabled>
-          <input formControlName="age" placeholder="Age..." type="number" disabled>
-          <input formControlName="address" placeholder="Address..." type="text" disabled>
+          <mat-card-content class="formCorpo">
+            <div class='spacer2'> Medicamento {{i + 1}}: {{medicamentos.get("nome")?.value || 'Medicamento sem Nome'}}
+            </div>
+            <div class='spacer'> <button mat-mini-fab (click)="openDialog(i,'update')" type="button">
+                <mat-icon>create</mat-icon>
+              </button>
 
-          <button (click)="remove(i)" type="button">
-            <mat-icon aria-hidden="false" aria-label="Example home icon">delete_forever</mat-icon>
-          </button>
-
-          <button (click)="openDialog(i,'update')" type="button">
-            <mat-icon aria-hidden="false" aria-label="Example home icon">create</mat-icon>
-          </button>
+              <button mat-mini-fab (click)="remove(i)" type="button">
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </div>
+          </mat-card-content>
         </div>
       </div>
-      <button (click)="add()" type="button">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+      <button mat-mini-fab (click)="add()" type="button">
+        <mat-icon>add</mat-icon>
+      </button>
+      <br />
+      <br />
+      <button mat-raised-button color="primary">
+        Concluir Doação
       </button>
 
       <app-form-debug [form]="myForm"></app-form-debug>

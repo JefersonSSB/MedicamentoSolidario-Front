@@ -1,23 +1,51 @@
+<h1>Adicionar Medicamento</h1>
 <form [formGroup]="formGroup">
 
   <mat-form-field class="margin" appearance="outline">
     <mat-label>Nome</mat-label>
-    <input matInput formControlName="name" [(ngModel)]="data.name" type="text" required>
+    <input matInput formControlName="nome" [(ngModel)]="data.nome" type="text" required>
   </mat-form-field>
 
   <mat-form-field class="margin" appearance="outline">
-    <mat-label>Age</mat-label>
-    <input matInput formControlName="age" [(ngModel)]="data.age" type="number" required>
+    <mat-label>Principio Ativo</mat-label>
+    <input matInput formControlName="principio" [(ngModel)]="data.principio" type="text" required>
   </mat-form-field>
 
   <mat-form-field class="margin" appearance="outline">
-    <mat-label>Adress</mat-label>
-    <input matInput formControlName="address" [(ngModel)]="data.address" type="text" required>
+    <mat-label>Validade do Medicamento</mat-label>
+    <input matInput formControlName="dataValidade" [(ngModel)]="data.dataValidade" type="date" required>
   </mat-form-field>
 
-  <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No</button>
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <mat-form-field class="margin" appearance="outline">
+    <mat-label>Tipo de Receita</mat-label>
+    <mat-select matInput formControlName="tipoReceita" [(ngModel)]="data.tipoReceita" type="text" required>
+      <mat-option value="ReceitaSimples">Receita Simples</mat-option>
+      <mat-option value="ReceitaDeControleEspecial">Receita de Controle Especial</mat-option>
+      <mat-option value="ReceitaA">Receita Amarela ou Receita A</mat-option>
+      <mat-option value="ReceitaB">Receita Azul ou Receita B</mat-option>
+      <mat-option value="ReceitaRenovavel">Receita Renovável</mat-option>
+      <mat-option value="SemReceita">Sem Receita</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="margin" appearance="outline">
+    <mat-label>Tarja do Medicamento</mat-label>
+    <input matInput formControlName="tarja" [(ngModel)]="data.tarja" type="text" required>
+  </mat-form-field>
+
+  <mat-form-field class="margin" appearance="outline">
+    <mat-label>Tipo de Armazenamento</mat-label>
+    <input matInput formControlName="tipoArmazenamento" [(ngModel)]="data.tipoArmazenamento" type="text" required>
+  </mat-form-field>
+
+  <mat-form-field class="margin" appearance="outline">
+    <mat-label>Quantidade</mat-label>
+    <input matInput formControlName="quantidade" [(ngModel)]="data.quantidade" type="number" required>
+  </mat-form-field>
+
+  <div>
+    <button mat-raised-button color="warn" (click)="onNoClick()" style='margin: 10px;'>Cancelar</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data" style='margin: 10px;'>Adicionar</button>
   </div>
 
 </form>
