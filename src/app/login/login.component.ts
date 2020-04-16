@@ -24,24 +24,21 @@ export class LoginComponent {
     public router: Router,
     private authService: AuthService,
     private service: LoginService
-
   ) {
     if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(["/"]);
     }
   }
 
   form: FormGroup = new FormGroup({
-    cpf: new FormControl(''),
-    senha: new FormControl(''),
+    cpf: new FormControl(""),
+    senha: new FormControl(""),
     //grant_type: new FormControl("password"),
   });
 
   auth() {
-    return localStorage.getItem('isAuth') === 'false';
-
+    return localStorage.getItem("isAuth") === "false";
   }
-
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -61,31 +58,27 @@ export class LoginComponent {
   login() {
     this.loading = true;
     this.service.login(this.form.value).subscribe(
-      result => {
-        localStorage.setItem('isAuth', 'true');
-        this.openSnackBar('Logado com Sucesso !', 'X');
-        this.router.navigate(['/']);
+      (result) => {
+        localStorage.setItem("isAuth", "true");
+        this.openSnackBar("Logado com Sucesso !", "X");
+        this.router.navigate(["/"]);
         this.loading = false;
       },
       (error) => {
-
         if (error.status === 401) {
-          this.openSnackBar('Login ou Senha Incorretos', "X")
+          this.openSnackBar("Login ou Senha Incorretos", "X");
 
           this.loading = false;
-        }
-        else {
-          this.openSnackBar('Problema Desconhecido', 'X')
+        } else {
+          this.openSnackBar("Problema Desconhecido", "X");
           console.log(error.error.error);
           this.loading = false;
         }
       },
       () => {
-        console.log('request completo')
+        console.log("request completo");
         this.loading = false;
       }
-
     );
-
   }
 }
