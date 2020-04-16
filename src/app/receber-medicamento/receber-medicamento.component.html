@@ -12,9 +12,9 @@
       Ponto de Coleta: UEG
     </mat-card-content>
 
-    <form [formGroup]="myForm" (submit)="onSubmit()">
+    <form [formGroup]="formDoacao" (submit)="onSubmit()">
       <div formArrayName="medicamentos"
-        *ngFor="let medicamentos of myForm.get('medicamentos')['controls']; let i = index;">
+        *ngFor="let medicamentos of formDoacao.get('medicamentos')['controls']; let i = index;">
         <div [formGroupName]="i">
           <mat-card-content class="formCorpo">
             <div class='spacer2'> Medicamento {{i + 1}}: {{medicamentos.get("nome")?.value || 'Medicamento sem Nome'}}
@@ -30,8 +30,8 @@
           </mat-card-content>
         </div>
       </div>
-      <button mat-mini-fab (click)="add()" type="button">
-        <mat-icon>add</mat-icon>
+      <button mat-raised-button color="primary" (click)="add()" type="button">
+        <mat-icon>add</mat-icon> Adicionar Medicamento
       </button>
       <br />
       <br />
@@ -39,7 +39,7 @@
         Concluir Doação
       </button>
 
-      <app-form-debug [form]="myForm"></app-form-debug>
+      <app-form-debug [form]="formDoacao"></app-form-debug>
     </form>
   </mat-card-content>
 </mat-card>
