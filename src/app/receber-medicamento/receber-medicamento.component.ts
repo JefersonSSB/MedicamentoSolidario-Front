@@ -83,6 +83,7 @@ export class ReceberMedicamentoComponent implements OnInit {
     const mode = Object.assign((<FormArray>this.formDoacao.get('medicamentos')).at(index).value);
     const dialogRef = this.dialog.open(FormMedicamentoComponent, {
       width: "60%",
+      height: '100%',
       data: mode,
     });
     dialogRef.disableClose = true;
