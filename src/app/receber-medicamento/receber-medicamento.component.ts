@@ -29,6 +29,7 @@ export class ReceberMedicamentoComponent implements OnInit {
 
   public formDoacao: FormGroup;
   public medicamentos: FormArray;
+  debugEnable = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,15 +47,19 @@ export class ReceberMedicamentoComponent implements OnInit {
       idPonto: [1, Validators.required],
       idVoluntario: [1, Validators.required],
       obs: ['Inserido', Validators.required],
-      medicamentos: this.formBuilder.array([this.medicamento()]),
+      medicamentos: this.formBuilder.array([this.medicamento()], Validators.required),
     });
     this.remove(0);
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-    });
+  showMessage(msg: string, isError: boolean = false): void {
+    this._snackBar.open(msg, 'X', {
+      duration: 3000,
+      horizontalPosition: "center",
+      verticalPosition: "bottom",
+      panelClass: isError ? ['msg-error'] : ['msg-success']
+
+    })
   }
 
   medicamento(): FormGroup {
@@ -83,9 +88,12 @@ export class ReceberMedicamentoComponent implements OnInit {
     const mode = Object.assign((<FormArray>this.formDoacao.get('medicamentos')).at(index).value);
     const dialogRef = this.dialog.open(FormMedicamentoComponent, {
       width: "60%",
-      height: '100%',
+      height: '90%',
+      panelClass: ['DiagolCss'],
       data: mode,
     });
+
+
     dialogRef.disableClose = true;
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -112,15 +120,19 @@ export class ReceberMedicamentoComponent implements OnInit {
       console.log(JSON.stringify(this.formDoacao.value));
       this.receberMedicamentoService.save(this.formDoacao.value).subscribe(
         success => {
-          this.openSnackBar('Salvo com sucesso', 'X'),
+          this.showMessage("Salvo com sucesso!"),
             this.router.navigate(['/']);
         },
-        (error) => this.openSnackBar("Erro Desconhecido", "X"),
+        (error) => this.showMessage("Erro Desconhecido", true),
         () => console.log("request completo")
       );
     } else {
-      this.openSnackBar("Form Invalido", "X");
+      this.showMessage("Form Invalido", true);
     }
+  }
+
+  debug() {
+    this.debugEnable = !this.debugEnable;
   }
 }
 

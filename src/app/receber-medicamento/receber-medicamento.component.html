@@ -30,16 +30,22 @@
           </mat-card-content>
         </div>
       </div>
-      <button mat-raised-button color="primary" (click)="add()" type="button">
-        <mat-icon>add</mat-icon> Adicionar Medicamento
+      <button mat-raised-button color="primary" (click)="add()" type="button" style='margin-bottom: 200px;'>
+        Adicionar Medicamento
       </button>
       <br />
       <br />
-      <button mat-raised-button color="primary">
+      <button mat-raised-button [disabled]="!formDoacao.valid" color="primary" type="submit">
         Concluir Doação
       </button>
-
-      <app-form-debug [form]="formDoacao"></app-form-debug>
+      <button mat-raised-button color="warn" routerLink="/">
+        Cancelar
+      </button>
     </form>
+    <mat-checkbox class="example-margin" (change)="debug()">Tela de Debug</mat-checkbox>
   </mat-card-content>
+</mat-card>
+
+<mat-card class="cadastro" *ngIf="debugEnable">
+  <app-form-debug [form]="formDoacao"></app-form-debug>
 </mat-card>

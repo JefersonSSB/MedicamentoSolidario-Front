@@ -4,66 +4,65 @@
   </mat-card-header>
 
   <mat-card-content class="cartoesCorpo">
-    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-      <div class="card">
-        <mat-form-field class="margin" appearance="outline">
-          <mat-label>Data Validade</mat-label>
-          <input matInput formControlName="dataValidade" />
-        </mat-form-field>
-      </div>
-      <div class="card">
-        <mat-form-field class="margin" appearance="outline">
-          <mat-label>Nome</mat-label>
-          <input matInput formControlName="nome" />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
-      </div>
-      <div class="card">
-        <mat-form-field class="margin" appearance="outline">
-          <mat-label>Principio</mat-label>
-          <input matInput formControlName="principio" />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class="margin" appearance="outline">
-          <mat-label>Quantidade</mat-label>
-          <input matInput formControlName="quantidade" />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class="margin" appearance="outline">
-          <mat-label>Tarja</mat-label>
-          <input matInput formControlName="tarja" />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
 
-        <mat-form-field class="margin" appearance="outline">
-          <mat-label>Tipo Armazenamento</mat-label>
-          <input matInput formControlName="tipoArmazenamento" />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class="margin" appearance="outline">
-          <mat-label>TipoReceita</mat-label>
-          <input matInput formControlName="tipoReceita" />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
-      </div>
-      <div class="card">
-        Ja Possui Cadastro? <a href="">Clique para fazer login</a>
-        <br />
-        <br />
-        <button type="submit" mat-raised-button color="primary">
-          Cadastrar
-        </button>
-        <button mat-raised-button color="warn" (click)="onCancel()">
-          Cancelar
-        </button>
-      </div>
-      <app-form-debug [form]="formulario"></app-form-debug>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+      <mat-form-field class="margin" appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="nome" type="text" required>
+      </mat-form-field>
+
+
+      <mat-form-field class="margin" appearance="outline">
+        <mat-label>Validade do Medicamento</mat-label>
+        <input matInput formControlName="dataValidade" type="date" required>
+      </mat-form-field>
+
+      <mat-form-field class="margin" appearance="outline">
+        <mat-label>Principio</mat-label>
+        <input matInput formControlName="principio" type="text" required>
+      </mat-form-field>
+
+      <mat-form-field class="margin" appearance="outline">
+        <mat-label>Tipo de Receita</mat-label>
+        <mat-select matInput formControlName="tipoReceita" type="text" required>
+          <mat-option value="ReceitaSimples">Receita Simples</mat-option>
+          <mat-option value="ReceitaDeControleEspecial">Receita de Controle Especial</mat-option>
+          <mat-option value="ReceitaA">Receita Amarela ou Receita A</mat-option>
+          <mat-option value="ReceitaB">Receita Azul ou Receita B</mat-option>
+          <mat-option value="ReceitaRenovavel">Receita Renovável</mat-option>
+          <mat-option value="SemReceita">Sem Receita</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="margin" appearance="outline">
+        <mat-label>Tarja do Medicamento</mat-label>
+        <input matInput formControlName="tarja" type="text" required>
+      </mat-form-field>
+
+      <mat-form-field class="margin" appearance="outline">
+        <mat-label>Tipo de Armazenamento</mat-label>
+        <input matInput formControlName="tipoArmazenamento" type="text" required>
+      </mat-form-field>
+
+      <mat-form-field class="margin" appearance="outline">
+        <mat-label>Quantidade</mat-label>
+        <input matInput formControlName="quantidade" type="number" required>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button [disabled]="!formulario.valid" color="primary">
+        Salvar
+      </button>
+      <button type="button" mat-raised-button color="warn" routerLink="medicamentoLista">
+        Cancelar
+      </button>
     </form>
+    <mat-checkbox class=" example-margin" (change)="debug()">Tela de Debug</mat-checkbox>
   </mat-card-content>
+</mat-card>
+
+
+
+<mat-card class="cadastro" *ngIf="debugEnable">
+  <app-form-debug [form]="formulario"></app-form-debug>
 </mat-card>

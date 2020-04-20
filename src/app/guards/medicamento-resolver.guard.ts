@@ -12,7 +12,7 @@ import { Medicamento } from '../models/medicamento';
   providedIn: 'root',
 })
 export class MedicamentoResolverGuard implements Resolve<Medicamento> {
-  constructor(private service: MedicamentoService) {}
+  constructor(private service: MedicamentoService) { }
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

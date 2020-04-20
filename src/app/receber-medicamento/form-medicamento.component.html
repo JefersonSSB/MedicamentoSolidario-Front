@@ -44,8 +44,10 @@
   </mat-form-field>
 
   <div>
+
+    <button mat-raised-button color="primary" [disabled]="!formMedicamentoDiagol.valid" [mat-dialog-close]="data"
+      style='margin: 10px;'>Adicionar</button>
     <button mat-raised-button color="warn" (click)="onNoClick()" style='margin: 10px;'>Cancelar</button>
-    <button mat-raised-button color="primary" [mat-dialog-close]="data" style='margin: 10px;'>Adicionar</button>
   </div>
 
 </form>

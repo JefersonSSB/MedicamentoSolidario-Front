@@ -9,7 +9,7 @@
 .centraliza {
   margin: 0;
   margin: auto;
-  width: 50%;
+  width: 100%;
   padding: 10px;
 }
 .textoTituloCartao {
@@ -22,15 +22,15 @@
   margin: 10px;
 }
 .card {
-  display: inline-table;
   width: 100%;
 }
 .margin {
-  position: relative;
-  float: center;
-  width: 48%;
+  width: 100%;
   margin: 1%;
 }
 .card button {
+  margin: 10px;
+}
+.cadastro button {
   margin: 10px;
 }

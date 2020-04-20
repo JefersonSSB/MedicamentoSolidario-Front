@@ -1,13 +1,7 @@
 <mat-sidenav-container class="sidenav-container" [hasBackdrop]="false">
   <mat-toolbar class="expanded-toolbar">
     <mat-toolbar-row>
-      <button
-        *ngIf="!auth()"
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-      >
+      <button *ngIf="!auth()" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <img class="imageLogo" src="assets/images/logo.png" routerLink="/" />
@@ -26,11 +20,10 @@
         <button mat-menu-item routerLink="pontoColetaCadastro">Cadastro</button>
         <button mat-menu-item routerLink="pontoColetaList">Lista</button>
       </mat-menu>
-      <button mat-button [matMenuTriggerFor]="medicamento">Medicamento</button>
-      <mat-menu #medicamento="matMenu" yPosition="below">
-        <button mat-menu-item routerLink="medicamentoInserir">Inserir</button>
-        <button mat-menu-item routerLink="medicamentoLista">Lista</button>
-      </mat-menu>
+      <button mat-button routerLink="medicamentoLista">
+        Medicamento
+      </button>
+
       <button mat-button routerLink="receberMedicamento">
         Receber Medicamento
       </button>
@@ -40,12 +33,7 @@
         Login
       </button>
       <div *ngIf="auth()">/&nbsp;&nbsp;</div>
-      <button
-        class="login"
-        mat-button
-        routerLink="/usuarioCadastro"
-        *ngIf="auth()"
-      >
+      <button class="login" mat-button routerLink="/usuarioCadastro" *ngIf="auth()">
         Cadastrar
       </button>
       <button mat-button mat-button [matMenuTriggerFor]="sair" *ngIf="!auth()">

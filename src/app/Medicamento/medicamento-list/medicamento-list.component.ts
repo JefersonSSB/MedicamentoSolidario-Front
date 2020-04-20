@@ -22,7 +22,7 @@ export class MedicamentoListComponent implements OnInit {
     private service: MedicamentoService,
     private router: Router,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.list();
@@ -44,6 +44,7 @@ export class MedicamentoListComponent implements OnInit {
   excluir(id) {
     this.service.remove(id).subscribe(
       (success) => {
+        this.ngOnInit();
         console.log("deletado com sucesso!");
       },
       (error) => console.error(error),
@@ -52,7 +53,8 @@ export class MedicamentoListComponent implements OnInit {
   }
   openDialog(id) {
     const dialogRef = this.dialog.open(PopUpDeleteComponent, {
-      width: "350px",
+      width: "300px",
+      height: "200px"
     });
 
     dialogRef.afterClosed().subscribe((result) => {

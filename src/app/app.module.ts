@@ -46,6 +46,7 @@ import { ListMedicamentosComponent } from './list-medicamentos/list-medicamentos
 import { SolicitarMedicamentosComponent } from './solicitar-medicamentos/solicitar-medicamentos.component';
 import { MedicamentoFormComponent } from './Medicamento/medicamento-form/medicamento-form.component';
 import { MedicamentoListComponent } from './Medicamento/medicamento-list/medicamento-list.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -98,6 +99,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatExpansionModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
     NgxMaskModule.forRoot(options)
   ],
   providers: [
