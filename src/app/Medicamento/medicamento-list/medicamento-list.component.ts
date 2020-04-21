@@ -13,26 +13,34 @@ import { Component, OnInit, ViewChild } from "@angular/core";
   styleUrls: ["./medicamento-list.component.css"],
 })
 export class MedicamentoListComponent implements OnInit {
-  displayedColumns = ["Nome Medicamento", "Ações"];
+  displayedColumns = ["Nome Medicamento", "Principio", "Receita", "Data de Validade", "Quantidade", "Ações"];
   medicamentos: Medicamento[];
   dataSource = new MatTableDataSource(this.medicamentos);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  loading = false;
 
   constructor(
     private service: MedicamentoService,
     private router: Router,
     public dialog: MatDialog
+
   ) { }
 
   ngOnInit() {
     this.list();
     this.dataSource.paginator = this.paginator;
+
+
   }
   list() {
+    this.loading = true;
     this.service.list().subscribe((dados) => {
+
       this.medicamentos = dados;
       this.dataSource.data = this.medicamentos;
-    });
+      this.loading = false;
+    }),
+      (error) => { console.error(error), this.loading = false };
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -42,14 +50,17 @@ export class MedicamentoListComponent implements OnInit {
     this.router.navigate(["medicamentoEditar", id]);
   }
   excluir(id) {
+    this.loading = true;
     this.service.remove(id).subscribe(
       (success) => {
         this.ngOnInit();
+        this.loading = false
         console.log("deletado com sucesso!");
       },
-      (error) => console.error(error),
+      (error) => { console.error(error), this.loading = false },
       () => console.log("request delete completo")
     );
+
   }
   openDialog(id) {
     const dialogRef = this.dialog.open(PopUpDeleteComponent, {
@@ -65,4 +76,6 @@ export class MedicamentoListComponent implements OnInit {
       }
     });
   }
+
 }
+
