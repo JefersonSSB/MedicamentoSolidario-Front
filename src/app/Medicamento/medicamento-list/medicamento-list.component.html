@@ -1,6 +1,6 @@
 <mat-card class="cadastro">
   <mat-card-header>
-    <mat-card-title>Teste</mat-card-title>
+    <mat-card-title>{{ titulo }}</mat-card-title>
   </mat-card-header>
   <div class="spinner" *ngIf="loading">
     <mat-spinner></mat-spinner>
@@ -9,7 +9,7 @@
 
 
     <mat-form-field>
-      <mat-label>Filter</mat-label>
+      <mat-label>Busca</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. nome" />
     </mat-form-field>
     <div class="mat-elevation-z8">
@@ -28,11 +28,11 @@
           <td mat-cell *matCellDef="let element">{{ element.tipoReceita }}</td>
         </ng-container>
         <ng-container matColumnDef="Data de Validade">
-          <th mat-header-cell *matHeaderCellDef>dataValidade</th>
+          <th mat-header-cell *matHeaderCellDef>Validade</th>
           <td mat-cell *matCellDef="let element">{{element.dataVencimento | date:"dd/MM/yyyy"}}</td>
         </ng-container>
         <ng-container matColumnDef="Quantidade">
-          <th mat-header-cell *matHeaderCellDef>quantidade</th>
+          <th mat-header-cell *matHeaderCellDef>Quantidade</th>
           <td mat-cell *matCellDef="let element">{{ element.quantidade }}</td>
         </ng-container>
         <ng-container class="acoes" matColumnDef="Ações">

@@ -6,6 +6,7 @@ import { UsuarioService } from "../usuario.service";
 import { MatPaginator } from "@angular/material/paginator";
 import { Router, ActivatedRoute } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-usuario-list",
@@ -15,7 +16,6 @@ import { MatDialog } from "@angular/material/dialog";
 export class UsuarioListComponent implements OnInit {
   usuarios: Usuario[];
   displayedColumns: string[] = [
-    "id",
     "nome",
     "cpf",
     "email",
@@ -25,6 +25,8 @@ export class UsuarioListComponent implements OnInit {
     "role",
     "Opcoes"
   ];
+  titulo = "Lista de Usuarios";
+  loading = false;
 
   dataSource = new MatTableDataSource(this.usuarios);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -32,18 +34,22 @@ export class UsuarioListComponent implements OnInit {
     private usuarioService: UsuarioService,
     private router: Router,
     private route: ActivatedRoute,
-    public dialog: MatDialog
-  ) {}
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
     this.list();
     this.dataSource.paginator = this.paginator;
   }
   list() {
+    this.loading = true;
     this.usuarioService.list().subscribe(dados => {
       this.usuarios = dados;
       this.dataSource.data = this.usuarios;
-    });
+      this.loading = false;
+    }),
+      (error) => { this.showMessage("Ocorreu um erro!", true), this.loading = false };
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -53,11 +59,17 @@ export class UsuarioListComponent implements OnInit {
     this.router.navigate(["usuarioEditar", id]);
   }
   excluir(id) {
+    this.loading = true;
     this.usuarioService.remove(id).subscribe(
       success => {
+        this.ngOnInit();
+        this.loading = false
         console.log("deletado com sucesso!");
+        this.showMessage("deletado com sucesso!")
+
+
       },
-      error => console.error(error),
+      error => { this.showMessage("Ocorreu um erro!", true), this.loading = false },
       () => console.log("request delete completo")
     );
   }
@@ -74,5 +86,15 @@ export class UsuarioListComponent implements OnInit {
         this.excluir(id);
       }
     });
+  }
+
+  showMessage(msg: string, isError: boolean = false): void {
+    this.snackBar.open(msg, 'X', {
+      duration: 3000,
+      horizontalPosition: "center",
+      verticalPosition: "bottom",
+      panelClass: isError ? ['msg-error'] : ['msg-success']
+
+    })
   }
 }

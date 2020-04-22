@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { UsuarioService } from "../usuario.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: "app-usuario-insert",
@@ -10,15 +12,18 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class UsuarioInsertComponent implements OnInit {
   public formGroup: FormGroup;
-
+  debugEnable = false;
+  mask = '00.000.0000-00'
   constructor(
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    public router: Router
   ) { }
 
   titulo = "Formulario de Usuários";
-
+  hide = true;
   ngOnInit() {
     const usuario = this.route.snapshot.data["usuario"];
 
@@ -27,9 +32,9 @@ export class UsuarioInsertComponent implements OnInit {
       nome: [usuario.nome, Validators.required],
       cpf: [usuario.cpf, Validators.required],
       role: [usuario.role, Validators.required],
-      sexo: [usuario.sexo],
-      telefone: [usuario.telefone],
-      dataNascimento: [usuario.dataNascimento],
+      sexo: [usuario.sexo, Validators.required],
+      telefone: [usuario.telefone, Validators.required],
+      dataNascimento: [usuario.dataNascimento, Validators.required],
       senha: [usuario.senha, Validators.required],
       email: [usuario.email, Validators.email],
     });
@@ -39,11 +44,28 @@ export class UsuarioInsertComponent implements OnInit {
     if (this.formGroup.valid) {
       console.log(JSON.stringify(this.formGroup.value));
       this.usuarioService.save(this.formGroup.value).subscribe(
-        success => console.log('salvo com sucesso!'),
-        error => console.error(error),
+        success => {
+          this.showMessage("Salvo com sucesso!"),
+            this.router.navigate(['/']);
+        },
+        error => this.showMessage("Erro Desconhecido", true),
         () => console.log('request completo')
       );
       console.log(this.formGroup.value);
     }
+  }
+
+  debug() {
+    this.debugEnable = !this.debugEnable;
+  }
+
+  showMessage(msg: string, isError: boolean = false): void {
+    this.snackBar.open(msg, 'X', {
+      duration: 3000,
+      horizontalPosition: "center",
+      verticalPosition: "bottom",
+      panelClass: isError ? ['msg-error'] : ['msg-success']
+
+    })
   }
 }

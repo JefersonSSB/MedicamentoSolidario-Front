@@ -9,6 +9,7 @@ import { ActivatedRoute } from "@angular/router";
 import { ReceberMedicamentoService } from "./receber-medicamento.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
+import { NgClass } from '@angular/common';
 
 export interface DialogData {
   dataValidade: string;
@@ -58,7 +59,6 @@ export class ReceberMedicamentoComponent implements OnInit {
       horizontalPosition: "center",
       verticalPosition: "bottom",
       panelClass: isError ? ['msg-error'] : ['msg-success']
-
     })
   }
 

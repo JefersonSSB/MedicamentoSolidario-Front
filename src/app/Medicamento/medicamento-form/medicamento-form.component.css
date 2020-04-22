@@ -34,3 +34,13 @@
 .cadastro button {
   margin: 10px;
 }
+
+::ng-deep .msg-success {
+  background-color: #28a745;
+  color: white;
+}
+
+::ng-deep .msg-error {
+  background-color: rgb(227, 94, 107);
+  color: white;
+}

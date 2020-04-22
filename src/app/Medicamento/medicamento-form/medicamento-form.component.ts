@@ -1,6 +1,6 @@
 import { MedicamentoService } from "./../medicamento.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -16,7 +16,8 @@ export class MedicamentoFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private service: MedicamentoService,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router,
   ) { }
 
   titulo = "Formulario Medicamentos";
@@ -59,7 +60,10 @@ export class MedicamentoFormComponent implements OnInit {
     if (this.formulario.valid) {
       console.log("submit");
       this.service.save(this.formulario.value).subscribe(
-        (success) => this.showMessage("Salvo com sucesso!"),
+        (success) => {
+          this.showMessage("Salvo com sucesso!"),
+            this.router.navigate(["/medicamentoLista"]);
+        },
         (error) => this.showMessage("Ocorreu um erro!", true),
         () => console.log("request completo")
       );

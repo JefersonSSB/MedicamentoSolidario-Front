@@ -37,16 +37,19 @@
 
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Telefone</mat-label>
-          <input matInput formControlName="telefone" />
+          <input matInput formControlName="telefone" type="number" />
+          <mat-error *ngIf=" formGroup.hasError('required')">
+            O campos e Obrigatorio !
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="card">
         <mat-form-field class="margin" appearance="outline">
           <mat-label>CPF</mat-label>
-          <input matInput formControlName="cpf" />
+          <input matInput formControlName="cpf" [mask]="mask" />
         </mat-form-field>
 
-        <mat-form-field class="margin" appearance="outline">
+        <mat-form-field class=" margin" appearance="outline">
           <mat-label>Date de Nascimento</mat-label>
           <input matInput formControlName="dataNascimento" type="date" />
         </mat-form-field>
@@ -55,7 +58,7 @@
         <mat-form-field class="margin" appearance="outline">
           <mat-label>E-mail</mat-label>
           <input formControlName="email" matInput />
-          <mat-error *ngIf="formGroup.hasError('email')">
+          <mat-error *ngIf="formGroup.get('email').hasError('email')">
             E-mail Invalido !
           </mat-error>
         </mat-form-field>
@@ -67,11 +70,19 @@
       <div class="card">
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Senha</mat-label>
-          <input formControlName="senha" name="senha" type="password" matInput />
+          <input formControlName="senha" name="senha" type="password" matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Confirma Senha</mat-label>
-          <input type="password" matInput />
+          <input type="password" matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
       </div>
       <div class="card">
@@ -80,11 +91,15 @@
         <br />
         <br />
 
-        <button mat-raised-button color="primary">
+        <button mat-raised-button color="primary" [disabled]="!formGroup.valid">
           Cadastrar
         </button>
       </div>
-      <app-form-debug [form]="formGroup"></app-form-debug>
     </form>
+    <mat-checkbox class=" example-margin" (change)="debug()">Tela de Debug</mat-checkbox>
   </mat-card-content>
+</mat-card>
+
+<mat-card class="cadastro" *ngIf="debugEnable">
+  <app-form-debug [form]="formGroup"></app-form-debug>
 </mat-card>

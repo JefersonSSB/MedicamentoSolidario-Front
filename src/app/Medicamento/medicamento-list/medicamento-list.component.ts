@@ -6,6 +6,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { Medicamento } from "./../../models/medicamento";
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-medicamento-list",
@@ -18,11 +19,12 @@ export class MedicamentoListComponent implements OnInit {
   dataSource = new MatTableDataSource(this.medicamentos);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   loading = false;
-
+  titulo = "Lista de Medicamentos";
   constructor(
     private service: MedicamentoService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
 
   ) { }
 
@@ -40,7 +42,7 @@ export class MedicamentoListComponent implements OnInit {
       this.dataSource.data = this.medicamentos;
       this.loading = false;
     }),
-      (error) => { console.error(error), this.loading = false };
+      (error) => { this.showMessage("Ocorreu um erro!", true), this.loading = false };
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -56,8 +58,10 @@ export class MedicamentoListComponent implements OnInit {
         this.ngOnInit();
         this.loading = false
         console.log("deletado com sucesso!");
+        this.showMessage("deletado com sucesso!")
+
       },
-      (error) => { console.error(error), this.loading = false },
+      (error) => { this.showMessage("Ocorreu um erro!", true), this.loading = false },
       () => console.log("request delete completo")
     );
 
@@ -76,6 +80,16 @@ export class MedicamentoListComponent implements OnInit {
       }
     });
   }
+  showMessage(msg: string, isError: boolean = false): void {
+    this.snackBar.open(msg, 'X', {
+      duration: 3000,
+      horizontalPosition: "center",
+      verticalPosition: "bottom",
+      panelClass: isError ? ['msg-error'] : ['msg-success']
+
+    })
+  }
+
 
 }
 
