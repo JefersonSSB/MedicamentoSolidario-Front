@@ -64,7 +64,11 @@
         </mat-form-field>
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Confirmar E-mail</mat-label>
-          <input matInput />
+          <input matInput formControlName="confirmaEmail" />
+          <mat-error
+            *ngIf="formGroup.get('confirmaEmail').errors?.emailNull && (formGroup.get('confirmaEmail').dirty || formGroup.get('confirmaEmail').touched)">
+            Os Emails não coincidem.
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="card">
@@ -75,24 +79,35 @@
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
+          <mat-error
+            *ngIf="formGroup.get('senha').hasError('minlength') || formGroup.get('senha').hasError('maxlength') ">
+            A senha deve conter de 4 a 8 caracteres
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="margin" appearance="outline">
           <mat-label>Confirma Senha</mat-label>
-          <input type="password" matInput [type]="hide ? 'password' : 'text'">
+          <input type="password" formControlName="confirmaSenha" matInput [type]="hide ? 'password' : 'text'">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
+          <mat-error
+            *ngIf="formGroup.get('confirmaSenha').errors?.senhaNull && (formGroup.get('confirmaSenha').dirty || formGroup.get('confirmaSenha').touched)">
+            As senhas não coincidem.
+          </mat-error>
         </mat-form-field>
       </div>
-      <div class="card">
-        Ja Possui Cadastro? <a href="">Clique para fazer login</a>
+      <div class=" card">
+        Ja Possui Cadastro? <a routerLink="/login">Clique para fazer login</a>
 
         <br />
         <br />
 
         <button mat-raised-button color="primary" [disabled]="!formGroup.valid">
           Cadastrar
+        </button>
+        <button mat-raised-button color="warn" routerLink="/">
+          Cancelar
         </button>
       </div>
     </form>

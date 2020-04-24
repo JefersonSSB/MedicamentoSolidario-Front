@@ -10,6 +10,7 @@ import { ReceberMedicamentoService } from "./receber-medicamento.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { NgClass } from '@angular/common';
+import { PopUpDeleteComponent } from "./../Shared/pop-up-delete/pop-up-delete.component";
 
 export interface DialogData {
   dataValidade: string;
@@ -31,6 +32,9 @@ export class ReceberMedicamentoComponent implements OnInit {
   public formDoacao: FormGroup;
   public medicamentos: FormArray;
   debugEnable = false;
+  solicitante = "Jeferson Silva Santos";
+  voluntario = "Diego Teixeira";
+  posto = "Farmacia da Esquina"
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,7 +51,7 @@ export class ReceberMedicamentoComponent implements OnInit {
       idDoador: [1, Validators.required],
       idPonto: [1, Validators.required],
       idVoluntario: [1, Validators.required],
-      obs: ['Inserido', Validators.required],
+      obs: ['',],
       medicamentos: this.formBuilder.array([this.medicamento()], Validators.required),
     });
     this.remove(0);
@@ -114,6 +118,19 @@ export class ReceberMedicamentoComponent implements OnInit {
       }
     });
   }
+
+  removeElemento(id) {
+    const dialogRe = this.dialog.open(PopUpDeleteComponent, {
+      width: "350px"
+    });
+
+    dialogRe.afterClosed().subscribe(result => {
+      if (result === 1) {
+        this.remove(id);
+      }
+    });
+  }
+
   onSubmit() {
     this.medicamentos = this.formDoacao.get('medicamentos') as FormArray;
     if (this.formDoacao.valid && this.medicamentos.length > 0) {

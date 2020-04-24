@@ -56,3 +56,17 @@ table {
   background-color: rgb(227, 94, 107);
   color: white;
 }
+
+.spacer button {
+  border: none;
+  margin: 5px;
+  background-color: white;
+  box-shadow: none;
+}
+
+.orange {
+  color: orange;
+}
+.red {
+  color: red;
+}

@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { UsuarioService } from "../usuario.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AbstractControl } from '@angular/forms';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UsuarioInsertComponent implements OnInit {
   public formGroup: FormGroup;
   debugEnable = false;
-  mask = '00.000.0000-00'
+  mask = '000.000.000-00'
   constructor(
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
@@ -35,9 +36,11 @@ export class UsuarioInsertComponent implements OnInit {
       sexo: [usuario.sexo, Validators.required],
       telefone: [usuario.telefone, Validators.required],
       dataNascimento: [usuario.dataNascimento, Validators.required],
-      senha: [usuario.senha, Validators.required],
-      email: [usuario.email, Validators.email],
-    });
+      senha: [usuario.senha, [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
+      confirmaSenha: [usuario.senha, Validators.required],
+      email: [usuario.email, [Validators.email, Validators.required]],
+      confirmaEmail: [usuario.email, [Validators.email, Validators.required]],
+    }, { validators: [this.validaSenha, this.validaEmail] });
   }
 
   onSubmit() {
@@ -67,5 +70,30 @@ export class UsuarioInsertComponent implements OnInit {
       panelClass: isError ? ['msg-error'] : ['msg-success']
 
     })
+  }
+
+  validaSenha(controle: AbstractControl) {
+    let senha = controle.get('senha').value;
+    let confirmarSenha = controle.get('confirmaSenha').value;
+
+    if (senha === confirmarSenha) {
+      controle.get('confirmaSenha').setErrors(null)
+
+    }
+    else {
+      controle.get('confirmaSenha').setErrors({ 'senhaNull': true });
+    }
+  }
+  validaEmail(controle: AbstractControl) {
+    let senha = controle.get('email').value;
+    let confirmarSenha = controle.get('confirmaEmail').value;
+
+    if (senha === confirmarSenha) {
+      controle.get('confirmaEmail').setErrors(null)
+
+    }
+    else {
+      controle.get('confirmaEmail').setErrors({ 'emailNull': true });
+    }
   }
 }

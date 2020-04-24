@@ -45,8 +45,37 @@ button {
   background-color: rgb(250, 250, 250);
   border-radius: 5px;
   padding: 15px;
+  font-size: 1.1rem;
 }
 
-.DiagolCss {
-  margin: 10px;
+.spacer button {
+  border: none;
+  margin: 5px;
+  background-color: white;
+  box-shadow: none;
+}
+
+.orange {
+  color: orange;
+}
+.red {
+  color: red;
+}
+
+.Doinfo {
+  margin-top: 15px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+::ng-deep .msg-success {
+  background-color: #28a745;
+  color: white;
+}
+
+::ng-deep .msg-error {
+  background-color: rgb(227, 94, 107);
+  color: white;
 }

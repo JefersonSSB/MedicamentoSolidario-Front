@@ -38,12 +38,15 @@
         <ng-container class="acoes" matColumnDef="Ações">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Opções</th>
           <td mat-cell *matCellDef="let element">
-            <button mat-raised-button color="primary" (click)="onEdit(element.id)">
-              Alterar
-            </button>
-            <button mat-raised-button color="warn" (click)="openDialog(element.id)">
-              Excluir
-            </button>
+
+            <div class='spacer'> <button mat-mini-fab (click)="onEdit(element.id)" type="button">
+                <mat-icon class="orange">create</mat-icon>
+              </button>
+
+              <button mat-mini-fab (click)="openDialog(element.id)" type="button">
+                <mat-icon class="red">delete_forever</mat-icon>
+              </button>
+            </div>
           </td>
         </ng-container>
 
