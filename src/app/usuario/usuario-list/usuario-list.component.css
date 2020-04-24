@@ -15,17 +15,7 @@
 }
 .cartoesCorpo {
   margin: 10px;
-}
-.card {
-  display: inline-table;
   width: 100%;
-}
-#card tr:nth-child(2n + 1) td {
-  background-color: rgb(242, 242, 242);
-}
-#card tr:nth-child(2n + 1) th {
-  background-color: #007fff;
-  color: white;
 }
 
 table {

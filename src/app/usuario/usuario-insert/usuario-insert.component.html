@@ -27,8 +27,8 @@
           <mat-label>Tipo de Usuario</mat-label>
           <!--  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
           <mat-select formControlName="role">
-            <mat-option value="USER">Usuario Padrão</mat-option>
-            <mat-option value="INTERMEDIADOR">Voluntario</mat-option>
+            <mat-option value="ROLE_USER">Usuario Padrão</mat-option>
+            <mat-option value="ROLE_INTERMEDIADOR">Voluntario</mat-option>
           </mat-select>
           <mat-error *ngIf="formGroup.hasError('required')">
             O campos e Obrigatorio !
