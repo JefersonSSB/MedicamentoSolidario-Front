@@ -1,0 +1,11 @@
+table{
+  width: 100%;
+}
+mat-card{
+  min-height: 500px;
+}
+.footer-buttons{
+  bottom: 15px;
+  right: 10px;
+  position: absolute;
+}

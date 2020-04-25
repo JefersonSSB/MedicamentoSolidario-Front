@@ -10,5 +10,6 @@ export class Medicamento {
   tipoArmazenamento: string;
   tipoReceita: string;
   data: string;
-  qtdPedido = 0;
+  qtdPedido?: number;
+  pontoDeColeta?:string;
 }

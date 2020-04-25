@@ -11,6 +11,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatButtonModule } from "@angular/material/button";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatInputModule } from "@angular/material/input";
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {
   MatFormFieldModule,
   MAT_FORM_FIELD_DEFAULT_OPTIONS
@@ -75,6 +76,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MatCardModule,
     MatButtonModule,
@@ -98,6 +100,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MatListModule,
     MatExpansionModule,
     MatDialogModule,
+    MatProgressBarModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
     NgxMaskModule.forRoot(options)
