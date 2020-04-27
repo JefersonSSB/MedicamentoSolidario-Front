@@ -13,6 +13,7 @@ import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 import { ReceberMedicamentoComponent } from "./receber-medicamento/receber-medicamento.component";
 import { ListMedicamentosComponent } from "./list-medicamentos/list-medicamentos.component";
+import { ComfirmaCpfComponent } from "./comfirma-cpf/comfirma-cpf.component"
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -50,8 +51,9 @@ const routes: Routes = [
     resolve: { medicamento: MedicamentoResolverGuard },
   },
   { path: "medicamentoLista", component: MedicamentoListComponent },
-  { path: "receberMedicamento", component: ReceberMedicamentoComponent },
+  { path: "receberMedicamento/:id/:nome", component: ReceberMedicamentoComponent },
   { path: "list-medicamentos", component: ListMedicamentosComponent },
+  { path: "verificaCpf", component: ComfirmaCpfComponent },
 ];
 
 @NgModule({
@@ -59,4 +61,4 @@ const routes: Routes = [
 
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

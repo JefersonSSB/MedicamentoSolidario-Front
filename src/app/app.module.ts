@@ -48,7 +48,7 @@ import { SolicitarMedicamentosComponent } from './solicitar-medicamentos/solicit
 import { MedicamentoFormComponent } from './Medicamento/medicamento-form/medicamento-form.component';
 import { MedicamentoListComponent } from './Medicamento/medicamento-list/medicamento-list.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ComfirmaCpfComponent } from './receber-medicamento/comfirma-cpf/comfirma-cpf.component';
+import { ComfirmaCpfComponent } from './comfirma-cpf/comfirma-cpf.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -71,7 +71,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     SolicitarMedicamentosComponent,
     MedicamentoFormComponent,
     MedicamentoListComponent,
-    ComfirmaCpfComponent
+    ComfirmaCpfComponent,
 
   ],
   //entryComponents: [DialogOverviewExample, DialogOverviewExampleDialog],

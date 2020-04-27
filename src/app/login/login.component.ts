@@ -40,10 +40,14 @@ export class LoginComponent {
     return localStorage.getItem("isAuth") === "false";
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-    });
+  showMessage(msg: string, isError: boolean = false): void {
+    this._snackBar.open(msg, 'X', {
+      duration: 3000,
+      horizontalPosition: "center",
+      verticalPosition: "bottom",
+      panelClass: isError ? ['msg-error'] : ['msg-success']
+
+    })
   }
 
   submit() {
@@ -60,17 +64,17 @@ export class LoginComponent {
     this.service.login(this.form.value).subscribe(
       (result) => {
         localStorage.setItem("isAuth", "true");
-        this.openSnackBar("Logado com Sucesso !", "X");
+        this.showMessage("Logado com Sucesso !");
         this.router.navigate(["/"]);
         this.loading = false;
       },
       (error) => {
         if (error.status === 401) {
-          this.openSnackBar("Login ou Senha Incorretos", "X");
+          this.showMessage("Login ou Senha Incorretos", true);
 
           this.loading = false;
         } else {
-          this.openSnackBar("Problema Desconhecido", "X");
+          this.showMessage("Problema Desconhecido", true);
           console.log(error.error.error);
           this.loading = false;
         }

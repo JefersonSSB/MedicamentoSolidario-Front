@@ -10,9 +10,15 @@
         <hr>
         <span class="Doinfo"> <strong>Voluntário:</strong> {{voluntario}}</span>
         <hr>
-        <span class="Doinfo"><strong>Ponto de Coleta:</strong> {{posto}}</span>
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+        <mat-form-field class="margin" appearance="outline" required>
+          <mat-label>Ponto de Coleta</mat-label>
+          <mat-select formControlName="idPonto">
+            <mat-option *ngFor="let posto of pontos" value="{{posto.id}}">{{posto.nome}}</mat-option>
+          </mat-select>
+        </mat-form-field>
         <hr>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Observações</mat-label>
           <textarea matInput formControlName="obs" placeholder="" appearance="outline"></textarea>
         </mat-form-field>
@@ -36,6 +42,7 @@
         </div>
       </div>
       <button mat-raised-button color="primary" (click)="add()" type="button" style='margin-bottom: 200px;'>
+        <mat-icon>add_shopping_cart</mat-icon>
         Adicionar Medicamento
       </button>
       <br />

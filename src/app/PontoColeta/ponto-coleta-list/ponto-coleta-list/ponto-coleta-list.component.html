@@ -1,13 +1,14 @@
 <mat-card class="cadastro">
   <mat-card-header>
-    <mat-card-title>Teste</mat-card-title>
+    <mat-card-title>Lista Ponto de Coleta</mat-card-title>
   </mat-card-header>
 
   <mat-card-content class="cartoesCorpo">
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />
     </mat-form-field>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="nome">
@@ -33,18 +34,10 @@
         <ng-container matColumnDef="opcoes">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Opções</th>
           <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="onEdit(element.id)"
-            >
+            <button mat-raised-button color="primary" (click)="onEdit(element.id)">
               Alterar
             </button>
-            <button
-              mat-raised-button
-              color="warn"
-              (click)="openDialog(element.id)"
-            >
+            <button mat-raised-button color="warn" (click)="openDialog(element.id)">
               Excluir
             </button>
           </td>
@@ -54,14 +47,11 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
 
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 20]"
-        showFirstLastButtons
-      ></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons></mat-paginator>
     </div>
 
     <!-- Copyright 2019 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
     can be found in the LICENSE file at http://angular.io/license -->
-  </mat-card-content></mat-card
->
+  </mat-card-content>
+</mat-card>

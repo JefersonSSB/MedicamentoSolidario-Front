@@ -16,24 +16,30 @@ export class PontoColetaListComponent implements OnInit {
   pontos: PontoColeta[];
   displayedColumns: string[] = ["nome", "cidade", "bairro", "cep", "opcoes"];
   dataSource = new MatTableDataSource(this.pontos);
+  loading = false;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   constructor(
     private service: PontoColetaService,
     private router: Router,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.list();
     this.dataSource.paginator = this.paginator;
   }
   list() {
+    this.loading = true;
     this.service.list().subscribe((dados) => {
       this.pontos = dados;
       this.dataSource.data = this.pontos;
-    });
+      this.loading = false;
+    },
+      (error) => { this.loading = false; }
+    )
   }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

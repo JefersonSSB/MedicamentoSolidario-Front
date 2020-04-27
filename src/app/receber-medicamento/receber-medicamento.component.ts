@@ -11,6 +11,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { NgClass } from '@angular/common';
 import { PopUpDeleteComponent } from "./../Shared/pop-up-delete/pop-up-delete.component";
+import { PontoColetaService } from "./../PontoColeta/ponto-coleta.service";
 
 export interface DialogData {
   dataValidade: string;
@@ -22,6 +23,23 @@ export interface DialogData {
   tipoReceita: string;
 }
 
+export interface PontoColeta {
+
+  id: number;
+  atividadePrincipal: string;
+  bairro: string;
+  cep: string;
+  cidade: string
+  cnpj: string;
+  complemento: string;
+  dataCadastro: string;
+  estado: string;
+  nome: string;
+  numero: string;
+  rua: string;
+
+}
+
 @Component({
   selector: "app-receber-medicamento",
   templateUrl: "./receber-medicamento.component.html",
@@ -30,11 +48,12 @@ export interface DialogData {
 export class ReceberMedicamentoComponent implements OnInit {
 
   public formDoacao: FormGroup;
+  pontos: PontoColeta[];
   public medicamentos: FormArray;
   debugEnable = false;
-  solicitante = "Jeferson Silva Santos";
+  loading = false;
+  solicitante: string;
   voluntario = "Diego Teixeira";
-  posto = "Farmacia da Esquina"
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,14 +61,32 @@ export class ReceberMedicamentoComponent implements OnInit {
     private route: ActivatedRoute,
     private receberMedicamentoService: ReceberMedicamentoService,
     private _snackBar: MatSnackBar,
-    public router: Router
+    public router: Router,
+    private pontoService: PontoColetaService,
   ) { }
 
   ngOnInit(): void {
 
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id === null) {
+
+      this.router.navigate[("/")];
+    }
+
+
+
+    this.solicitante = this.route.snapshot.paramMap.get('nome');
+
+    this.loading = true;
+    this.pontoService.list().subscribe((dados) => {
+      this.pontos = dados; this.loading = false;
+    }, (error) => { this.loading = false; });
+
+
     this.formDoacao = this.formBuilder.group({
-      idDoador: [1, Validators.required],
-      idPonto: [1, Validators.required],
+      idDoador: [id, Validators.required],
+      idPonto: [, Validators.required],
       idVoluntario: [1, Validators.required],
       obs: ['',],
       medicamentos: this.formBuilder.array([this.medicamento()], Validators.required),
