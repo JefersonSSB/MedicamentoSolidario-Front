@@ -40,6 +40,7 @@ export class RecuperarSenhaComponent implements OnInit {
       dados => {
         this.showMessage("Nova senha Enviada!")
         this.loading = false
+        this.form.reset();
       },
       error => {
         this.showMessage("CPF ou Email não encontrado!", true),
