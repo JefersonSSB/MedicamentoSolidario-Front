@@ -3,6 +3,9 @@
   justify-content: center;
   margin: 100px 0px;
 }
+.mat-card {
+  width: 25%;
+}
 
 .mat-form-field {
   width: 100%;
@@ -26,10 +29,6 @@ mat-card-content {
   display: flex;
   justify-content: center;
 }
-.button button {
-  margin-right: 15px;
-  margin-left: 15px;
-}
 .spinner {
   position: fixed;
   z-index: 99;
@@ -43,4 +42,15 @@ mat-card-content {
 ::ng-deep .msg-error {
   background-color: rgb(227, 94, 107);
   color: white;
+}
+.subt {
+  margin: 30px;
+}
+mat-icon {
+  margin: 8px;
+  vertical-align: center;
+}
+.button button {
+  margin-right: 15px;
+  margin-left: 15px;
 }

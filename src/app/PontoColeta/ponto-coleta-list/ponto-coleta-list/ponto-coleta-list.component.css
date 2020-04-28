@@ -32,3 +32,16 @@ table {
   font-size: 14px;
   width: 100%;
 }
+.spacer button {
+  border: none;
+  margin: 5px;
+  background-color: white;
+  box-shadow: none;
+}
+
+.orange {
+  color: orange;
+}
+.red {
+  color: red;
+}

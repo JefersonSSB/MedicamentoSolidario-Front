@@ -23,8 +23,10 @@ mat-card-content {
 }
 
 .button {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .spinner {
   position: fixed;
@@ -39,4 +41,27 @@ mat-card-content {
 ::ng-deep .msg-error {
   background-color: rgb(227, 94, 107);
   color: white;
+}
+
+.btn {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.green {
+  background-color: green;
+}
+
+.link {
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.imageLogo {
+  max-width: 170px;
+  box-shadow: 2px 2px 3px black;
+  border-radius: 14px;
+  margin: 10px;
+  height: auto;
 }

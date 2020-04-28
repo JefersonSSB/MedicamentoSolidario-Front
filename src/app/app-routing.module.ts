@@ -14,6 +14,7 @@ import { HomeComponent } from "./home/home.component";
 import { ReceberMedicamentoComponent } from "./receber-medicamento/receber-medicamento.component";
 import { ListMedicamentosComponent } from "./list-medicamentos/list-medicamentos.component";
 import { ComfirmaCpfComponent } from "./comfirma-cpf/comfirma-cpf.component"
+import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: "receberMedicamento/:id/:nome", component: ReceberMedicamentoComponent },
   { path: "list-medicamentos", component: ListMedicamentosComponent },
   { path: "verificaCpf", component: ComfirmaCpfComponent },
+  { path: "recureparSenha", component: RecuperarSenhaComponent },
 ];
 
 @NgModule({

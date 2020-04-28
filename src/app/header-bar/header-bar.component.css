@@ -4,6 +4,7 @@
   border-radius: 14px;
   margin: 10px;
   height: auto;
+  cursor: pointer;
 }
 
 .imageLogo:focus {
