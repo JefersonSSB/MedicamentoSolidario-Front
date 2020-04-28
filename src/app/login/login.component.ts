@@ -18,6 +18,7 @@ export class LoginComponent {
   cpf: string;
   password: string;
   loading = false;
+  mask = '000.000.000-00'
 
   constructor(
     private _snackBar: MatSnackBar,

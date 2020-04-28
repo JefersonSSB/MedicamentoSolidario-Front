@@ -5,7 +5,7 @@
       <p>
         <mat-form-field appearance="outline">
           <mat-label>CPF</mat-label>
-          <input type="text" matInput formControlName="cpf" />
+          <input type="text" matInput formControlName="cpf" [mask]="mask" />
         </mat-form-field>
       </p>
       <div class="button">

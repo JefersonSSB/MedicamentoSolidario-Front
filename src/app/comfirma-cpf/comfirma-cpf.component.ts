@@ -18,6 +18,7 @@ export class ComfirmaCpfComponent implements OnInit {
 
   loading = false;
   user: User;
+  mask = '000.000.000-00'
   constructor(
     private _snackBar: MatSnackBar,
     public router: Router,
