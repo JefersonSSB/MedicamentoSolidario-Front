@@ -38,7 +38,7 @@
       </button>
       <button mat-button mat-button [matMenuTriggerFor]="sair" *ngIf="!auth()">
         <mat-icon>account_circle</mat-icon>
-        {{ usuario }}
+        {{ nome }}
       </button>
       <mat-menu #sair="matMenu" yPosition="below">
         <button mat-menu-item (click)="logout()" routerLink="/">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CryptoService } from '../auth/crypto.service';
 
 @Component({
   selector: 'app-header-bar',
@@ -9,41 +10,36 @@ import { Component, OnInit } from '@angular/core';
 
 export class HeaderBarComponent implements OnInit {
 
-  isAuthenticated: boolean;
-  usuario = "admin";
-
-  public isAuth(bol: boolean): void {
-
-    {
-      this.isAuthenticated = bol;
-    }
-  }
-
-
   public menu: HeaderBarComponent
 
 
-  constructor() {
+  constructor(private cryptoService: CryptoService) {
 
   }
   ngOnInit() {
 
-    localStorage.setItem("isAuth", "false");
+    if (sessionStorage.getItem('isAuth') == null) {
 
+      sessionStorage.removeItem("id");
+      sessionStorage.removeItem("nome");
+      sessionStorage.removeItem("role");
+    }
+  }
+
+  get nome(): string {
+    return this.cryptoService.decrypto(sessionStorage.getItem('nome'))?.split(" ")[0];
   }
 
   public auth(): boolean {
-
-    return localStorage.getItem('isAuth') === "false";
-
+    return this.cryptoService.decrypto(sessionStorage.getItem('isAuth')) !== "true";
   };
 
 
   logout() {
-
-    this.ngOnInit();
-
-
+    sessionStorage.removeItem("isAuth");
+    sessionStorage.removeItem("id");
+    sessionStorage.removeItem("nome");
+    sessionStorage.removeItem("role");
   }
 
 
