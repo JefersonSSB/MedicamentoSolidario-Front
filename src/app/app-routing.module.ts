@@ -15,6 +15,7 @@ import { ReceberMedicamentoComponent } from "./receber-medicamento/receber-medic
 import { ListMedicamentosComponent } from "./list-medicamentos/list-medicamentos.component";
 import { ComfirmaCpfComponent } from "./comfirma-cpf/comfirma-cpf.component"
 import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
+import { MyMedicamentosComponent } from './my-medicamentos/my-medicamentos.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: "medicamentoLista", component: MedicamentoListComponent },
   { path: "receberMedicamento/:id/:nome", component: ReceberMedicamentoComponent },
   { path: "list-medicamentos", component: ListMedicamentosComponent },
+  { path: "my-medicamentos", component: MyMedicamentosComponent },
   { path: "verificaCpf", component: ComfirmaCpfComponent },
   { path: "recureparSenha", component: RecuperarSenhaComponent },
 ];

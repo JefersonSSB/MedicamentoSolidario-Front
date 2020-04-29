@@ -52,6 +52,7 @@ import { ComfirmaCpfComponent } from './comfirma-cpf/comfirma-cpf.component';
 import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
 import { AddMedDialogComponent } from './list-medicamentos/add-med-dialog/add-med-dialog.component';
 import { InfoPontoColetaComponent } from './list-medicamentos/info-ponto-coleta/info-ponto-coleta.component';
+import { MyMedicamentosComponent } from './my-medicamentos/my-medicamentos.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -78,6 +79,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     RecuperarSenhaComponent,
     AddMedDialogComponent,
     InfoPontoColetaComponent,
+    MyMedicamentosComponent,
 
   ],
   //entryComponents: [DialogOverviewExample, DialogOverviewExampleDialog],
