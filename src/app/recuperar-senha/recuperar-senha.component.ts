@@ -14,7 +14,6 @@ export class RecuperarSenhaComponent implements OnInit {
   loading = false;
   mask = '000.000.000-00'
   constructor(
-    private _snackBar: MatSnackBar,
     public router: Router,
     private snackBar: MatSnackBar,
     private recuperarSenhaService: RecuperarSenhaService
