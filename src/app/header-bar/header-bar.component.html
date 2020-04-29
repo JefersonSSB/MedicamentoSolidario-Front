@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container" [hasBackdrop]="false">
   <mat-toolbar class="expanded-toolbar">
     <mat-toolbar-row>
-      <button *ngIf="!auth()" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+      <button *ngIf="authAdm()" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <img class="imageLogo" src="assets/images/logo.png" routerLink="/" />
@@ -10,23 +10,23 @@
         <button mat-menu-item routerLink="list-medicamentos">Solicitar Medicamentos</button>
         <button mat-menu-item routerLink="my-medicamentos">Minhas Solicitações</button>
       </mat-menu>
-      <button mat-button [matMenuTriggerFor]="user">Usuario</button>
+      <button *ngIf="authAdm()" mat-button [matMenuTriggerFor]="user">Usuario</button>
       <mat-menu #user="matMenu" yPosition="below">
         <button mat-menu-item routerLink="usuarioCadastro">Cadastro</button>
         <button mat-menu-item routerLink="usuarioLista">Lista</button>
       </mat-menu>
-      <button mat-button [matMenuTriggerFor]="pontoColeta">
+      <button *ngIf="authAdm()" mat-button [matMenuTriggerFor]="pontoColeta">
         Ponto de Coleta
       </button>
       <mat-menu #pontoColeta="matMenu" yPosition="below">
         <button mat-menu-item routerLink="pontoColetaCadastro">Cadastro</button>
         <button mat-menu-item routerLink="pontoColetaList">Lista</button>
       </mat-menu>
-      <button mat-button routerLink="medicamentoLista">
+      <button *ngIf="authAdm()" mat-button routerLink="medicamentoLista">
         Medicamento
       </button>
 
-      <button mat-button routerLink="verificaCpf">
+      <button *ngIf="(authAdm() || authVoluntario() )" mat-button routerLink="verificaCpf">
         Receber Medicamento
       </button>
 

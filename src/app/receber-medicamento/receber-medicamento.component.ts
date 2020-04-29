@@ -72,9 +72,10 @@ export class ReceberMedicamentoComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     const idv = this.cryptoService.decrypto(sessionStorage.getItem('id'))
 
-    if ((id === null) && (idv == null)) {
 
-      this.router.navigate[("/")];
+    if (this.cryptoService.decrypto(sessionStorage.getItem('isAuth')) !== 'true') {
+
+      this.router.navigate(["/login"]);
     }
 
 
@@ -95,6 +96,10 @@ export class ReceberMedicamentoComponent implements OnInit {
       medicamentos: this.formBuilder.array([this.medicamento()], Validators.required),
     });
     this.remove(0);
+  }
+
+  get nome(): string {
+    return this.cryptoService.decrypto(sessionStorage.getItem('nome'));
   }
 
   showMessage(msg: string, isError: boolean = false): void {

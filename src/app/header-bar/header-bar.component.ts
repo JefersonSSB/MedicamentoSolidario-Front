@@ -41,7 +41,7 @@ export class HeaderBarComponent implements OnInit {
   };
 
   public authVoluntario(): boolean {
-    return this.cryptoService.decrypto(sessionStorage.getItem('isAuth')) === "ROLE_INTERMEDIADOR";
+    return this.cryptoService.decrypto(sessionStorage.getItem('role')) === "ROLE_INTERMEDIADOR";
   };
 
 

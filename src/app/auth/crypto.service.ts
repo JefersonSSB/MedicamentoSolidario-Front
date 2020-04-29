@@ -28,18 +28,19 @@ export class CryptoService {
 
   decrypto(request: string): string {
     if (request == null) {
-      request = '';
+      return null;
     }
-    let _key = CryptoJS.enc.Utf8.parse(this.tokenFromUI);
-    let _iv = CryptoJS.enc.Utf8.parse(this.tokenFromUI);
+    else {
+      let _key = CryptoJS.enc.Utf8.parse(this.tokenFromUI);
+      let _iv = CryptoJS.enc.Utf8.parse(this.tokenFromUI);
 
-    return CryptoJS.AES.decrypt(
-      request, _key, {
-      keySize: 16,
-      iv: _iv,
-      mode: CryptoJS.mode.ECB,
-      padding: CryptoJS.pad.Pkcs7
-    }).toString(CryptoJS.enc.Utf8).replace(/"/g, '');
+      return CryptoJS.AES.decrypt(
+        request, _key, {
+        keySize: 16,
+        iv: _iv,
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7
+      }).toString(CryptoJS.enc.Utf8).replace(/"/g, '');
+    }
   }
-
 }

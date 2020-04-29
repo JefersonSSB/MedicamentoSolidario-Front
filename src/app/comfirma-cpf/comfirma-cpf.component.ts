@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ComfirmaCpfService } from "./comfirma-cpf.service";
+import { CryptoService } from '../auth/crypto.service';
 
 export interface User {
   id: number;
@@ -23,7 +24,8 @@ export class ComfirmaCpfComponent implements OnInit {
     private _snackBar: MatSnackBar,
     public router: Router,
     private comfirmaCpfService: ComfirmaCpfService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private cryptoService: CryptoService
   ) {
   }
 
@@ -34,6 +36,10 @@ export class ComfirmaCpfComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (this.cryptoService.decrypto(sessionStorage.getItem('isAuth')) !== 'true') {
+
+      this.router.navigate([""]);
+    }
 
   }
 

@@ -136,7 +136,7 @@ export class ListMedicamentosComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.cryptoService.decrypto(sessionStorage.getItem('isAuth')) !== 'true') {
-      this.router.navigate([""]);
+      this.router.navigate(["/login"]);
     } else {
       this.getPontosDeColeta();
       this.displayedColumns = ['nome', 'add', 'pontoDeColeta'];
