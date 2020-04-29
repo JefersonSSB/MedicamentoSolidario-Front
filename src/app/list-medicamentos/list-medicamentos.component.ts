@@ -28,6 +28,7 @@ export class ListMedicamentosComponent implements OnInit {
 
     medicamentos :MatTableDataSource<Medicamento>;
     medicamentosParaPedido: Medicamento[] = [];
+    medList:Medicamento[]= [];
     displayedColumns:any[];
     totalMedicamentos:number;
     pontosDeColeta:PontoColeta[];
@@ -78,15 +79,14 @@ export class ListMedicamentosComponent implements OnInit {
 
     fazPedido(medicamentos:Medicamento[]){
       var pedido:Pedido = {
+        id: 0,
         data: new Date(),
-        id: 1,
-        idUsuario: 1,
+        idUsauruaio: parseInt(localStorage.getItem('id'), 10),
         medicamentos,
         justificativa:'aaa',
         recebimentoID: 1,
       }
       this.listMedicamentosService.fazerPedido(pedido).subscribe(result =>{
-        console.log(result);
         this.getPontosDeColeta();
       },err =>{
         console.log(err.error.message);
@@ -108,14 +108,13 @@ export class ListMedicamentosComponent implements OnInit {
     }
     setAtributesMedicamentos(medicamentos:Medicamento[], pontoColeta:string){
       var itens = 0;
-      var medList:Medicamento[]= [];
       medicamentos.forEach((medicamento) =>  {
         medicamento.qtdPedido = 0;
         medicamento.pontoDeColeta = pontoColeta;
-        medList.push(medicamento);
+        this.medList.push(medicamento);
         itens++;
         if(itens === medicamentos.length){
-          this.dataForTable(medList);
+          this.dataForTable(this.medList);
         }
       });
     }
@@ -137,8 +136,12 @@ export class ListMedicamentosComponent implements OnInit {
     }
 
     ngOnInit(): void {
-      this.getPontosDeColeta();
-      this.displayedColumns = ['nome','quantidade','estoque','pontoDeColeta'];
+      if(window.localStorage.getItem('isAuth') === 'false' ){
+        history.back();
+      } else {
+        this.getPontosDeColeta();
+        this.displayedColumns = ['nome','quantidade','estoque','pontoDeColeta'];
+      }
     }
 
   }

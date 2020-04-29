@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Medicamento } from '../models/medicamento';
+
 
 @Component({
   selector: 'app-solicitar-medicamentos',
@@ -21,6 +21,8 @@ export class SolicitarMedicamentosComponent {
       this.dialogRef.close();
     }
     Oninit(){
-
+      if(window.localStorage.getItem('isAuth') === 'false' ){
+        ;
+      }
     }
 }

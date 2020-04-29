@@ -65,6 +65,7 @@ export class LoginComponent {
     this.service.login(this.form.value).subscribe(
       (result) => {
         localStorage.setItem("isAuth", "true");
+        localStorage.setItem("id", result.Id);
         this.showMessage("Logado com Sucesso !");
         this.router.navigate(["/"]);
         this.loading = false;

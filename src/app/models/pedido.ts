@@ -1,9 +1,9 @@
 import { Medicamento } from './medicamento';
 
 export class Pedido {
-  id: number;
+  id?: number;
   data: Date;
-  idUsuario: number;
+  idUsauruaio: number;
   medicamentos:Medicamento[];
   justificativa: string;
   recebimentoID: number;
