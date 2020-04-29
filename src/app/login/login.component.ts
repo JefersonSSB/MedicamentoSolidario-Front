@@ -4,6 +4,8 @@ import { Input, Component, Output, EventEmitter } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { AuthService } from "../auth/auth.service";
+import { UserData } from '../models/user.data';
+import { CryptoService } from '../auth/crypto.service';
 
 @Component({
   selector: "app-login",
@@ -19,12 +21,14 @@ export class LoginComponent {
   password: string;
   loading = false;
   mask = '000.000.000-00'
+  userData: UserData;
 
   constructor(
     private _snackBar: MatSnackBar,
     public router: Router,
     private authService: AuthService,
-    private service: LoginService
+    private service: LoginService,
+    private cryptoService: CryptoService
   ) {
     if (this.authService.currentUserValue) {
       this.router.navigate(["/"]);
@@ -38,7 +42,7 @@ export class LoginComponent {
   });
 
   auth() {
-    return localStorage.getItem("isAuth") === "false";
+    return this.cryptoService?.decrypto(sessionStorage.getItem('isAuth')) !== "true";
   }
 
   showMessage(msg: string, isError: boolean = false): void {
@@ -63,9 +67,12 @@ export class LoginComponent {
   login() {
     this.loading = true;
     this.service.login(this.form.value).subscribe(
-      (result) => {
-        localStorage.setItem("isAuth", "true");
-        localStorage.setItem("id", result.Id);
+      (data) => {
+        this.userData = data as UserData;
+        sessionStorage.setItem("isAuth", this.cryptoService?.cryptoIn("true"));
+        sessionStorage.setItem("id", this.cryptoService?.cryptoIn(this.userData.Id));
+        sessionStorage.setItem("nome", this.cryptoService?.cryptoIn(this.userData.Nome));
+        sessionStorage.setItem("role", this.cryptoService?.cryptoIn(this.userData.Role));
         this.showMessage("Logado com Sucesso !");
         this.router.navigate(["/"]);
         this.loading = false;
@@ -77,7 +84,6 @@ export class LoginComponent {
           this.loading = false;
         } else {
           this.showMessage("Problema Desconhecido", true);
-          console.log(error.error.error);
           this.loading = false;
         }
       },

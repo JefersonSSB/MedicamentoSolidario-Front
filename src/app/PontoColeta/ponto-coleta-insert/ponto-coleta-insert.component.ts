@@ -10,12 +10,13 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class PontoColetaInsertComponent implements OnInit {
   formulario: FormGroup;
+  debugEnable = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private servicePonto: PontoColetaService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
   titulo = "Cadastro Ponto Coleta";
 
   ngOnInit(): void {
@@ -48,5 +49,9 @@ export class PontoColetaInsertComponent implements OnInit {
   }
   onCancel() {
     this.formulario.reset();
+  }
+
+  debug() {
+    this.debugEnable = !this.debugEnable;
   }
 }

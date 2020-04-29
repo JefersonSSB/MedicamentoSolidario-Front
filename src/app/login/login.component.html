@@ -1,5 +1,5 @@
 <mat-card *ngIf="auth()">
-  <mat-card-title>Login</mat-card-title>
+  <mat-card-title> <img class="imageLogo" src="assets/images/logo.png" routerLink="/" /></mat-card-title>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="login()">
       <p>
@@ -19,12 +19,22 @@
       <p *ngIf="error" class="error">
         {{ error }}
       </p>
+      <div class="btn">
+        <div class="button">
+          <button type="submit" mat-raised-button color="primary"> &nbsp;&nbsp;&nbsp;Entrar&nbsp;&nbsp;&nbsp; </button>
+        </div>
 
-      <div class="button">
-        <button type="submit" mat-raised-button color="primary">Login</button>
+        <div class="button">
+          <button type="button" routerLink="/usuarioCadastro" class='green' mat-raised-button
+            color="primary">Cadastrar</button>
+        </div>
+
+
       </div>
-
+      <br />
+      <a class="link" routerLink="/recureparSenha">Esqueci minha senha?</a>
     </form>
+
 
   </mat-card-content>
 </mat-card>

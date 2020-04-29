@@ -1,34 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { ComfirmaCpfService } from "./comfirma-cpf.service";
-
-export interface User {
-  id: number;
-  nome: string;
-}
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { RecuperarSenhaService } from './recuperar-senha.service';
 
 @Component({
-  selector: 'app-comfirma-cpf',
-  templateUrl: './comfirma-cpf.component.html',
-  styleUrls: ['./comfirma-cpf.component.css']
+  selector: 'app-recuperar-senha',
+  templateUrl: './recuperar-senha.component.html',
+  styleUrls: ['./recuperar-senha.component.css']
 })
-export class ComfirmaCpfComponent implements OnInit {
+export class RecuperarSenhaComponent implements OnInit {
 
   loading = false;
-  user: User;
   mask = '000.000.000-00'
   constructor(
     private _snackBar: MatSnackBar,
     public router: Router,
-    private comfirmaCpfService: ComfirmaCpfService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private recuperarSenhaService: RecuperarSenhaService
   ) {
   }
 
   form: FormGroup = new FormGroup({
-    cpf: new FormControl("", Validators.required)
+    email: new FormControl("", Validators.required),
+    cpf: new FormControl("", [Validators.email, Validators.required])
     //grant_type: new FormControl("password"),
   });
 
@@ -41,17 +36,16 @@ export class ComfirmaCpfComponent implements OnInit {
   busca() {
 
     this.loading = true;
-    this.comfirmaCpfService.loadByCpf(this.form.get('cpf').value).subscribe(
+    this.recuperarSenhaService.save(this.form.value).subscribe(
       dados => {
-        this.user = dados;
+        this.showMessage("Nova senha Enviada!")
         this.loading = false
-        this.router.navigate(["receberMedicamento", this.user.id, this.user.nome]);
+        this.form.reset();
       },
       error => {
-        this.showMessage("CPF não encontrado!", true),
+        this.showMessage("CPF ou Email não encontrado!", true),
           this.loading = false
       }
-
     );
 
 
@@ -61,7 +55,7 @@ export class ComfirmaCpfComponent implements OnInit {
 
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
-      duration: 3000,
+      duration: 4000,
       horizontalPosition: "center",
       verticalPosition: "bottom",
       panelClass: isError ? ['msg-error'] : ['msg-success']
