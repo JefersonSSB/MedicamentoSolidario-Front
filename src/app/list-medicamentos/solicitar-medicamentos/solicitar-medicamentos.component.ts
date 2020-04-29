@@ -28,11 +28,6 @@ export class SolicitarMedicamentosComponent implements OnInit {
 
     ngOnInit() {
       this.medicamentos =  new MatTableDataSource(this.data);
-      this.dialogRef.afterClosed().subscribe(data => {
-      if(data !== undefined){
-          this.fazPedido(data);
-        }
-      });
     }
 
      // -------------------
@@ -49,7 +44,9 @@ export class SolicitarMedicamentosComponent implements OnInit {
       console.log(pedido);
       this.listMedicamentosService.fazerPedido(pedido).subscribe(data =>{
         console.log(data);
-
+        this.dialogRef.close();
+        this.medicamentos.data.splice(0,this.medicamentos.data.length);
+        this.medicamentos._updateChangeSubscription();
       },err =>{
         console.log(err.error);
       });

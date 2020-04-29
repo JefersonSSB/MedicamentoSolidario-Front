@@ -28,7 +28,7 @@
   </table>
 
   <mat-card-actions class="footer-buttons">
-    <button mat-raised-button color="primary" [mat-dialog-close]="medicamentos" [disabled]="disabled">Solicitar</button>
+    <button mat-raised-button color="primary"  (click)="fazPedido(medicamentos)" [disabled]="disabled">Solicitar</button>
     <button mat-raised-button color="warn" (click)="onNoClick()" >Cancelar</button>
   </mat-card-actions>
 </mat-card>
