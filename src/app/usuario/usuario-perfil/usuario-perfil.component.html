@@ -1,0 +1,71 @@
+<mat-card class="cadastro">
+  <mat-card-header>
+    <mat-card-title>Usuario Perfil</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="cartoesCorpo">
+    <br />
+    <span class="Doinfo"> <strong> Nome: </strong>{{formGroup.get('nome').value}}</span>
+    <br />
+    <hr>
+    <br />
+    <span class="Doinfo"> <strong> CPF: </strong>{{formGroup.get('cpf').value}}</span>
+    <br />
+    <hr>
+    <br />
+    <span class="Doinfo"> <strong>Sexo:</strong> {{formGroup.get('sexo').value}}</span>
+    <br />
+    <hr>
+    <br />
+    <span class="Doinfo"> <strong>Telefone: </strong>{{formGroup.get('telefone').value}}</span>
+    <br />
+    <hr>
+    <br />
+    <span class="Doinfo"> <strong> Data de Nascimento: </strong>{{formGroup.get('dataNascimento').value}}</span>
+    <br />
+    <hr>
+    <br />
+    <span class="Doinfo"> <strong>Email: </strong>{{formGroup.get('email').value}}</span>
+    <br />
+    <hr>
+    <br />
+    <span class="Doinfo"> <strong> Role:</strong> {{formGroup.get('role').value}}</span>
+    <br />
+    <hr>
+    <br />
+    <span class="Doinfo"> <strong> Trocar Senha:</strong></span>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <div class="card">
+        <mat-form-field class="margin" appearance="outline">
+          <mat-label>Nova senha</mat-label>
+          <input formControlName="senha" name="senha" type="password" matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="formGroup.get('senha').hasError('minlength') || formGroup.get('senha').hasError('maxlength') ">
+            A senha deve conter de 4 a 8 caracteres
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="margin" appearance="outline">
+          <mat-label>Confirma Senha</mat-label>
+          <input type="password" formControlName="confirmaSenha" matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="formGroup.get('confirmaSenha').errors?.senhaNull && (formGroup.get('confirmaSenha').dirty || formGroup.get('confirmaSenha').touched)">
+            As senhas não coincidem.
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!formGroup.valid">
+          Trocar Senha
+        </button>
+      </div>
+    </form>
+
+  </mat-card-content>
+</mat-card>

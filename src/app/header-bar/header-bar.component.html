@@ -43,6 +43,11 @@
         {{ nome }}
       </button>
       <mat-menu #sair="matMenu" yPosition="below">
+        <button mat-menu-item (click)="perfil()" routerLink="/">
+          <mat-icon>
+            build
+          </mat-icon>Perfil
+        </button>
         <button mat-menu-item (click)="logout()" routerLink="/">
           <mat-icon>exit_to_app</mat-icon>Logout
         </button>

@@ -12,6 +12,7 @@ import { Router } from "@angular/router";
 import { NgClass } from '@angular/common';
 import { PopUpDeleteComponent } from "./../Shared/pop-up-delete/pop-up-delete.component";
 import { PontoColetaService } from "./../PontoColeta/ponto-coleta.service";
+import { CryptoService } from '../auth/crypto.service';
 
 export interface DialogData {
   dataValidade: string;
@@ -63,13 +64,15 @@ export class ReceberMedicamentoComponent implements OnInit {
     private _snackBar: MatSnackBar,
     public router: Router,
     private pontoService: PontoColetaService,
+    private cryptoService: CryptoService
   ) { }
 
   ngOnInit(): void {
 
     const id = this.route.snapshot.paramMap.get('id');
+    const idv = this.cryptoService.decrypto(sessionStorage.getItem('id'))
 
-    if (id === null) {
+    if ((id === null) && (idv == null)) {
 
       this.router.navigate[("/")];
     }
@@ -87,7 +90,7 @@ export class ReceberMedicamentoComponent implements OnInit {
     this.formDoacao = this.formBuilder.group({
       idDoador: [id, Validators.required],
       idPonto: [, Validators.required],
-      idVoluntario: [1, Validators.required],
+      idVoluntario: [idv, Validators.required],
       obs: ['',],
       medicamentos: this.formBuilder.array([this.medicamento()], Validators.required),
     });

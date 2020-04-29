@@ -13,7 +13,6 @@ export class CryptoService {
   constructor() {
   }
 
-
   cryptoIn(request: string): string {
     let _key = CryptoJS.enc.Utf8.parse(this.tokenFromUI);
     let _iv = CryptoJS.enc.Utf8.parse(this.tokenFromUI);
@@ -42,6 +41,5 @@ export class CryptoService {
       padding: CryptoJS.pad.Pkcs7
     }).toString(CryptoJS.enc.Utf8).replace(/"/g, '');
   }
-
 
 }

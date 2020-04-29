@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CryptoService } from '../auth/crypto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-bar',
@@ -13,7 +14,8 @@ export class HeaderBarComponent implements OnInit {
   public menu: HeaderBarComponent
 
 
-  constructor(private cryptoService: CryptoService) {
+  constructor(private cryptoService: CryptoService,
+    private router: Router) {
 
   }
   ngOnInit() {
@@ -50,7 +52,11 @@ export class HeaderBarComponent implements OnInit {
     sessionStorage.removeItem("nome");
     sessionStorage.removeItem("role");
   }
+  perfil() {
 
+    this.router.navigate(["usuarioPefil", this.cryptoService.decrypto(sessionStorage.getItem('id'))]);
+
+  }
 
 
 }
