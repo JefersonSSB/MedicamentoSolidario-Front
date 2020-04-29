@@ -54,12 +54,6 @@ export class ListMedicamentosComponent implements OnInit {
         height: '600px',
         data: this.medicamentosParaPedido
       });
-
-      dialogRef.afterClosed().subscribe(result => {
-        if(result !== undefined){
-          this.fazPedido(result);
-        }
-      });
     }
 
     addMedicamento(element): void {
@@ -89,25 +83,6 @@ export class ListMedicamentosComponent implements OnInit {
       });
     }
 
-
-    // -------------------
-    fazPedido(medicamentos:Medicamento[]){
-      this.isLoaded = false;
-      var pedido:Pedido = {
-        id: 0,
-        data: new Date(),
-        idUsuario: parseInt(localStorage.getItem('id'), 10),
-        medicamentos,
-        justificativa:'',
-        recebimentoID: 1,
-      }
-      this.listMedicamentosService.fazerPedido(pedido).subscribe(result =>{
-        this.getPontosDeColeta();
-        this.medicamentosParaPedido = [];
-      },err =>{
-        console.log(err);
-      });
-    }
     // Obter A lista de midcamentos será dividida em tres etaps Obter Ponto de Coleta Atribuir variaveis e Aplicar filtros
     getPontosDeColeta(){
       this.medList= [];
