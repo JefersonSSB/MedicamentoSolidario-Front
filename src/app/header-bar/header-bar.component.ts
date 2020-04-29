@@ -34,6 +34,15 @@ export class HeaderBarComponent implements OnInit {
     return this.cryptoService.decrypto(sessionStorage.getItem('isAuth')) !== "true";
   };
 
+  public authAdm(): boolean {
+    return this.cryptoService.decrypto(sessionStorage.getItem('role')) === "ROLE_ADMIN";
+  };
+
+  public authVoluntario(): boolean {
+    return this.cryptoService.decrypto(sessionStorage.getItem('isAuth')) === "ROLE_INTERMEDIADOR";
+  };
+
+
 
   logout() {
     sessionStorage.removeItem("isAuth");
