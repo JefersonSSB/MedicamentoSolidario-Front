@@ -44,12 +44,14 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { ReceberMedicamentoComponent, FormMedicamentoComponent } from './receber-medicamento/receber-medicamento.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ListMedicamentosComponent } from './list-medicamentos/list-medicamentos.component';
-import { SolicitarMedicamentosComponent } from './solicitar-medicamentos/solicitar-medicamentos.component';
+import { SolicitarMedicamentosComponent } from './list-medicamentos/solicitar-medicamentos/solicitar-medicamentos.component';
 import { MedicamentoFormComponent } from './Medicamento/medicamento-form/medicamento-form.component';
 import { MedicamentoListComponent } from './Medicamento/medicamento-list/medicamento-list.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ComfirmaCpfComponent } from './comfirma-cpf/comfirma-cpf.component';
 import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
+import { AddMedDialogComponent } from './list-medicamentos/add-med-dialog/add-med-dialog.component';
+import { InfoPontoColetaComponent } from './list-medicamentos/info-ponto-coleta/info-ponto-coleta.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -74,6 +76,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MedicamentoListComponent,
     ComfirmaCpfComponent,
     RecuperarSenhaComponent,
+    AddMedDialogComponent,
+    InfoPontoColetaComponent,
 
   ],
   //entryComponents: [DialogOverviewExample, DialogOverviewExampleDialog],

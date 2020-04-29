@@ -1,14 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { ListMedicamentoService } from './list-medicamento.service';
 import { Medicamento } from '../models/medicamento';
 import { MatDialog } from '@angular/material/dialog';
-import { SolicitarMedicamentosComponent } from '../solicitar-medicamentos/solicitar-medicamentos.component';
+import { SolicitarMedicamentosComponent } from './solicitar-medicamentos/solicitar-medicamentos.component';
 import { PontoColetaService } from '../PontoColeta/ponto-coleta.service';
 import { PontoColeta } from '../models/pontoColeta';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Pedido } from '../models/pedido';
+import { AddMedDialogComponent } from './add-med-dialog/add-med-dialog.component';
+import { InfoPontoColetaComponent } from './info-ponto-coleta/info-ponto-coleta.component';
 
 
 @Component({
@@ -40,30 +42,13 @@ export class ListMedicamentosComponent implements OnInit {
 
 
     solicitarMedicamentos(){
-      this.openDialog();
+      this.verPedido();
     }
 
-    controller(element:Medicamento, action:string){
-      switch(action)
-      {
-        case '+':
-        element.quantidade--;
-        element.qtdPedido++;
-        if(this.medicamentosParaPedido.indexOf(element) === -1) {
-          this.medicamentosParaPedido.push(element);
-        }
-        break;
-        case '-':
-        element.quantidade++;
-        element.qtdPedido--;
-        if(element.qtdPedido ===  0) {
-          this.medicamentosParaPedido.splice(this.medicamentosParaPedido.indexOf(element),1);
-        }
-        break
-      }
-    }
 
-    openDialog(): void {
+   // Dialogs Section
+
+    verPedido(): void {
       const dialogRef = this.dialog.open(SolicitarMedicamentosComponent, {
         width: '40%',
         height: '600px',
@@ -77,36 +62,70 @@ export class ListMedicamentosComponent implements OnInit {
       });
     }
 
+    addMedicamento(element): void {
+      const dialogRef = this.dialog.open(AddMedDialogComponent, {
+        width: '40%',
+        height: 'auto',
+        data: element,
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if(result !== undefined){
+          if(this.medicamentosParaPedido.indexOf(element) === -1) {
+            this.medicamentosParaPedido.push(result);
+          }
+          if(element.qtdPedido ===  0) {
+            this.medicamentosParaPedido.splice(this.medicamentosParaPedido.indexOf(result),1);
+          }
+        }
+      });
+    }
+    // Informações sobre o ponto de coleta do medicamento
+    infoPontoColeta(pontoColeta:PontoColeta){
+      const dialogRef = this.dialog.open(InfoPontoColetaComponent, {
+        width: '40%',
+        height: 'auto',
+        data: pontoColeta,
+      });
+    }
+
+
+    // -------------------
     fazPedido(medicamentos:Medicamento[]){
+      this.isLoaded = false;
       var pedido:Pedido = {
         id: 0,
         data: new Date(),
-        idUsauruaio: parseInt(localStorage.getItem('id'), 10),
+        idUsuario: parseInt(localStorage.getItem('id'), 10),
         medicamentos,
-        justificativa:'aaa',
+        justificativa:'',
         recebimentoID: 1,
       }
       this.listMedicamentosService.fazerPedido(pedido).subscribe(result =>{
         this.getPontosDeColeta();
+        this.medicamentosParaPedido = [];
       },err =>{
-        console.log(err.error.message);
+        console.log(err);
       });
     }
     // Obter A lista de midcamentos será dividida em tres etaps Obter Ponto de Coleta Atribuir variaveis e Aplicar filtros
     getPontosDeColeta(){
+      this.medList= [];
       this.listPontoDeColeta.list().subscribe(pontosDeColeta => {
         this.getMedicaMentosByPonto(pontosDeColeta);
       });
     }
+
     getMedicaMentosByPonto(pontosDeColeta:PontoColeta[]){
       this.pontosDeColeta =  pontosDeColeta;
       pontosDeColeta.forEach(pontoDeColeta => {
         this.listMedicamentosService.getMedicamentos(pontoDeColeta.id).subscribe(medicamentos => {
-          this.setAtributesMedicamentos(medicamentos, pontoDeColeta.nome);
+          this.setAtributesMedicamentos(medicamentos, pontoDeColeta);
         })
       });
     }
-    setAtributesMedicamentos(medicamentos:Medicamento[], pontoColeta:string){
+
+    setAtributesMedicamentos(medicamentos:Medicamento[], pontoColeta:PontoColeta){
       var itens = 0;
       medicamentos.forEach((medicamento) =>  {
         medicamento.qtdPedido = 0;
@@ -140,7 +159,7 @@ export class ListMedicamentosComponent implements OnInit {
         history.back();
       } else {
         this.getPontosDeColeta();
-        this.displayedColumns = ['nome','quantidade','estoque','pontoDeColeta'];
+        this.displayedColumns = ['nome','add','pontoDeColeta'];
       }
     }
 

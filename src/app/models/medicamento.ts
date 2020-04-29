@@ -1,3 +1,5 @@
+import { PontoColeta } from '../receber-medicamento/receber-medicamento.component';
+
 export class Medicamento {
   dataValidade: string;
   id: number;
@@ -11,5 +13,5 @@ export class Medicamento {
   tipoReceita: string;
   data: string;
   qtdPedido?: number;
-  pontoDeColeta?:string;
+  pontoDeColeta?:PontoColeta;
 }

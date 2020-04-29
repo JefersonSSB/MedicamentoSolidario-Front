@@ -19,3 +19,12 @@ table {
 .footer-buttons {
   margin-left: 80%;
 }
+.headButton{
+  top: -3px;
+  margin-left: 10px;
+  height: 50px;
+  width: 100px;
+}
+.buttonPontoColeta{
+  background-color: #22b14c;
+}
