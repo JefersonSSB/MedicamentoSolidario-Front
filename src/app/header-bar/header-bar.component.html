@@ -27,7 +27,7 @@
       </button>
 
       <button *ngIf="(authAdm() || authVoluntario() )" mat-button routerLink="verificaCpf">
-        Receber Medicamento
+        Receber Doação
       </button>
 
       <span class="example-spacer"></span>
@@ -38,7 +38,7 @@
       <button class="login" mat-button routerLink="/usuarioCadastro" *ngIf="auth()">
         Cadastrar
       </button>
-      <button mat-button mat-button [matMenuTriggerFor]="sair" *ngIf="!auth()">
+      <button mat-button mat-button [matMenuTriggerFor]="sair" *ngIf="!auth() ">
         <mat-icon>account_circle</mat-icon>
         {{ nome }}
       </button>
@@ -48,7 +48,7 @@
             build
           </mat-icon>Perfil
         </button>
-        <button mat-menu-item (click)="logout()" routerLink="/">
+        <button mat-menu-item (click)="logout()" (click)="drawer.close()" routerLink="/">
           <mat-icon>exit_to_app</mat-icon>Logout
         </button>
       </mat-menu>
@@ -56,8 +56,18 @@
   </mat-toolbar>
 
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true" mode="side">
-    <mat-toolbar class="headMenuSide">Menu</mat-toolbar>
+    <mat-toolbar *ngIf="authAdm()" class="headMenuSide">Menu</mat-toolbar>
     <mat-nav-list>
+      <mat-expansion-panel style="box-shadow: none;">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Solicitação
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <button mat-menu-item routerLink="list-medicamentos">Solicitar</button>
+        <button mat-menu-item routerLink="my-medicamentos">Minhas Solicitações</button>
+      </mat-expansion-panel>
+
       <mat-expansion-panel style="box-shadow: none;">
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -72,24 +82,19 @@
       <mat-expansion-panel style="box-shadow: none;">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Medicamentos
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <button mat-menu-item routerLink="medicamentoInserir">Inserir</button>
-        <button mat-menu-item routerLink="medicamentoLista">Lista</button>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel style="box-shadow: none;">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
             Ponto de Coleta
           </mat-panel-title>
         </mat-expansion-panel-header>
 
+
+
         <button mat-menu-item routerLink="pontoColetaCadastro">Cadastro</button>
         <button mat-menu-item routerLink="pontoColetaList">Lista</button>
       </mat-expansion-panel>
+
+      <button class="sideitem" mat-menu-item routerLink="medicamentoLista">Medicamentos</button>
+      <button class="sideitem" mat-menu-item routerLink="verificaCpf">Receber Doação</button>
+
     </mat-nav-list>
   </mat-sidenav>
   <router-outlet></router-outlet>
