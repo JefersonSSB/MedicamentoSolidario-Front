@@ -1,12 +1,12 @@
-import { PontoColetaService } from "./../ponto-coleta.service";
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { PontoColetaService } from './../ponto-coleta.service';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-ponto-coleta-insert",
-  templateUrl: "./ponto-coleta-insert.component.html",
-  styleUrls: ["./ponto-coleta-insert.component.css"],
+  selector: 'app-ponto-coleta-insert',
+  templateUrl: './ponto-coleta-insert.component.html',
+  styleUrls: ['./ponto-coleta-insert.component.css'],
 })
 export class PontoColetaInsertComponent implements OnInit {
   formulario: FormGroup;
@@ -16,11 +16,11 @@ export class PontoColetaInsertComponent implements OnInit {
     private formBuilder: FormBuilder,
     private servicePonto: PontoColetaService,
     private route: ActivatedRoute
-  ) { }
-  titulo = "Cadastro Ponto Coleta";
+  ) {}
+  titulo = 'Cadastro Ponto Coleta';
 
   ngOnInit(): void {
-    const pontoColeta = this.route.snapshot.data["pontoColeta"];
+    const pontoColeta = this.route.snapshot.data['pontoColeta'];
 
     this.formulario = this.formBuilder.group({
       id: [pontoColeta.id],
@@ -38,11 +38,11 @@ export class PontoColetaInsertComponent implements OnInit {
   }
   onSubmit() {
     if (this.formulario.valid) {
-      console.log("submit");
+      console.log('submit');
       this.servicePonto.save(this.formulario.value).subscribe(
-        (success) => console.log("salvo com sucesso!"),
+        (success) => console.log('salvo com sucesso!'),
         (error) => console.error(error),
-        () => console.log("request completo")
+        () => console.log('request completo')
       );
       console.log(this.formulario.value);
     }

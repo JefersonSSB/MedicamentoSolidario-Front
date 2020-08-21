@@ -1,13 +1,13 @@
-import { MedicamentoService } from "./../medicamento.service";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { MedicamentoService } from './../medicamento.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: "app-medicamento-form",
-  templateUrl: "./medicamento-form.component.html",
-  styleUrls: ["./medicamento-form.component.css"],
+  selector: 'app-medicamento-form',
+  templateUrl: './medicamento-form.component.html',
+  styleUrls: ['./medicamento-form.component.css'],
 })
 export class MedicamentoFormComponent implements OnInit {
   formulario: FormGroup;
@@ -17,14 +17,13 @@ export class MedicamentoFormComponent implements OnInit {
     private service: MedicamentoService,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private router: Router,
-  ) { }
+    private router: Router
+  ) {}
 
-  titulo = "Formulario Medicamentos";
+  titulo = 'Formulario Medicamentos';
 
   ngOnInit(): void {
-
-    const medicamento = this.route.snapshot.data["medicamento"];
+    const medicamento = this.route.snapshot.data['medicamento'];
     console.log(medicamento.dataVencimento);
     console.log(medicamento.id);
 
@@ -49,23 +48,22 @@ export class MedicamentoFormComponent implements OnInit {
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 3000,
-      horizontalPosition: "center",
-      verticalPosition: "bottom",
-      panelClass: isError ? ['msg-error'] : ['msg-success']
-
-    })
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: isError ? ['msg-error'] : ['msg-success'],
+    });
   }
 
   onSubmit() {
     if (this.formulario.valid) {
-      console.log("submit");
+      console.log('submit');
       this.service.save(this.formulario.value).subscribe(
         (success) => {
-          this.showMessage("Salvo com sucesso!"),
-            this.router.navigate(["/medicamentoLista"]);
+          this.showMessage('Salvo com sucesso!'),
+            this.router.navigate(['/medicamentoLista']);
         },
-        (error) => this.showMessage("Ocorreu um erro!", true),
-        () => console.log("request completo")
+        (error) => this.showMessage('Ocorreu um erro!', true),
+        () => console.log('request completo')
       );
     }
   }
