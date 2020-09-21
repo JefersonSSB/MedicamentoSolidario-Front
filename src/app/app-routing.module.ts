@@ -13,6 +13,7 @@ import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 import { ReceberMedicamentoComponent } from "./receber-medicamento/receber-medicamento.component";
 import { ListMedicamentosComponent } from "./list-medicamentos/list-medicamentos.component";
+import { PedidoPontoComponent } from './pedido-medicamento/pedido-ponto/pedido-ponto.component'
 import { ComfirmaCpfComponent } from "./receber-medicamento/comfirma-cpf/comfirma-cpf.component"
 import { RecuperarSenhaComponent } from './usuario/recuperar-senha/recuperar-senha.component';
 import { MyMedicamentosComponent } from './my-medicamentos/my-medicamentos.component';
@@ -60,7 +61,7 @@ const routes: Routes = [
   },
   { path: "medicamentoLista", component: MedicamentoListComponent },
   { path: "receberMedicamento/:id/:nome", component: ReceberMedicamentoComponent },
-  { path: "list-medicamentos", component: ListMedicamentosComponent },
+  { path: "pedido", component: PedidoPontoComponent },
   { path: "my-medicamentos", component: MyMedicamentosComponent },
   { path: "verificaCpf", component: ComfirmaCpfComponent },
   { path: "recureparSenha", component: RecuperarSenhaComponent },

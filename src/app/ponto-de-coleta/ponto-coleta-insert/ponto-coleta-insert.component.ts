@@ -1,7 +1,8 @@
 import { PontoColetaService } from './../ponto-coleta.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-ponto-coleta-insert',
@@ -13,10 +14,12 @@ export class PontoColetaInsertComponent implements OnInit {
   debugEnable = false;
 
   constructor(
+    private _snackBar: MatSnackBar,
+    public router: Router,
     private formBuilder: FormBuilder,
     private servicePonto: PontoColetaService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
   titulo = 'Cadastro Ponto Coleta';
 
   ngOnInit(): void {
@@ -32,16 +35,33 @@ export class PontoColetaInsertComponent implements OnInit {
       complemento: [pontoColeta.complemento],
       estado: [pontoColeta.estado, Validators.required],
       nome: [pontoColeta.nome, Validators.required],
-      numero: [pontoColeta.numero],
+      numero: [pontoColeta.numero, Validators.required],
       rua: [pontoColeta.rua],
+    });
+  }
+
+  showMessage(msg: string, isError: boolean = false): void {
+    this._snackBar.open(msg, 'X', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: isError ? ['msg-error'] : ['msg-success'],
     });
   }
   onSubmit() {
     if (this.formulario.valid) {
       console.log('submit');
       this.servicePonto.save(this.formulario.value).subscribe(
-        (success) => console.log('salvo com sucesso!'),
-        (error) => console.error(error),
+        (success) => {
+          this.showMessage('Salvo com Sucesso!');
+          console.log('salvo com sucesso!')
+          this.router.navigate(['/']);
+        }
+        ,
+        (error) => {
+          this.showMessage('Erro Desconhecido', true);
+          console.error(error);
+        },
         () => console.log('request completo')
       );
       console.log(this.formulario.value);
