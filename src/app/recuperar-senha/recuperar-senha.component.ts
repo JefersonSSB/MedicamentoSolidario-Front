@@ -21,8 +21,8 @@ export class RecuperarSenhaComponent implements OnInit {
   }
 
   form: FormGroup = new FormGroup({
-    email: new FormControl("", Validators.required),
-    cpf: new FormControl("", [Validators.email, Validators.required])
+    email: new FormControl("", [Validators.required, Validators.email]),
+    cpf: new FormControl("", Validators.required)
     //grant_type: new FormControl("password"),
   });
 

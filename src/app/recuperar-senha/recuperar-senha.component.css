@@ -3,8 +3,10 @@
   justify-content: center;
   margin: 100px 0px;
 }
+
 .mat-card {
-  width: 25%;
+  max-width: 350px;
+  ;
 }
 
 .mat-form-field {
@@ -29,11 +31,13 @@ mat-card-content {
   display: flex;
   justify-content: center;
 }
+
 .spinner {
   position: fixed;
   z-index: 99;
   margin: auto;
 }
+
 ::ng-deep .msg-success {
   background-color: #28a745;
   color: white;
@@ -43,13 +47,16 @@ mat-card-content {
   background-color: rgb(227, 94, 107);
   color: white;
 }
+
 .subt {
   margin: 30px;
 }
+
 mat-icon {
   margin: 8px;
   vertical-align: center;
 }
+
 .button button {
   margin-right: 15px;
   margin-left: 15px;
