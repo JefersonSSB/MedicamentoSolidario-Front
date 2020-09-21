@@ -1,4 +1,4 @@
-import { PopUpDeleteComponent } from './../../Shared/pop-up-delete/pop-up-delete.component';
+import { PopUpDeleteComponent } from './../../shared/pop-up-delete/pop-up-delete.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MedicamentoService } from './../medicamento.service';
@@ -32,7 +32,7 @@ export class MedicamentoListComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.list();

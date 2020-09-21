@@ -1,4 +1,4 @@
-import { PopUpDeleteComponent } from "./Shared/pop-up-delete/pop-up-delete.component";
+import { PopUpDeleteComponent } from "./shared/pop-up-delete/pop-up-delete.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatCardModule } from "@angular/material/card";
 import { BrowserModule } from "@angular/platform-browser";
