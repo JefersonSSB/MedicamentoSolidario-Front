@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CrudService } from "./../Shared/crud-service";
-import { Usuario } from "../models/usuario";
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from "@angular/common/http";
-import { throwError } from "rxjs";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { CrudService } from '../../shared/crud-service';
+import { throwError } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
-export class ComfirmaCpfService extends CrudService<Usuario>{
+export class RecuperarSenhaService extends CrudService<any> {
 
   constructor(protected http: HttpClient) {
-    super(http, "https://medicamento-back.herokuapp.com/api/usuario/cpf");
+    super(http, "https://medicamento-back.herokuapp.com/api/usuario/recuperar-senha");
   }
   // Headers
   httpOptions = {

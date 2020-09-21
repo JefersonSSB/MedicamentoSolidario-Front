@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { CrudService } from "./../Shared/crud-service";
+import { CrudService } from "./../shared/crud-service";
 import { Medicamento } from "./../models/medicamento";
 import { Injectable } from "@angular/core";
 

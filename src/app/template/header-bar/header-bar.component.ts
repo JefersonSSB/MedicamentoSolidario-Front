@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CryptoService } from '../auth/crypto.service';
+import { CryptoService } from '../../auth/crypto.service';
 import { Router } from '@angular/router';
 
 @Component({

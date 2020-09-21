@@ -12,7 +12,7 @@ import { Observable, of } from "rxjs";
   providedIn: "root"
 })
 export class UsuarioResolverGuard implements Resolve<Usuario> {
-  constructor(private service: UsuarioService) {}
+  constructor(private service: UsuarioService) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
@@ -30,7 +30,7 @@ export class UsuarioResolverGuard implements Resolve<Usuario> {
       email: null,
       telefone: null,
       role: null,
-      nascimento: null
+      dataNascimento: null
     });
   }
 }

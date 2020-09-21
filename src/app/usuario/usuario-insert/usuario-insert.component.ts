@@ -20,7 +20,7 @@ export class UsuarioInsertComponent implements OnInit {
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     public router: Router
-  ) {}
+  ) { }
 
   titulo = 'Formulario de Usuários';
   hide = true;
@@ -59,7 +59,14 @@ export class UsuarioInsertComponent implements OnInit {
         (success) => {
           this.showMessage('Salvo com sucesso!'), this.router.navigate(['/']);
         },
-        (error) => this.showMessage('Erro Desconhecido', true),
+        (error) => {
+          if (error.status) {
+            this.showMessage(error.error.message, true)
+          }
+          else {
+            this.showMessage('Erro Desconhecido', true)
+          }
+        },
         () => console.log('request completo')
       );
       console.log(this.formGroup.value);

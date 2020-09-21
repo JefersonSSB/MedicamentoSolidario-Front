@@ -1,4 +1,4 @@
-import { PontoColetaService } from "./../PontoColeta/ponto-coleta.service";
+import { PontoColetaService } from "./../ponto-de-coleta/ponto-coleta.service";
 import { Injectable } from "@angular/core";
 import {
   ActivatedRouteSnapshot,
@@ -12,7 +12,7 @@ import { PontoColeta } from "../models/pontoColeta";
   providedIn: "root",
 })
 export class PontoResolverGuard implements Resolve<PontoColeta> {
-  constructor(private service: PontoColetaService) {}
+  constructor(private service: PontoColetaService) { }
 
   resolve(
     route: ActivatedRouteSnapshot,

@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ComfirmaCpfService } from "./comfirma-cpf.service";
-import { CryptoService } from '../auth/crypto.service';
+import { CryptoService } from '../../auth/crypto.service';
 
 export interface User {
   id: number;

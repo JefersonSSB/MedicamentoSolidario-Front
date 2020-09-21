@@ -3,7 +3,7 @@ import { ListMedicamentoService } from './list-medicamento.service';
 import { Medicamento } from '../models/medicamento';
 import { MatDialog } from '@angular/material/dialog';
 import { SolicitarMedicamentosComponent } from './solicitar-medicamentos/solicitar-medicamentos.component';
-import { PontoColetaService } from '../PontoColeta/ponto-coleta.service';
+import { PontoColetaService } from '../ponto-de-coleta/ponto-coleta.service';
 import { PontoColeta } from '../models/pontoColeta';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';

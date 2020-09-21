@@ -28,11 +28,13 @@ mat-card-content {
   margin-left: 20px;
   margin-right: 20px;
 }
+
 .spinner {
   position: fixed;
   z-index: 99;
   margin: auto;
 }
+
 ::ng-deep .msg-success {
   background-color: #28a745;
   color: white;

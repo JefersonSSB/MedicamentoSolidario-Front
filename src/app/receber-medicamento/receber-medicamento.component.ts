@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { PopUpDeleteComponent } from './../Shared/pop-up-delete/pop-up-delete.component';
-import { PontoColetaService } from './../PontoColeta/ponto-coleta.service';
+import { PontoColetaService } from './../ponto-de-coleta/ponto-coleta.service';
 import { CryptoService } from '../auth/crypto.service';
 
 export interface DialogData {
@@ -62,7 +62,7 @@ export class ReceberMedicamentoComponent implements OnInit {
     public router: Router,
     private pontoService: PontoColetaService,
     private cryptoService: CryptoService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -211,7 +211,7 @@ export class FormMedicamentoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.formMedicamentoDiagol = this.formBuilder.group({

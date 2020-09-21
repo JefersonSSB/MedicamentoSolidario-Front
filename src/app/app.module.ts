@@ -24,7 +24,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatNativeDateModule } from "@angular/material/core";
 import { HttpClientModule } from "@angular/common/http";
-import { HeaderBarComponent } from "./header-bar/header-bar.component";
+import { HeaderBarComponent } from "./template/header-bar/header-bar.component";
 import { MatIconModule } from "@angular/material/icon";
 import { MAT_DATE_LOCALE } from "@angular/material/core";
 import { MatGridListModule } from "@angular/material/grid-list";
@@ -34,12 +34,12 @@ import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 import { UsuarioInsertComponent } from "./usuario/usuario-insert/usuario-insert.component";
 import { CommonModule } from "@angular/common";
-import { PontoColetaInsertComponent } from "./PontoColeta/ponto-coleta-insert/ponto-coleta-insert.component";
-import { FormDebugComponent } from "./form-debug/form-debug.component";
-import { PontoColetaListComponent } from "./PontoColeta/ponto-coleta-list/ponto-coleta-list/ponto-coleta-list.component";
+import { PontoColetaInsertComponent } from "./ponto-de-coleta/ponto-coleta-insert/ponto-coleta-insert.component";
+import { FormDebugComponent } from "./Shared/form-debug/form-debug.component";
+import { PontoColetaListComponent } from "./ponto-de-coleta/ponto-coleta-list/ponto-coleta-list/ponto-coleta-list.component";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { NgxMaskModule, IConfig } from "ngx-mask";
-import { FooterComponent } from "./footer/footer.component";
+import { FooterComponent } from "./template/footer/footer.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReceberMedicamentoComponent, FormMedicamentoComponent } from './receber-medicamento/receber-medicamento.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -48,13 +48,12 @@ import { SolicitarMedicamentosComponent } from './list-medicamentos/solicitar-me
 import { MedicamentoFormComponent } from './Medicamento/medicamento-form/medicamento-form.component';
 import { MedicamentoListComponent } from './Medicamento/medicamento-list/medicamento-list.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ComfirmaCpfComponent } from './comfirma-cpf/comfirma-cpf.component';
-import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
+import { ComfirmaCpfComponent } from './receber-medicamento/comfirma-cpf/comfirma-cpf.component';
+import { RecuperarSenhaComponent } from './usuario/recuperar-senha/recuperar-senha.component';
 import { AddMedDialogComponent } from './list-medicamentos/add-med-dialog/add-med-dialog.component';
 import { InfoPontoColetaComponent } from './list-medicamentos/info-ponto-coleta/info-ponto-coleta.component';
 import { MyMedicamentosComponent } from './my-medicamentos/my-medicamentos.component';
 import { UsuarioPerfilComponent } from './usuario/usuario-perfil/usuario-perfil.component';
-import { RecieveMedicamentoComponent } from './recieve-medicamento/recieve-medicamento.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -83,7 +82,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     InfoPontoColetaComponent,
     MyMedicamentosComponent,
     UsuarioPerfilComponent,
-    RecieveMedicamentoComponent,
 
   ],
   //entryComponents: [DialogOverviewExample, DialogOverviewExampleDialog],

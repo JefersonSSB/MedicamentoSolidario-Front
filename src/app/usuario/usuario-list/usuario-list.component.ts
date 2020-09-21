@@ -33,7 +33,7 @@ export class UsuarioListComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
-    private route: ActivatedRoute,
+
     public dialog: MatDialog,
     private snackBar: MatSnackBar
   ) { }
