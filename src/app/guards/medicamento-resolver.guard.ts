@@ -1,4 +1,4 @@
-import { MedicamentoService } from './../Medicamento/medicamento.service';
+import { MedicamentoService } from './../medicamento/medicamento.service';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,

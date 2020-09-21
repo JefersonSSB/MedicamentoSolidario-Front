@@ -1,4 +1,4 @@
-import { PopUpDeleteComponent } from './../../../Shared/pop-up-delete/pop-up-delete.component';
+import { PopUpDeleteComponent } from './../../../shared/pop-up-delete/pop-up-delete.component';
 import { Router } from '@angular/router';
 import { PontoColeta } from './../../../models/pontoColeta';
 import { PontoColetaService } from './../../ponto-coleta.service';
@@ -23,7 +23,7 @@ export class PontoColetaListComponent implements OnInit {
     private service: PontoColetaService,
     private router: Router,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.list();

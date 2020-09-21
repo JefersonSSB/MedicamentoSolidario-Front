@@ -10,7 +10,7 @@ import { ReceberMedicamentoService } from './receber-medicamento.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
-import { PopUpDeleteComponent } from './../Shared/pop-up-delete/pop-up-delete.component';
+import { PopUpDeleteComponent } from './../shared/pop-up-delete/pop-up-delete.component';
 import { PontoColetaService } from './../ponto-de-coleta/ponto-coleta.service';
 import { CryptoService } from '../auth/crypto.service';
 

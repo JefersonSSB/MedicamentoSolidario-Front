@@ -1,4 +1,4 @@
-import { PopUpDeleteComponent } from "./../../Shared/pop-up-delete/pop-up-delete.component";
+import { PopUpDeleteComponent } from "./../../shared/pop-up-delete/pop-up-delete.component";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { Usuario } from "../../models/usuario";

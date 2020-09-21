@@ -1,6 +1,6 @@
-import { MedicamentoListComponent } from "./Medicamento/medicamento-list/medicamento-list.component";
+import { MedicamentoListComponent } from "./medicamento/medicamento-list/medicamento-list.component";
 import { MedicamentoResolverGuard } from "./guards/medicamento-resolver.guard";
-import { MedicamentoFormComponent } from "./Medicamento/medicamento-form/medicamento-form.component";
+import { MedicamentoFormComponent } from "./medicamento/medicamento-form/medicamento-form.component";
 import { PontoResolverGuard } from "./guards/ponto-resolver.guard";
 import { UsuarioResolverGuard } from "./guards/usuario-resolver.guard";
 import { PontoColetaListComponent } from "./ponto-de-coleta/ponto-coleta-list/ponto-coleta-list/ponto-coleta-list.component";
