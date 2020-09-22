@@ -10,6 +10,7 @@
 .cartoesCorpo {
   margin: 10px;
 }
+
 .spacer button {
   background-color: blue;
 }
@@ -28,16 +29,20 @@ button {
   display: inline-block;
   width: 100%;
 }
+
 .example-spacer {
   flex: 1 1 auto;
 }
+
 .spacer {
   float: right;
 }
+
 .spacer2 {
   float: left;
   padding: 15px;
 }
+
 .corpoSolicitante {
   margin: auto;
   margin-bottom: 5px;
@@ -57,6 +62,7 @@ button {
 .orange {
   color: orange;
 }
+
 .red {
   color: red;
 }
@@ -83,6 +89,7 @@ button {
 .mat-form-field-appearance-outline .mat-form-field-outline {
   color: rgba(0, 0, 0, 0);
 }
+
 .mat-form-field {
   display: block;
 }

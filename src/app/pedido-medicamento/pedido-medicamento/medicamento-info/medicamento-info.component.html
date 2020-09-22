@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Medicamento</h1>
+<div mat-dialog-content>
+  <p> Nome: {{data.nome}} </p>
+  <p> Principio Ativo: {{data.principio}} </p>
+  <p> Tipo de Receita: {{data.tipoReceita}} </p>
+  <p> Tarja: {{data.tarja}} </p>
+  <p> Validade: {{data.dataVencimento}} </p>
+  <p> Armazenamento: {{data.tipoArmazenamento}} </p>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="warn" (click)="onNoClick()">Fechar</button>
+</div>

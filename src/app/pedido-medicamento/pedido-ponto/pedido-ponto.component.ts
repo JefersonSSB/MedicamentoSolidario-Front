@@ -50,8 +50,8 @@ export class PedidoPontoComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  Submit(id) {
-
+  Submit(id, nome) {
+    this.router.navigate(['pedidoMedicamento', id, nome]);
   }
 
   openDialog(ponto): void {

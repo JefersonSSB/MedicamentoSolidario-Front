@@ -13,5 +13,6 @@ export class Medicamento {
   tipoReceita: string;
   data: string;
   qtdPedido?: number;
-  pontoDeColeta?:PontoColeta;
+  pontoDeColeta?: PontoColeta;
+  dataVencimento?: string;
 }

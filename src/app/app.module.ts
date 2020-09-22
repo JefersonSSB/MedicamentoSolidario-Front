@@ -43,19 +43,19 @@ import { FooterComponent } from "./template/footer/footer.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReceberMedicamentoComponent, FormMedicamentoComponent } from './receber-medicamento/receber-medicamento.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ListMedicamentosComponent } from './list-medicamentos/list-medicamentos.component';
-import { SolicitarMedicamentosComponent } from './list-medicamentos/solicitar-medicamentos/solicitar-medicamentos.component';
 import { MedicamentoFormComponent } from './medicamento/medicamento-form/medicamento-form.component';
 import { MedicamentoListComponent } from './medicamento/medicamento-list/medicamento-list.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ComfirmaCpfComponent } from './receber-medicamento/comfirma-cpf/comfirma-cpf.component';
 import { RecuperarSenhaComponent } from './usuario/recuperar-senha/recuperar-senha.component';
-import { AddMedDialogComponent } from './list-medicamentos/add-med-dialog/add-med-dialog.component';
-import { InfoPontoColetaComponent } from './list-medicamentos/info-ponto-coleta/info-ponto-coleta.component';
 import { MyMedicamentosComponent } from './my-medicamentos/my-medicamentos.component';
 import { UsuarioPerfilComponent } from './usuario/usuario-perfil/usuario-perfil.component';
 import { PedidoPontoComponent } from './pedido-medicamento/pedido-ponto/pedido-ponto.component';
 import { PontoInfoComponent } from './pedido-medicamento/pedido-ponto/ponto-info/ponto-info.component';
+import { PedidoMedicamentoComponent } from './pedido-medicamento/pedido-medicamento/pedido-medicamento.component';
+import { MedicamentoInfoComponent } from './pedido-medicamento/pedido-medicamento/medicamento-info/medicamento-info.component';
+import { MedicamentoQuantidadeComponent } from './pedido-medicamento/pedido-medicamento/medicamento-quantidade/medicamento-quantidade.component';
+import { FormsModule } from '@angular/forms';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -74,22 +74,22 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     PopUpDeleteComponent,
     ReceberMedicamentoComponent,
     FormMedicamentoComponent,
-    ListMedicamentosComponent,
-    SolicitarMedicamentosComponent,
     MedicamentoFormComponent,
     MedicamentoListComponent,
     ComfirmaCpfComponent,
     RecuperarSenhaComponent,
-    AddMedDialogComponent,
-    InfoPontoColetaComponent,
     MyMedicamentosComponent,
     UsuarioPerfilComponent,
     PedidoPontoComponent,
     PontoInfoComponent,
+    PedidoMedicamentoComponent,
+    MedicamentoInfoComponent,
+    MedicamentoQuantidadeComponent,
 
   ],
   //entryComponents: [DialogOverviewExample, DialogOverviewExampleDialog],
   imports: [
+    FormsModule,
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
