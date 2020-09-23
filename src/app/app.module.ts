@@ -48,7 +48,6 @@ import { MedicamentoListComponent } from './medicamento/medicamento-list/medicam
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ComfirmaCpfComponent } from './receber-medicamento/comfirma-cpf/comfirma-cpf.component';
 import { RecuperarSenhaComponent } from './usuario/recuperar-senha/recuperar-senha.component';
-import { MyMedicamentosComponent } from './my-medicamentos/my-medicamentos.component';
 import { UsuarioPerfilComponent } from './usuario/usuario-perfil/usuario-perfil.component';
 import { PedidoPontoComponent } from './pedido-medicamento/pedido-ponto/pedido-ponto.component';
 import { PontoInfoComponent } from './pedido-medicamento/pedido-ponto/ponto-info/ponto-info.component';
@@ -56,6 +55,7 @@ import { PedidoMedicamentoComponent } from './pedido-medicamento/pedido-medicame
 import { MedicamentoInfoComponent } from './pedido-medicamento/pedido-medicamento/medicamento-info/medicamento-info.component';
 import { MedicamentoQuantidadeComponent } from './pedido-medicamento/pedido-medicamento/medicamento-quantidade/medicamento-quantidade.component';
 import { FormsModule } from '@angular/forms';
+import { PedidoUsuarioComponent } from './pedido-medicamento/pedido-usuario/pedido-usuario.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -78,13 +78,13 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MedicamentoListComponent,
     ComfirmaCpfComponent,
     RecuperarSenhaComponent,
-    MyMedicamentosComponent,
     UsuarioPerfilComponent,
     PedidoPontoComponent,
     PontoInfoComponent,
     PedidoMedicamentoComponent,
     MedicamentoInfoComponent,
     MedicamentoQuantidadeComponent,
+    PedidoUsuarioComponent,
 
   ],
   //entryComponents: [DialogOverviewExample, DialogOverviewExampleDialog],

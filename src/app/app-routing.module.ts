@@ -17,6 +17,7 @@ import { ComfirmaCpfComponent } from "./receber-medicamento/comfirma-cpf/comfirm
 import { RecuperarSenhaComponent } from './usuario/recuperar-senha/recuperar-senha.component';
 import { UsuarioPerfilComponent } from './usuario/usuario-perfil/usuario-perfil.component';
 import { PedidoMedicamentoComponent } from "./pedido-medicamento/pedido-medicamento/pedido-medicamento.component"
+import { PedidoUsuarioComponent } from './pedido-medicamento/pedido-usuario/pedido-usuario.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -64,6 +65,7 @@ const routes: Routes = [
   { path: "pedidoMedicamento/:id/:nome", component: PedidoMedicamentoComponent },
   { path: "verificaCpf", component: ComfirmaCpfComponent },
   { path: "recureparSenha", component: RecuperarSenhaComponent },
+  { path: "meusPedidos", component: PedidoUsuarioComponent },
 ];
 
 @NgModule({

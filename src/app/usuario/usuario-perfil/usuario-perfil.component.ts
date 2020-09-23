@@ -59,7 +59,7 @@ export class UsuarioPerfilComponent implements OnInit {
       this.usuarioService.save(this.formGroup.value).subscribe(
         success => {
           this.showMessage("Senha Alterada!"),
-            this.formGroup.reset();
+            this.onSubmit();
         },
         error => this.showMessage("Erro Desconhecido", true),
         () => console.log('request completo')

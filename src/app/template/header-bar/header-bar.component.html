@@ -8,7 +8,7 @@
       <button mat-button [matMenuTriggerFor]="medSolicit">Solicitação de Medicamentos</button>
       <mat-menu #medSolicit="matMenu" yPosition="below">
         <button mat-menu-item routerLink="pedido">Solicitar Medicamentos</button>
-        <button mat-menu-item routerLink="my-medicamentos">Minhas Solicitações</button>
+        <button mat-menu-item routerLink="meusPedidos">Minhas Solicitações</button>
       </mat-menu>
       <button *ngIf="authAdm()" mat-button [matMenuTriggerFor]="user">Usuario</button>
       <mat-menu #user="matMenu" yPosition="below">
@@ -65,7 +65,7 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <button mat-menu-item routerLink="pedido">Solicitar</button>
-        <button mat-menu-item routerLink="my-medicamentos">Minhas Solicitações</button>
+        <button mat-menu-item routerLink="meusPedidos">Minhas Solicitações</button>
       </mat-expansion-panel>
 
       <mat-expansion-panel style="box-shadow: none;">
@@ -85,8 +85,6 @@
             Ponto de Coleta
           </mat-panel-title>
         </mat-expansion-panel-header>
-
-
 
         <button mat-menu-item routerLink="pontoColetaCadastro">Cadastro</button>
         <button mat-menu-item routerLink="pontoColetaList">Lista</button>
