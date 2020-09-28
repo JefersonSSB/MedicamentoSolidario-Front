@@ -1,19 +1,19 @@
-import { Router } from '@angular/router';;
+import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { PontoColeta } from 'src/app/models/pontoColeta';
-import { PedidoPontoService } from './pedido-ponto.service'
+import { PedidoPontoService } from './saida-ponto.service';
 import { PontoInfoComponent } from '../../ponto-de-coleta/ponto-info/ponto-info.component';
 
 
 @Component({
-  selector: 'app-pedido-ponto',
-  templateUrl: './pedido-ponto.component.html',
-  styleUrls: ['./pedido-ponto.component.css']
+  selector: 'app-saida-ponto',
+  templateUrl: './saida-ponto.component.html',
+  styleUrls: ['./saida-ponto.component.css']
 })
-export class PedidoPontoComponent implements OnInit {
+export class SaidaPontoComponent implements OnInit {
 
   pontos: PontoColeta[];
   displayedColumns: string[] = ['nome', 'cidade', 'bairro', 'cep', 'info', 'opcoes'];

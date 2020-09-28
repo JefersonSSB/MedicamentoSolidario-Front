@@ -1,3 +1,21 @@
 .mat-simple-snackbar-action {
   color: white !important;
 }
+
+.cadastro {
+  animation: fade 1s;
+}
+
+.home {
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

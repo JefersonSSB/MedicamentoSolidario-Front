@@ -58,7 +58,8 @@ export class PedidoMedicamentoComponent implements OnInit {
     });
 
     this.formPedido = this.formBuilder.group({
-      idUsuario: [this.idUsuario, Validators.required],
+      idUsuario: [this.id, Validators.required],
+      idPonto: [this.idUsuario, Validators.required],
       justificativa: [''],
       listaMedicamentos: this.formBuilder.array(
         [],

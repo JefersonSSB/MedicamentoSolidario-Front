@@ -5,6 +5,10 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <img class="imageLogo" src="assets/images/logo.png" routerLink="/" />
+
+      <button *ngIf="(authAdm() || authVoluntario() )" mat-button routerLink="saidaMedicamento">
+        Saida Medicamento
+      </button>
       <button mat-button [matMenuTriggerFor]="medSolicit">Solicitação de Medicamentos</button>
       <mat-menu #medSolicit="matMenu" yPosition="below">
         <button mat-menu-item routerLink="pedido">Solicitar Medicamentos</button>
@@ -15,6 +19,7 @@
         <button mat-menu-item routerLink="usuarioCadastro">Cadastro</button>
         <button mat-menu-item routerLink="usuarioLista">Lista</button>
       </mat-menu>
+
       <button *ngIf="authAdm()" mat-button [matMenuTriggerFor]="pontoColeta">
         Ponto de Coleta
       </button>
@@ -58,11 +63,13 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true" mode="side">
     <mat-toolbar *ngIf="authAdm()" class="headMenuSide">Menu</mat-toolbar>
     <mat-nav-list>
+      <button class="sideitem" mat-menu-item routerLink="saidaMedicamento">Saida Pedido</button>
       <mat-expansion-panel style="box-shadow: none;">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Solicitação
           </mat-panel-title>
+
         </mat-expansion-panel-header>
         <button mat-menu-item routerLink="pedido">Solicitar</button>
         <button mat-menu-item routerLink="meusPedidos">Minhas Solicitações</button>

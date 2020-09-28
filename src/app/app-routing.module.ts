@@ -18,6 +18,7 @@ import { RecuperarSenhaComponent } from './usuario/recuperar-senha/recuperar-sen
 import { UsuarioPerfilComponent } from './usuario/usuario-perfil/usuario-perfil.component';
 import { PedidoMedicamentoComponent } from "./pedido-medicamento/pedido-medicamento/pedido-medicamento.component"
 import { PedidoUsuarioComponent } from './pedido-medicamento/pedido-usuario/pedido-usuario.component';
+import { SaidaPontoComponent } from "./pedido-saida/saida-ponto/saida-ponto.component"
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -61,6 +62,7 @@ const routes: Routes = [
   },
   { path: "medicamentoLista", component: MedicamentoListComponent },
   { path: "receberMedicamento/:id/:nome", component: ReceberMedicamentoComponent },
+  { path: "saidaMedicamento", component: SaidaPontoComponent },
   { path: "pedido", component: PedidoPontoComponent },
   { path: "pedidoMedicamento/:id/:nome", component: PedidoMedicamentoComponent },
   { path: "verificaCpf", component: ComfirmaCpfComponent },

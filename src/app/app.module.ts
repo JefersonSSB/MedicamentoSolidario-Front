@@ -50,13 +50,13 @@ import { ComfirmaCpfComponent } from './receber-medicamento/comfirma-cpf/comfirm
 import { RecuperarSenhaComponent } from './usuario/recuperar-senha/recuperar-senha.component';
 import { UsuarioPerfilComponent } from './usuario/usuario-perfil/usuario-perfil.component';
 import { PedidoPontoComponent } from './pedido-medicamento/pedido-ponto/pedido-ponto.component';
-import { PontoInfoComponent } from './pedido-medicamento/pedido-ponto/ponto-info/ponto-info.component';
+import { PontoInfoComponent } from './ponto-de-coleta/ponto-info/ponto-info.component';
 import { PedidoMedicamentoComponent } from './pedido-medicamento/pedido-medicamento/pedido-medicamento.component';
 import { MedicamentoInfoComponent } from './pedido-medicamento/pedido-medicamento/medicamento-info/medicamento-info.component';
 import { MedicamentoQuantidadeComponent } from './pedido-medicamento/pedido-medicamento/medicamento-quantidade/medicamento-quantidade.component';
+import { SaidaPontoComponent } from './pedido-saida/saida-ponto/saida-ponto.component'
 import { FormsModule } from '@angular/forms';
 import { PedidoUsuarioComponent } from './pedido-medicamento/pedido-usuario/pedido-usuario.component';
-
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
@@ -85,6 +85,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MedicamentoInfoComponent,
     MedicamentoQuantidadeComponent,
     PedidoUsuarioComponent,
+    SaidaPontoComponent,
+
 
   ],
   //entryComponents: [DialogOverviewExample, DialogOverviewExampleDialog],
