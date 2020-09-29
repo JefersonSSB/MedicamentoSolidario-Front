@@ -1,0 +1,56 @@
+.cadastro {
+  width: 70%;
+  margin: 0;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.centraliza {
+  margin: 0;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.textoTituloCartao {
+  margin: 0;
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+}
+
+.cartoesCorpo {
+  margin: 10px;
+}
+
+.card {
+  display: inline-table;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.icon {
+  background-color: white;
+  color: #000;
+}
+
+
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.btn {
+  color: white;
+  background-color: green;
+}

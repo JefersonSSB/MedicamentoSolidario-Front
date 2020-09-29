@@ -2,9 +2,13 @@ import { Medicamento } from './medicamento';
 
 export class Pedido {
   id?: number;
-  data: Date;
+  dataCriacao: Date;
   idUsuario: number;
-  medicamentos:Medicamento[];
+  usuarioNome: string;
+  usuarioCPF: string;
+  pontoNome: string;
+  medicamentos: Medicamento[];
   justificativa: string;
   recebimentoID: number;
+  status: string;
 }
