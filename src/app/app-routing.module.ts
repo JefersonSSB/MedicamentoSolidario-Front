@@ -69,7 +69,7 @@ const routes: Routes = [
   { path: "verificaCpf", component: ComfirmaCpfComponent },
   { path: "recureparSenha", component: RecuperarSenhaComponent },
   { path: "meusPedidos", component: PedidoUsuarioComponent },
-  { path: "pedidosLista", component: SaidaListaComponent },
+  { path: "pedidosLista/:id", component: SaidaListaComponent },
 ];
 
 @NgModule({

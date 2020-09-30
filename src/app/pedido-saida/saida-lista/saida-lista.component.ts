@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pedido } from 'src/app/models/pedido';
 import { SaidaListaService } from "./saida-lista.service"
 import { DatePipe } from '@angular/common'
@@ -15,9 +15,10 @@ import { DatePipe } from '@angular/common'
 })
 export class SaidaListaComponent implements OnInit {
 
-  displayedColumns: string[] = ['data', 'ponto', 'donatario', 'cpf', 'info', 'opcoes'];
+  displayedColumns: string[] = ['data', 'ponto', 'donatario', 'cpf', 'opcoes'];
   dataSource = null;
   loading = false;
+  id: any;
 
   pedido: Pedido[];
 
@@ -26,18 +27,20 @@ export class SaidaListaComponent implements OnInit {
     private service: SaidaListaService,
     private router: Router,
     public dialog: MatDialog,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    public route: ActivatedRoute
   ) {
     this.dataSource = new MatTableDataSource(this.pedido);
   }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.list();
     this.dataSource.paginator = this.paginator;
   }
   list() {
     this.loading = true;
-    this.service.list().subscribe(
+    this.service.listByID(this.id).subscribe(
       (dados) => {
         this.pedido = dados;
         this.dataSource.data = this.pedido;

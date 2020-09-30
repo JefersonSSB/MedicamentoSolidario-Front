@@ -8,6 +8,6 @@ import { CrudService } from '../../shared/crud-service';
 })
 export class SaidaListaService extends CrudService<PontoColeta> {
   constructor(protected http: HttpClient) {
-    super(http, 'https://medicamento-back.herokuapp.com/api/pedido/usuario/1');
+    super(http, 'https://medicamento-back.herokuapp.com/api/pedido/ponto');
   }
 }

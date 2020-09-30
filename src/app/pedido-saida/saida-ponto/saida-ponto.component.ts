@@ -50,8 +50,8 @@ export class SaidaPontoComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  Submit(id, nome) {
-    this.router.navigate(['pedidosLista']);
+  Submit(id) {
+    this.router.navigate(['pedidosLista', id]);
   }
 
   openDialog(ponto): void {
