@@ -57,7 +57,8 @@ import { MedicamentoQuantidadeComponent } from './pedido-medicamento/pedido-medi
 import { SaidaPontoComponent } from './pedido-saida/saida-ponto/saida-ponto.component'
 import { FormsModule } from '@angular/forms';
 import { PedidoUsuarioComponent } from './pedido-medicamento/pedido-usuario/pedido-usuario.component';
-import { SaidaListaComponent } from './pedido-saida/saida-lista/saida-lista.component'
+import { SaidaListaComponent } from './pedido-saida/saida-lista/saida-lista.component';
+import { SaidaMedicamentoComponent } from './pedido-saida/saida-medicamento/saida-medicamento.component'
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
@@ -87,7 +88,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     MedicamentoQuantidadeComponent,
     PedidoUsuarioComponent,
     SaidaPontoComponent,
-    SaidaListaComponent
+    SaidaListaComponent,
+    SaidaMedicamentoComponent
 
 
   ],

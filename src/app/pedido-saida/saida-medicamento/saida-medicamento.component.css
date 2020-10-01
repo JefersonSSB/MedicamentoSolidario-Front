@@ -1,0 +1,100 @@
+.cadastro {
+  width: 70%;
+  margin: 0;
+  margin: auto;
+  margin-top: 30px;
+  min-height: 450px;
+}
+
+.centraliza {
+  margin: 0;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.textoTituloCartao {
+  margin: 0;
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+}
+
+.cartoesCorpo {
+  margin: 10px;
+}
+
+.card {
+  display: inline-table;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.icon {
+  background-color: white;
+  color: #000;
+}
+
+
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.btn {
+  color: white;
+  background-color: green;
+}
+
+.cont {
+  width: 49%;
+  display: inline-table;
+}
+
+.carrinho {
+  margin: 10px;
+  min-height: 350px;
+
+}
+
+.linha {
+  padding: 15px;
+  min-height: 20px;
+  margin-bottom: 8px;
+  box-shadow: 2px 2px 5px 5px gray;
+  background-color: rgb(250, 250, 250);
+  border-radius: 5px;
+  display: inline-block;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+
+button {
+  margin-right: 8px;
+}
+
+.Doinfo {
+  margin-top: 15px;
+  font-size: 1.1rem;
+}
+
+::ng-deep .msg-success {
+  background-color: #28a745;
+  color: white;
+}
+
+::ng-deep .msg-error {
+  background-color: rgb(227, 94, 107);
+  color: white;
+}

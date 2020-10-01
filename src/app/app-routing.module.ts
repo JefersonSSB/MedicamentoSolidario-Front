@@ -20,6 +20,7 @@ import { PedidoMedicamentoComponent } from "./pedido-medicamento/pedido-medicame
 import { PedidoUsuarioComponent } from './pedido-medicamento/pedido-usuario/pedido-usuario.component';
 import { SaidaPontoComponent } from "./pedido-saida/saida-ponto/saida-ponto.component"
 import { SaidaListaComponent } from "./pedido-saida/saida-lista/saida-lista.component"
+import { SaidaMedicamentoComponent } from './pedido-saida/saida-medicamento/saida-medicamento.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -70,6 +71,7 @@ const routes: Routes = [
   { path: "recureparSenha", component: RecuperarSenhaComponent },
   { path: "meusPedidos", component: PedidoUsuarioComponent },
   { path: "pedidosLista/:id", component: SaidaListaComponent },
+  { path: "pedidoMedicamento", component: SaidaMedicamentoComponent },
 ];
 
 @NgModule({

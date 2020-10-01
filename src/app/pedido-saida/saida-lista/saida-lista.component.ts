@@ -61,5 +61,8 @@ export class SaidaListaComponent implements OnInit {
     return this.datepipe.transform(date, 'dd/MM/yyyy');
 
   }
+  open() {
+    this.router.navigate(['pedidoMedicamento']);
+  }
 
 }
