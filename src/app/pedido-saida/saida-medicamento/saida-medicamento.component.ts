@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Medicamento } from 'src/app/models/medicamento';
 import { PedidoMedicamentoService } from 'src/app/pedido-medicamento/pedido-medicamento/pedido-medicamento.service';
 
@@ -12,9 +13,10 @@ import { PedidoMedicamentoService } from 'src/app/pedido-medicamento/pedido-medi
 export class SaidaMedicamentoComponent implements OnInit {
   medicamentos: Medicamento[];
   loading = false;
+
   dataSource = null;
   displayedColumns: string[] = ['nome', 'principio', 'quantidade', 'info'];
-  constructor(private service: PedidoMedicamentoService) {
+  constructor(private service: PedidoMedicamentoService, private router: Router) {
     this.dataSource = new MatTableDataSource(this.medicamentos);
   }
 
@@ -38,4 +40,9 @@ export class SaidaMedicamentoComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  open() {
+    this.router.navigate(['pedidoMedicamento']);
+  }
+
 }

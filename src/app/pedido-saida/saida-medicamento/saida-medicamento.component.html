@@ -33,6 +33,17 @@
           </div>
         </td>
       </ng-container>
+      <ng-container matColumnDef="opcoes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Opções</th>
+        <td mat-cell *matCellDef="let element">
+
+          <div class=' example-flex-container'>
+            <button mat-raised-button class="btn" (click)="open()">
+              Ver Pedido
+            </button>
+          </div>
+        </td>
+      </ng-container>
 
 
 
